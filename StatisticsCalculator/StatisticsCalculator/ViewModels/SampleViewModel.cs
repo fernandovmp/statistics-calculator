@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace StatisticsCalculator.ViewModels
 {
     public class SampleViewModel : ViewModelBase
     {
         private ObservableCollection<SampleItemViewModel> _sampleItems;
-
+        private ICommand _addSampleItemCommand;
         public SampleViewModel()
         {
             _sampleItems = new ObservableCollection<SampleItemViewModel>
@@ -24,6 +26,26 @@ namespace StatisticsCalculator.ViewModels
         {
             get => _sampleItems;
             set => SetProperty(ref _sampleItems, value);
+        }
+        public ICommand AddSampleItemCommand
+        {
+            get
+            {
+                if(_addSampleItemCommand == null)
+                {
+                     _addSampleItemCommand = new Command(AddSampleItem);
+                }
+                return _addSampleItemCommand;
+            }
+            set => SetProperty(ref _addSampleItemCommand, value);
+        }
+
+        public void AddSampleItem(object parameter)
+        {
+            if(parameter is string valueText && double.TryParse(valueText, out double value))
+            {
+                SampleItems.Add(new SampleItemViewModel(value));
+            }
         }
     }
 }
