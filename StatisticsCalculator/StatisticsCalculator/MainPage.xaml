@@ -1,49 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:StatisticsCalculator.Views"
-             xmlns:viewModels="clr-namespace:StatisticsCalculator.ViewModels"
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.MainPage">
-
-    <ContentPage.Resources>
-        <viewModels:SampleViewModel x:Key="SampleVM"/>
-        <Style Class="SampleCollection" TargetType="CollectionView">
-            <Setter Property="BackgroundColor" Value="#eee"/>
-            <Setter Property="HeightRequest" Value="200"/>
-        </Style>
-    </ContentPage.Resources>
-    <StackLayout VerticalOptions="Center" 
-                 BindingContext="{StaticResource SampleVM}">
-        <!-- Place new controls here -->
-        <Label Text="Amostra"
-               TextColor="Black"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-        <ContentView Margin="5"
-                     BackgroundColor="#aaa"
-                     Padding="1">
-            <CollectionView class="SampleCollection"
-                            ItemsSource="{Binding SampleItems}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical"
-                                     Span="4"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <views:SampleItemView/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </ContentView>
-
-        <Entry x:Name="SampleItemEntry" Keyboard="Numeric"/>
-        <Button Text="Adicionar"
-                Margin="120, 0, 120, 0"
-                Command="{Binding AddSampleItemCommand}"
-                CommandParameter="{Binding Source={x:Reference SampleItemEntry}, Path=Text}"/>
-    </StackLayout>
-
-</ContentPage>
+    <views:SamplePage/>
+</TabbedPage>
