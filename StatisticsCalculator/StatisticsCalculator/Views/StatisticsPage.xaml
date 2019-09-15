@@ -50,6 +50,9 @@
                 <Button Text="s"
                         Grid.Row="2" Grid.Column="0"
                         Command="{Binding SampleStandardDeviationCommand}"/>
+                <Button Text="s^2"
+                        Grid.Row="2" Grid.Column="1"
+                        Command="{Binding SampleVarianceCommand}"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
