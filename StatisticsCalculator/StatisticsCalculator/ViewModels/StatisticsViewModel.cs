@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 using StatisticsCore;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace StatisticsCalculator.ViewModels
@@ -15,6 +16,7 @@ namespace StatisticsCalculator.ViewModels
         private ICommand _sumOfSquareCommand;
         private ICommand _meanCommand;
         private ICommand _medianCommand;
+        private ICommand _modeCommand;
         private ICollection<SampleItemViewModel> _sample;
         public StatisticsViewModel()
         {
@@ -78,6 +80,18 @@ namespace StatisticsCalculator.ViewModels
             }
             set => SetProperty(ref _medianCommand, value);
         }
+        public ICommand ModeCommand
+        {
+            get
+            {
+                if (_modeCommand == null)
+                {
+                    _modeCommand = new Command(Mode);
+                }
+                return _modeCommand;
+            }
+            set => SetProperty(ref _modeCommand, value);
+        }
 
         public void Sum(object parameter)
         {
@@ -109,6 +123,15 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double median = Statistics.Median(sampleValues);
             Result = median.ToString();
+        }
+
+        public void Mode(object parameter)
+        {
+            if (_sample == null) return;
+            double[] sampleValues = GetSampleValuesArray();
+            List<double> mode = Statistics.Mode(sampleValues);
+            IEnumerable<string> modeString = mode.Select(i => i.ToString());
+            Result = $"Moda: {string.Join(", ", modeString.ToArray())}";
         }
 
         private double[] GetSampleValuesArray()
