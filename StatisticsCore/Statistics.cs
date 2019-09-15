@@ -36,7 +36,7 @@ namespace StatisticsCore
             sortedItems.Sort((a, b) => (int)(a - b));
             int position = sortedItems.Count / 2;
             return sortedItems.Count % 2 == 0 ? 
-                (sortedItems[position] + sortedItems[position + 1]) / 2 : sortedItems[position];
+                (sortedItems[position - 1] + sortedItems[position]) / 2 : sortedItems[position];
         }
 
         public static List<double> Mode(params double[] items)
