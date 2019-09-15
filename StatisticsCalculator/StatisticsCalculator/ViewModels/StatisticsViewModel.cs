@@ -13,6 +13,7 @@ namespace StatisticsCalculator.ViewModels
         private string _result;
         private ICommand _sumCommand;
         private ICommand _sumOfSquareCommand;
+        private ICommand _meanCommand;
         private ICollection<SampleItemViewModel> _sample;
         public StatisticsViewModel()
         {
@@ -52,6 +53,18 @@ namespace StatisticsCalculator.ViewModels
             }
             set => SetProperty(ref _sumOfSquareCommand, value);
         }
+        public ICommand MeanCommand
+        {
+            get
+            {
+                if (_meanCommand == null)
+                {
+                    _meanCommand = new Command(Mean);
+                }
+                return _meanCommand;
+            }
+            set => SetProperty(ref _meanCommand, value);
+        }
 
         public void Sum(object parameter)
         {
@@ -67,6 +80,14 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double sum = Statistics.SumOfSquareOfItems(sampleValues);
             Result = sum.ToString();
+        }
+
+        public void Mean(object parameter)
+        {
+            if (_sample == null) return;
+            double[] sampleValues = GetSampleValuesArray();
+            double mean = Statistics.Mean(sampleValues);
+            Result = mean.ToString();
         }
 
         private double[] GetSampleValuesArray()
