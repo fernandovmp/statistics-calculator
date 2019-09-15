@@ -32,6 +32,7 @@ namespace StatisticsCore
 
         public static double Median(params double[] items)
         {
+            if (items.Length == 0) return double.NaN;
             List<double> sortedItems = new List<double>(items);
             sortedItems.Sort((a, b) => (int)(a - b));
             int position = sortedItems.Count / 2;
