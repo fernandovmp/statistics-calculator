@@ -15,6 +15,8 @@
             <Label Text="{Binding Result}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Button Text="Σx^2"
+                    Command="{Binding SumOfSquareCommand}"/>
             <Button Text="Σx"
                     Command="{Binding SumCommand}"/>
         </StackLayout>
