@@ -22,5 +22,10 @@ namespace StatisticsCore
         {
             return SumOfItems(2, items);
         }
+
+        public static double Mean(params double[] items)
+        {
+            return SumOfItems(items) / items.Length;
+        }
     }
 }
