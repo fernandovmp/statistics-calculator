@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatisticsCore", "StatisticsCore\StatisticsCore.csproj", "{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,18 @@ Global
 		{0CE88E39-79E9-4D65-8E58-C699D0219D14}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{0CE88E39-79E9-4D65-8E58-C699D0219D14}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{0CE88E39-79E9-4D65-8E58-C699D0219D14}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Release|iPhone.Build.0 = Release|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{F4C52738-7B4C-4DAE-B29B-0F6AB355954E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
