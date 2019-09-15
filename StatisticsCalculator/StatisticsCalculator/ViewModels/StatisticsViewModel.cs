@@ -20,6 +20,7 @@ namespace StatisticsCalculator.ViewModels
         private ICommand _sampleStandardDeviationCommand;
         private ICommand _populationStandardDeviationCommand;
         private ICommand _sampleVarianceCommand;
+        private ICommand _populationVarianceCommand;
         private ICollection<SampleItemViewModel> _sample;
         public StatisticsViewModel()
         {
@@ -131,6 +132,18 @@ namespace StatisticsCalculator.ViewModels
             }
             set => SetProperty(ref _sampleVarianceCommand, value);
         }
+        public ICommand PopulationVarianceCommand
+        {
+            get
+            {
+                if (_populationVarianceCommand == null)
+                {
+                    _populationVarianceCommand = new Command(PopulationVariance);
+                }
+                return _populationVarianceCommand;
+            }
+            set => SetProperty(ref _populationVarianceCommand, value);
+        }
 
         public void Sum(object parameter)
         {
@@ -194,6 +207,14 @@ namespace StatisticsCalculator.ViewModels
             if (_sample == null || _sample.Count < 2) return;
             double[] sampleValues = GetSampleValuesArray();
             double variance = Statistics.SampleVariance(sampleValues);
+            Result = variance.ToString();
+        }
+
+        public void PopulationVariance(object parameter)
+        {
+            if (_sample == null || _sample.Count < 2) return;
+            double[] sampleValues = GetSampleValuesArray();
+            double variance = Statistics.PopulationVariance(sampleValues);
             Result = variance.ToString();
         }
 
