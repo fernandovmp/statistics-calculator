@@ -41,6 +41,9 @@
                 <Button Text="Σx"
                         Grid.Row="1" Grid.Column="1"
                         Command="{Binding SumCommand}"/>
+                <Button Text="σ"
+                        Grid.Row="1" Grid.Column="2"
+                        Command="{Binding PopulationStandardDeviationCommand}"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
