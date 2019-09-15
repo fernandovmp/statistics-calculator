@@ -191,5 +191,26 @@ namespace StatisticsCoreTest
 
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestSampleStandardDeviation()
+        {
+            double[] items = new double[]
+            {
+                10,
+                2,
+                38,
+                23,
+                38,
+                23,
+                21,
+                23
+            };
+            double expected = 12.302729081677;
+
+            double result = Statistics.SampleStandardDeviation(items);
+
+            Assert.AreEqual(expected, result, 0.000001);
+        }
     }
 }
