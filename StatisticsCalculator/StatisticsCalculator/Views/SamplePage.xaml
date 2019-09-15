@@ -18,10 +18,17 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center"
                      BindingContext="{StaticResource SampleVM}">
-            <Label Text="Amostra"
-                   TextColor="Black"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Amostra"
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       Margin="160, 0, 0, 0"
+                       VerticalOptions="Center" />
+                <Button Text="Limpar"
+                        HorizontalOptions="EndAndExpand"
+                        Margin="0, 0, 30, 0"
+                        Command="{Binding ClearSampleCommand}"/>
+            </StackLayout>
             <ContentView Margin="5"
                          BackgroundColor="#aaa"
                          Padding="1">
