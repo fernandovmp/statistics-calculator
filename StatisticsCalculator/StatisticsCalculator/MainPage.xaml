@@ -7,4 +7,5 @@
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.MainPage">
     <views:SamplePage/>
+    <views:StatisticsPage/>
 </TabbedPage>
