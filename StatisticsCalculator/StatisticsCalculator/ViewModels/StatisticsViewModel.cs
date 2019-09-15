@@ -56,7 +56,7 @@ namespace StatisticsCalculator.ViewModels
         {
             if (_sample == null) return;
             double sum = 0;
-            foreach (var item in _sample)
+            foreach (SampleItemViewModel item in _sample)
             {
                 sum += item.ItemValue;
             }
@@ -67,7 +67,7 @@ namespace StatisticsCalculator.ViewModels
         {
             if (_sample == null) return;
             double sum = 0;
-            foreach (var item in _sample)
+            foreach (SampleItemViewModel item in _sample)
             {
                 sum += Math.Pow(item.ItemValue, 2);
             }
