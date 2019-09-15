@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
+using StatisticsCore;
 using Xamarin.Forms;
 
 namespace StatisticsCalculator.ViewModels
@@ -55,23 +56,27 @@ namespace StatisticsCalculator.ViewModels
         public void Sum(object parameter)
         {
             if (_sample == null) return;
-            double sum = 0;
-            foreach (SampleItemViewModel item in _sample)
-            {
-                sum += item.ItemValue;
-            }
+            double[] sampleValues = GetSampleValuesArray();
+            double sum = Statistics.SumOfItems(sampleValues);
             Result = sum.ToString();
         }
 
         public void SumOfSquare(object parameter)
         {
             if (_sample == null) return;
-            double sum = 0;
+            double[] sampleValues = GetSampleValuesArray();
+            double sum = Statistics.SumOfSquareOfItems(sampleValues);
+            Result = sum.ToString();
+        }
+
+        private double[] GetSampleValuesArray()
+        {
+            List<double> collection = new List<double>();
             foreach (SampleItemViewModel item in _sample)
             {
-                sum += Math.Pow(item.ItemValue, 2);
+                collection.Add(item.ItemValue);
             }
-            Result = sum.ToString();
+            return collection.ToArray();
         }
     }
 }

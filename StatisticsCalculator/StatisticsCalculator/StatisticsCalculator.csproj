@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\StatisticsCore\StatisticsCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Views\SamplePage.xaml.cs">
       <DependentUpon>SamplePage.xaml</DependentUpon>
     </Compile>
