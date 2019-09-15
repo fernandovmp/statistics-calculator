@@ -13,13 +13,7 @@ namespace StatisticsCalculator.ViewModels
         private ICommand _addSampleItemCommand;
         public SampleViewModel()
         {
-            _sampleItems = new ObservableCollection<SampleItemViewModel>
-            {
-                new SampleItemViewModel(100),
-                new SampleItemViewModel(200),
-                new SampleItemViewModel(300),
-                new SampleItemViewModel(400)
-            };
+            _sampleItems = new ObservableCollection<SampleItemViewModel>();
         }
 
         public ObservableCollection<SampleItemViewModel> SampleItems
