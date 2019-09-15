@@ -119,5 +119,20 @@ namespace StatisticsCore
             double sum = SumOfSquareOfItems(items);
             return sum / (items.Length - 1);
         }
+
+        public static double PopulationVariance(params double[] items)
+        {
+            if (items.Length < 2)
+            {
+                throw new ArgumentException("items lenght must be greater or equal to 2");
+            }
+            double mean = Mean(items);
+            for (int i = 0; i < items.Length; i++)
+            {
+                items[i] -= mean;
+            }
+            double sum = SumOfSquareOfItems(items);
+            return sum / items.Length;
+        }
     }
 }
