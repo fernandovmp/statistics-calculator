@@ -17,6 +17,7 @@ namespace StatisticsCalculator.ViewModels
         private ICommand _meanCommand;
         private ICommand _medianCommand;
         private ICommand _modeCommand;
+        private ICommand _sampleStandardDeviationCommand;
         private ICollection<SampleItemViewModel> _sample;
         public StatisticsViewModel()
         {
@@ -92,6 +93,18 @@ namespace StatisticsCalculator.ViewModels
             }
             set => SetProperty(ref _modeCommand, value);
         }
+        public ICommand SampleStandardDeviationCommand
+        {
+            get
+            {
+                if (_sampleStandardDeviationCommand == null)
+                {
+                    _sampleStandardDeviationCommand = new Command(SampleStandardDeviation);
+                }
+                return _sampleStandardDeviationCommand;
+            }
+            set => SetProperty(ref _sampleStandardDeviationCommand, value);
+        }
 
         public void Sum(object parameter)
         {
@@ -132,6 +145,14 @@ namespace StatisticsCalculator.ViewModels
             List<double> mode = Statistics.Mode(sampleValues);
             IEnumerable<string> modeString = mode.Select(i => i.ToString());
             Result = $"Moda: {string.Join(", ", modeString.ToArray())}";
+        }
+
+        public void SampleStandardDeviation(object parameter)
+        {
+            if (_sample == null || _sample.Count < 2) return;
+            double[] sampleValues = GetSampleValuesArray();
+            double deviation = Statistics.SampleStandardDeviation(sampleValues);
+            Result = deviation.ToString();
         }
 
         private double[] GetSampleValuesArray()
