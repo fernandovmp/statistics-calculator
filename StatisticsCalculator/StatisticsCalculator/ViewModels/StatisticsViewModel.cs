@@ -11,6 +11,7 @@ namespace StatisticsCalculator.ViewModels
     {
         private string _result;
         private ICommand _sumCommand;
+        private ICommand _sumOfSquareCommand;
         private ICollection<SampleItemViewModel> _sample;
         public StatisticsViewModel()
         {
@@ -38,6 +39,18 @@ namespace StatisticsCalculator.ViewModels
             }
             set => SetProperty(ref _sumCommand, value);
         }
+        public ICommand SumOfSquareCommand
+        {
+            get
+            {
+                if (_sumOfSquareCommand == null)
+                {
+                    _sumOfSquareCommand = new Command(SumOfSquare);
+                }
+                return _sumOfSquareCommand;
+            }
+            set => SetProperty(ref _sumOfSquareCommand, value);
+        }
 
         public void Sum(object parameter)
         {
@@ -46,6 +59,17 @@ namespace StatisticsCalculator.ViewModels
             foreach (var item in _sample)
             {
                 sum += item.ItemValue;
+            }
+            Result = sum.ToString();
+        }
+
+        public void SumOfSquare(object parameter)
+        {
+            if (_sample == null) return;
+            double sum = 0;
+            foreach (var item in _sample)
+            {
+                sum += Math.Pow(item.ItemValue, 2);
             }
             Result = sum.ToString();
         }
