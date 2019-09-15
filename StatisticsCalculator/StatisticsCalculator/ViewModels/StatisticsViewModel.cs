@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
-using StatisticsCore;
 using System.Linq;
+using StatisticsCore;
 using Xamarin.Forms;
 
 namespace StatisticsCalculator.ViewModels
