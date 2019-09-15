@@ -41,6 +41,8 @@ namespace StatisticsCalculator.ViewModels
                 && double.TryParse(valueText, out double value))
             {
                 SampleItems.Add(new SampleItemViewModel(value));
+                MessagingCenter.Send<SampleViewModel, ICollection<SampleItemViewModel>>(this,
+                    "SampleUpdated", SampleItems);
             }
         }
     }
