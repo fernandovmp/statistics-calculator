@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace StatisticsCore
 {
@@ -26,6 +27,15 @@ namespace StatisticsCore
         public static double Mean(params double[] items)
         {
             return SumOfItems(items) / items.Length;
+        }
+
+        public static double Median(params double[] items)
+        {
+            List<double> sortedItems = new List<double>(items);
+            sortedItems.Sort((a, b) => (int)(a - b));
+            int position = sortedItems.Count / 2;
+            return sortedItems.Count % 2 == 0 ? 
+                (sortedItems[position] + sortedItems[position + 1]) / 2 : sortedItems[position];
         }
     }
 }

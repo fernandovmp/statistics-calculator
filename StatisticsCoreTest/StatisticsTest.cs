@@ -68,5 +68,26 @@ namespace StatisticsCoreTest
 
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestMedian()
+        {
+            double[] items = new double[]
+            {
+                10,
+                2,
+                38,
+                23,
+                38,
+                23,
+                21,
+                23
+            };
+            double expected = 23;
+
+            double result = Statistics.Median(items);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
