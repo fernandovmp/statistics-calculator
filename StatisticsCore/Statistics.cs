@@ -93,5 +93,16 @@ namespace StatisticsCore
             double sum = SumOfSquareOfItems(items);
             return Math.Sqrt(sum / (items.Length - 1));
         }
+
+        public static double PopulationStandardDeviation(params double[] items)
+        {
+            double mean = Mean(items);
+            for (int i = 0; i < items.Length; i++)
+            {
+                items[i] -= mean;
+            }
+            double sum = SumOfSquareOfItems(items);
+            return Math.Sqrt(sum / items.Length);
+        }
     }
 }
