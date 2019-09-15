@@ -15,16 +15,33 @@
             <Label Text="{Binding Result}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Moda"
-                    Command="{Binding ModeCommand}"/>
-            <Button Text="Mediana"
-                    Command="{Binding MedianCommand}"/>
-            <Button Text="Media"
-                    Command="{Binding MeanCommand}"/>
-            <Button Text="Σx^2"
-                    Command="{Binding SumOfSquareCommand}"/>
-            <Button Text="Σx"
-                    Command="{Binding SumCommand}"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <Button Text="Moda" 
+                        Grid.Row="0" Grid.Column="0"
+                        Command="{Binding ModeCommand}"/>
+                <Button Text="Mediana"
+                        Grid.Row="0" Grid.Column="1"
+                        Command="{Binding MedianCommand}"/>
+                <Button Text="Media"
+                        Grid.Row="0" Grid.Column="2"
+                        Command="{Binding MeanCommand}"/>
+                <Button Text="Σx^2"
+                        Grid.Row="1" Grid.Column="0"
+                        Command="{Binding SumOfSquareCommand}"/>
+                <Button Text="Σx"
+                        Grid.Row="1" Grid.Column="1"
+                        Command="{Binding SumCommand}"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
