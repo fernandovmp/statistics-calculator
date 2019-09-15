@@ -47,6 +47,9 @@
                 <Button Text="σ^2"
                         Grid.Row="2" Grid.Column="2"
                         Command="{Binding PopulationVarianceCommand}"/>
+                <Button Text="s"
+                        Grid.Row="2" Grid.Column="0"
+                        Command="{Binding SampleStandardDeviationCommand}"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
