@@ -17,6 +17,12 @@ namespace StatisticsCalculator.ViewModels
         public SampleViewModel()
         {
             _sampleItems = new ObservableCollection<SampleItemViewModel>();
+            _sampleItems.CollectionChanged += (sender, e) =>
+            {
+                MessagingCenter.Send(this,
+                    "SampleUpdated", (ICollection<SampleItemViewModel>)sender);
+            };
+                
         }
 
         public ObservableCollection<SampleItemViewModel> SampleItems
@@ -61,8 +67,6 @@ namespace StatisticsCalculator.ViewModels
                 && double.TryParse(valueText, out double value))
             {
                 SampleItems.Add(new SampleItemViewModel(value));
-                MessagingCenter.Send<SampleViewModel, ICollection<SampleItemViewModel>>(this,
-                    "SampleUpdated", SampleItems);
                 EntrySampleText = "";
             }
         }
@@ -70,8 +74,8 @@ namespace StatisticsCalculator.ViewModels
         public void ClearSample(object parameter)
         {
             SampleItems.Clear();
-            MessagingCenter.Send<SampleViewModel, ICollection<SampleItemViewModel>>(this,
-                    "SampleUpdated", SampleItems);
         }
+
+
     }
 }
