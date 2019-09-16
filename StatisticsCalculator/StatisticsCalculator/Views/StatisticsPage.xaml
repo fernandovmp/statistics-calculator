@@ -9,12 +9,31 @@
              Title="Estatística">
     <ContentPage.Resources>
         <viewModels:StatisticsViewModel x:Key="StatisticsVM"/>
+        <Style Class="ResultFrame" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="#eee"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="HasShadow" Value="False"/>
+            <Setter Property="HeightRequest" Value="45"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="Margin" Value="30, 0, 30, 0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        </Style>
+        <Style Class="ResultStyle" TargetType="Label">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BindingContext="{StaticResource StatisticsVM}">
-            <Label Text="{Binding Result}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame class="ResultFrame">
+                <Label Text="{Binding Result}"
+                       class="ResultStyle"/>
+            </Frame>
             <Grid HorizontalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
