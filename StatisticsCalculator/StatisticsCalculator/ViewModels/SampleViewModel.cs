@@ -66,7 +66,8 @@ namespace StatisticsCalculator.ViewModels
                 && !string.IsNullOrWhiteSpace(valueText) 
                 && double.TryParse(valueText, out double value))
             {
-                SampleItems.Add(new SampleItemViewModel(value));
+                int index = SampleItems.Count;
+                SampleItems.Add(new SampleItemViewModel(value, this));
                 EntrySampleText = "";
             }
         }
