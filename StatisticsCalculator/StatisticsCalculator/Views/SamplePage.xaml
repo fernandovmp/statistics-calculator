@@ -21,18 +21,16 @@
             <StackLayout Orientation="Horizontal">
                 <Label Text="{Binding SampleItems.Count, StringFormat='n = {0}'}"
                        TextColor="Black"
-                       HorizontalOptions="Start"
+                       Margin="30, 0, 0, 0"
                        VerticalOptions="Center"
-                       Margin="50, 0, 0, 0"/>
+                       HorizontalOptions="StartAndExpand"/>
                 <Label Text="Amostra"
                        TextColor="Black"
-                       HorizontalOptions="Center"
-                       Margin="68, 0, 0, 0"
-                       VerticalOptions="Center"/>
+                       VerticalOptions="Center"
+                       HorizontalOptions="CenterAndExpand"/>
                 <Button Text="Limpar"
-                        HorizontalOptions="EndAndExpand"
-                        Margin="0, 0, 30, 0"
-                        Command="{Binding ClearSampleCommand}"/>
+                        Command="{Binding ClearSampleCommand}"
+                        HorizontalOptions="EndAndExpand"/>
             </StackLayout>
             <ContentView Margin="5"
                          BackgroundColor="#aaa"
