@@ -43,7 +43,7 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <views:SampleItemView/>
+                            <views:SampleItemView Padding="5"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
