@@ -51,7 +51,8 @@
                 </CollectionView>
             </ContentView>
 
-            <Entry x:Name="SampleItemEntry" Keyboard="Numeric"/>
+            <Entry x:Name="SampleItemEntry" Keyboard="Numeric"
+                   Text="{Binding EntrySampleText}"/>
             <Button Text="Adicionar"
                     Margin="60, 0"
                     Command="{Binding AddSampleItemCommand}"

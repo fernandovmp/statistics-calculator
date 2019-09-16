@@ -12,6 +12,7 @@ namespace StatisticsCalculator.ViewModels
         private ObservableCollection<SampleItemViewModel> _sampleItems;
         private ICommand _addSampleItemCommand;
         private ICommand _ClearSampleCommand;
+        private string _entrySampleText;
 
         public SampleViewModel()
         {
@@ -47,6 +48,11 @@ namespace StatisticsCalculator.ViewModels
             }
             set => SetProperty(ref _ClearSampleCommand, value);
         }
+        public string EntrySampleText
+        {
+            get => _entrySampleText;
+            set => SetProperty(ref _entrySampleText, value);
+        }
 
         public void AddSampleItem(object parameter)
         {
@@ -57,6 +63,7 @@ namespace StatisticsCalculator.ViewModels
                 SampleItems.Add(new SampleItemViewModel(value));
                 MessagingCenter.Send<SampleViewModel, ICollection<SampleItemViewModel>>(this,
                     "SampleUpdated", SampleItems);
+                EntrySampleText = "";
             }
         }
 
