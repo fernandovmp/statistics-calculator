@@ -5,10 +5,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.Views.SampleItemView"
-             HeightRequest="30">
+             HeightRequest="45">
   <ContentView.Content>
-      <StackLayout>
-          <Label Text="{Binding ItemValue}" TextColor="Black"/>
-      </StackLayout>
+        <Frame Padding="0">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="X"
+                        Command="{Binding RemoveItemCommand}"
+                        WidthRequest="50"
+                        HorizontalOptions="Start"/>
+                <Label Text="{Binding ItemValue}" 
+                       TextColor="Black" 
+                       FontSize="18"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </Frame>
   </ContentView.Content>
 </ContentView>
