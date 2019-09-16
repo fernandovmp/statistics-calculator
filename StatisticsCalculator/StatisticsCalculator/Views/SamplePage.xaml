@@ -12,11 +12,11 @@
         <viewModels:SampleViewModel x:Key="SampleVM"/>
         <Style Class="SampleCollection" TargetType="CollectionView">
             <Setter Property="BackgroundColor" Value="#eee"/>
-            <Setter Property="HeightRequest" Value="200"/>
+            <Setter Property="HeightRequest" Value="400"/>
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center"
+        <StackLayout VerticalOptions="StartAndExpand"
                      BindingContext="{StaticResource SampleVM}">
             <StackLayout Orientation="Horizontal">
                 <Label Text="{Binding SampleItems.Count, StringFormat='n = {0}'}"
@@ -27,8 +27,8 @@
                 <Label Text="Amostra"
                        TextColor="Black"
                        HorizontalOptions="Center"
-                       Margin="70, 0, 0, 0"
-                       VerticalOptions="Center" />
+                       Margin="68, 0, 0, 0"
+                       VerticalOptions="Center"/>
                 <Button Text="Limpar"
                         HorizontalOptions="EndAndExpand"
                         Margin="0, 0, 30, 0"
