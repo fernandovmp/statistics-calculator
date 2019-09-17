@@ -39,7 +39,7 @@
                                 ItemsSource="{Binding SampleItems}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"
-                                         Span="4"/>
+                                         Span="3"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
