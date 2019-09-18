@@ -66,12 +66,12 @@
                 <Button Text="Media" class="CalculatorButton"
                         Grid.Row="0" Grid.Column="2"
                         Command="{Binding MeanCommand}"/>
-                <Button Text="Σx^2" class="CalculatorButton"
-                        Grid.Row="1" Grid.Column="0"
-                        Command="{Binding SumOfSquareCommand}"/>
                 <Button Text="Σx" class="CalculatorButton"
-                        Grid.Row="1" Grid.Column="1"
+                        Grid.Row="1" Grid.Column="0"
                         Command="{Binding SumCommand}"/>
+                <Button Text="Σx^2" class="CalculatorButton"
+                        Grid.Row="1" Grid.Column="1"
+                        Command="{Binding SumOfSquareCommand}"/>
                 <Button Text="σ" class="CalculatorButton"
                         Grid.Row="1" Grid.Column="2"
                         Command="{Binding PopulationStandardDeviationCommand}"/>
