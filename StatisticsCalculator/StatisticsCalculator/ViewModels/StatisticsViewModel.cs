@@ -12,6 +12,7 @@ namespace StatisticsCalculator.ViewModels
     public class StatisticsViewModel : ViewModelBase
     {
         private string _result;
+        private string _resultLabel;
         private ICommand _sumCommand;
         private ICommand _sumOfSquareCommand;
         private ICommand _meanCommand;
@@ -35,6 +36,11 @@ namespace StatisticsCalculator.ViewModels
         {
             get => _result;
             set => SetProperty(ref _result, value);
+        }
+        public string ResultLabel
+        {
+            get => _resultLabel;
+            set => SetProperty(ref _resultLabel, value);
         }
         public ICommand SumCommand
         {
@@ -151,6 +157,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double sum = Statistics.SumOfItems(sampleValues);
             Result = sum.ToString();
+            ResultLabel = "Soma dos itens";
         }
 
         public void SumOfSquare(object parameter)
@@ -159,6 +166,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double sum = Statistics.SumOfSquareOfItems(sampleValues);
             Result = sum.ToString();
+            ResultLabel = "Soma do quadrado dos itens";
         }
 
         public void Mean(object parameter)
@@ -167,6 +175,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double mean = Statistics.Mean(sampleValues);
             Result = mean.ToString();
+            ResultLabel = "Media";
         }
 
         public void Median(object parameter)
@@ -175,6 +184,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double median = Statistics.Median(sampleValues);
             Result = median.ToString();
+            ResultLabel = "Mediana";
         }
 
         public void Mode(object parameter)
@@ -183,7 +193,8 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             List<double> mode = Statistics.Mode(sampleValues);
             IEnumerable<string> modeString = mode.Select(i => i.ToString());
-            Result = $"Moda: {string.Join(", ", modeString.ToArray())}";
+            Result = string.Join(", ", modeString.ToArray());
+            ResultLabel = "Moda";
         }
 
         public void SampleStandardDeviation(object parameter)
@@ -192,6 +203,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double deviation = Statistics.SampleStandardDeviation(sampleValues);
             Result = deviation.ToString();
+            ResultLabel = "Desvio padrão da amostra";
         }
 
         public void PopulationStandardDeviation(object parameter)
@@ -200,6 +212,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double deviation = Statistics.PopulationStandardDeviation(sampleValues);
             Result = deviation.ToString();
+            ResultLabel = "Desvio padrão da população";
         }
 
         public void SampleVariance(object parameter)
@@ -208,6 +221,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double variance = Statistics.SampleVariance(sampleValues);
             Result = variance.ToString();
+            ResultLabel = "Variância da amostra";
         }
 
         public void PopulationVariance(object parameter)
@@ -216,6 +230,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double variance = Statistics.PopulationVariance(sampleValues);
             Result = variance.ToString();
+            ResultLabel = "Variância da população";
         }
 
         private double[] GetSampleValuesArray()

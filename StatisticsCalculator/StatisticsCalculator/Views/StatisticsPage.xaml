@@ -9,6 +9,12 @@
              Title="Estatística">
     <ContentPage.Resources>
         <viewModels:StatisticsViewModel x:Key="StatisticsVM"/>
+        <Style Class="ResultLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+        </Style>
         <Style Class="ResultFrame" TargetType="Frame">
             <Setter Property="BackgroundColor" Value="#eee"/>
             <Setter Property="CornerRadius" Value="15"/>
@@ -17,7 +23,7 @@
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             <Setter Property="Margin" Value="30, 0, 30, 0"/>
             <Setter Property="Padding" Value="0"/>
-            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
         </Style>
         <Style Class="ResultStyle" TargetType="Label">
             <Setter Property="BackgroundColor" Value="Transparent"/>
@@ -33,10 +39,13 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BindingContext="{StaticResource StatisticsVM}">
-            <Frame class="ResultFrame">
-                <Label Text="{Binding Result}"
-                       class="ResultStyle"/>
-            </Frame>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Label Text="{Binding ResultLabel}" class="ResultLabel"/>
+                <Frame class="ResultFrame">
+                    <Label Text="{Binding Result}"
+                           class="ResultStyle"/>
+                </Frame>
+            </StackLayout>
             <Grid HorizontalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
