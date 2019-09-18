@@ -27,6 +27,9 @@
             <Setter Property="TextColor" Value="Black"/>
             <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
         </Style>
+        <Style Class="CalculatorButton" TargetType="Button">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BindingContext="{StaticResource StatisticsVM}">
@@ -36,40 +39,40 @@
             </Frame>
             <Grid HorizontalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="70"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
-                <Button Text="Moda" 
+                <Button Text="Moda" class="CalculatorButton"
                         Grid.Row="0" Grid.Column="0"
                         Command="{Binding ModeCommand}"/>
-                <Button Text="Mediana"
+                <Button Text="Mediana" class="CalculatorButton"
                         Grid.Row="0" Grid.Column="1"
                         Command="{Binding MedianCommand}"/>
-                <Button Text="Media"
+                <Button Text="Media" class="CalculatorButton"
                         Grid.Row="0" Grid.Column="2"
                         Command="{Binding MeanCommand}"/>
-                <Button Text="Σx^2"
+                <Button Text="Σx^2" class="CalculatorButton"
                         Grid.Row="1" Grid.Column="0"
                         Command="{Binding SumOfSquareCommand}"/>
-                <Button Text="Σx"
+                <Button Text="Σx" class="CalculatorButton"
                         Grid.Row="1" Grid.Column="1"
                         Command="{Binding SumCommand}"/>
-                <Button Text="σ"
+                <Button Text="σ" class="CalculatorButton"
                         Grid.Row="1" Grid.Column="2"
                         Command="{Binding PopulationStandardDeviationCommand}"/>
-                <Button Text="σ^2"
+                <Button Text="σ^2" class="CalculatorButton"
                         Grid.Row="2" Grid.Column="2"
                         Command="{Binding PopulationVarianceCommand}"/>
-                <Button Text="s"
+                <Button Text="s" class="CalculatorButton"
                         Grid.Row="2" Grid.Column="0"
                         Command="{Binding SampleStandardDeviationCommand}"/>
-                <Button Text="s^2"
+                <Button Text="s^2" class="CalculatorButton"
                         Grid.Row="2" Grid.Column="1"
                         Command="{Binding SampleVarianceCommand}"/>
             </Grid>
