@@ -9,6 +9,15 @@
              Title="Estatística">
     <ContentPage.Resources>
         <viewModels:StatisticsViewModel x:Key="StatisticsVM"/>
+        <x:String x:Key="SumOfItemsLabel">Soma dos itens</x:String>
+        <x:String x:Key="SumOfSquareLabel">Soma dos quadrados dos itens</x:String>
+        <x:String x:Key="MeanLabel">Média</x:String>
+        <x:String x:Key="MedianLabel">Mediana</x:String>
+        <x:String x:Key="ModeLabel">Moda</x:String>
+        <x:String x:Key="SampleStandardDeviationLabel">Desvio padrão da amostra</x:String>
+        <x:String x:Key="PopulationStandardDeviationLabel">Desvio padrão da população</x:String>
+        <x:String x:Key="SampleVarianceLabel">Variância da amostra</x:String>
+        <x:String x:Key="PopulationVarianceLabel">Variância da população</x:String>
         <Style Class="ResultLabel" TargetType="Label">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
@@ -59,31 +68,40 @@
                 </Grid.ColumnDefinitions>
                 <Button Text="Moda" class="CalculatorButton"
                         Grid.Row="0" Grid.Column="0"
-                        Command="{Binding ModeCommand}"/>
+                        Command="{Binding ModeCommand}"
+                        CommandParameter="{DynamicResource ModeLabel}"/>
                 <Button Text="Mediana" class="CalculatorButton"
                         Grid.Row="0" Grid.Column="1"
-                        Command="{Binding MedianCommand}"/>
+                        Command="{Binding MedianCommand}"
+                        CommandParameter="{DynamicResource MedianLabel}"/>
                 <Button Text="Media" class="CalculatorButton"
                         Grid.Row="0" Grid.Column="2"
-                        Command="{Binding MeanCommand}"/>
+                        Command="{Binding MeanCommand}"
+                        CommandParameter="{DynamicResource MeanLabel}"/>
                 <Button Text="Σx" class="CalculatorButton"
                         Grid.Row="1" Grid.Column="0"
-                        Command="{Binding SumCommand}"/>
+                        Command="{Binding SumCommand}"
+                        CommandParameter="{DynamicResource SumOfItemsLabel}"/>
                 <Button Text="Σx^2" class="CalculatorButton"
                         Grid.Row="1" Grid.Column="1"
-                        Command="{Binding SumOfSquareCommand}"/>
+                        Command="{Binding SumOfSquareCommand}"
+                        CommandParameter="{DynamicResource SumOfSquareLabel}"/>
                 <Button Text="σ" class="CalculatorButton"
                         Grid.Row="1" Grid.Column="2"
-                        Command="{Binding PopulationStandardDeviationCommand}"/>
+                        Command="{Binding PopulationStandardDeviationCommand}"
+                        CommandParameter="{DynamicResource PopulationStandardDeviationLabel}"/>
                 <Button Text="σ^2" class="CalculatorButton"
                         Grid.Row="2" Grid.Column="2"
-                        Command="{Binding PopulationVarianceCommand}"/>
+                        Command="{Binding PopulationVarianceCommand}"
+                        CommandParameter="{DynamicResource PopulationVarianceLabel}"/>
                 <Button Text="s" class="CalculatorButton"
                         Grid.Row="2" Grid.Column="0"
-                        Command="{Binding SampleStandardDeviationCommand}"/>
+                        Command="{Binding SampleStandardDeviationCommand}"
+                        CommandParameter="{DynamicResource SampleStandardDeviationLabel}"/>
                 <Button Text="s^2" class="CalculatorButton"
                         Grid.Row="2" Grid.Column="1"
-                        Command="{Binding SampleVarianceCommand}"/>
+                        Command="{Binding SampleVarianceCommand}"
+                        CommandParameter="{DynamicResource SampleVarianceLabel}"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

@@ -157,7 +157,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double sum = Statistics.SumOfItems(sampleValues);
             Result = sum.ToString();
-            ResultLabel = "Soma dos itens";
+            SetLabel(parameter);
         }
 
         public void SumOfSquare(object parameter)
@@ -166,7 +166,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double sum = Statistics.SumOfSquareOfItems(sampleValues);
             Result = sum.ToString();
-            ResultLabel = "Soma do quadrado dos itens";
+            SetLabel(parameter);
         }
 
         public void Mean(object parameter)
@@ -175,7 +175,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double mean = Statistics.Mean(sampleValues);
             Result = mean.ToString();
-            ResultLabel = "Media";
+            SetLabel(parameter);
         }
 
         public void Median(object parameter)
@@ -184,7 +184,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double median = Statistics.Median(sampleValues);
             Result = median.ToString();
-            ResultLabel = "Mediana";
+            SetLabel(parameter);
         }
 
         public void Mode(object parameter)
@@ -194,7 +194,7 @@ namespace StatisticsCalculator.ViewModels
             List<double> mode = Statistics.Mode(sampleValues);
             IEnumerable<string> modeString = mode.Select(i => i.ToString());
             Result = string.Join(", ", modeString.ToArray());
-            ResultLabel = "Moda";
+            SetLabel(parameter);
         }
 
         public void SampleStandardDeviation(object parameter)
@@ -203,7 +203,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double deviation = Statistics.SampleStandardDeviation(sampleValues);
             Result = deviation.ToString();
-            ResultLabel = "Desvio padrão da amostra";
+            SetLabel(parameter);
         }
 
         public void PopulationStandardDeviation(object parameter)
@@ -212,7 +212,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double deviation = Statistics.PopulationStandardDeviation(sampleValues);
             Result = deviation.ToString();
-            ResultLabel = "Desvio padrão da população";
+            SetLabel(parameter);
         }
 
         public void SampleVariance(object parameter)
@@ -221,7 +221,7 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double variance = Statistics.SampleVariance(sampleValues);
             Result = variance.ToString();
-            ResultLabel = "Variância da amostra";
+            SetLabel(parameter);
         }
 
         public void PopulationVariance(object parameter)
@@ -230,7 +230,17 @@ namespace StatisticsCalculator.ViewModels
             double[] sampleValues = GetSampleValuesArray();
             double variance = Statistics.PopulationVariance(sampleValues);
             Result = variance.ToString();
-            ResultLabel = "Variância da população";
+            SetLabel(parameter);
+        }
+
+        private void SetLabel(object parameter)
+        {
+            if (parameter is string label)
+            {
+                ResultLabel = label;
+                return;
+            }
+            ResultLabel = "";
         }
 
         private double[] GetSampleValuesArray()
