@@ -5,9 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:StatisticsCalculator.Views"
              xmlns:viewModels="clr-namespace:StatisticsCalculator.ViewModels"
+             xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.Views.SamplePage"
-             Title="Amostra">
+             Title="{translator:Translate SampleLabel}">
     <ContentPage.Resources>
         <viewModels:SampleViewModel x:Key="SampleVM"/>
         <Style Class="SampleCollection" TargetType="CollectionView">
@@ -24,11 +25,11 @@
                        Margin="30, 0, 0, 0"
                        VerticalOptions="Center"
                        HorizontalOptions="StartAndExpand"/>
-                <Label Text="Amostra"
+                <Label Text="{translator:Translate SampleLabel}"
                        TextColor="Black"
                        VerticalOptions="Center"
                        HorizontalOptions="CenterAndExpand"/>
-                <Button Text="Limpar"
+                <Button Text="{translator:Translate CleanButtonText}"
                         Command="{Binding ClearSampleCommand}"
                         HorizontalOptions="EndAndExpand"/>
             </StackLayout>
@@ -51,8 +52,8 @@
 
             <Entry x:Name="SampleItemEntry" Keyboard="Numeric"
                    Text="{Binding EntrySampleText}"
-                   Placeholder="Novo valor..."/>
-            <Button Text="Adicionar"
+                   Placeholder="{translator:Translate NewSampleItemPlaceholder}"/>
+            <Button Text="{translator:Translate AddButtonText}"
                     Margin="60, 0"
                     Command="{Binding AddSampleItemCommand}"
                     CommandParameter="{Binding Source={x:Reference SampleItemEntry}, Path=Text}"/>
