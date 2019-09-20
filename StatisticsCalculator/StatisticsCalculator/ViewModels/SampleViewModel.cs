@@ -62,11 +62,9 @@ namespace StatisticsCalculator.ViewModels
 
         public void AddSampleItem(object parameter)
         {
-            if(parameter is string valueText 
-                && !string.IsNullOrWhiteSpace(valueText) 
-                && double.TryParse(valueText, out double value))
+            if(!string.IsNullOrWhiteSpace(EntrySampleText) 
+                && double.TryParse(EntrySampleText, out double value))
             {
-                int index = SampleItems.Count;
                 SampleItems.Add(new SampleItemViewModel(value, this));
                 EntrySampleText = "";
             }
