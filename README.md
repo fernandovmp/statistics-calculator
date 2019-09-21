@@ -1,49 +1,48 @@
-# Calculadora de estatística
-> Aplicativo móvel de calculadora estatística
+# Statistics calculator
+> Mobile statistics calculator app
 
 <img src="Screenshots/Screenshot_01.png" width=33% /><img src="Screenshots/Screenshot_02.png" width=33% hspace=2/><img src="Screenshots/Screenshot_03.png" width=33%/>
+<img src="Screenshots/Screenshot_04.png" width=33% /><img src="Screenshots/Screenshot_05.png" width=33% hspace=2/>
 
-# Conteúdo
-- [Motivação](#motivação)
-- [Instalador](#instalador)
-- [Funcionalidade](#funcionalidades)
-- [Inicio rápido](#inicio-rápido)
-- [Contribua](#contribua)
-- [Classe Statistics](./StatisticsCore/)
+#### Leia em [português](./LEIAME.md)
 
-# Motivação
-Este aplicativo é parte do meu portfólio pessoal, portanto ficaria grato por feedbacks sobre o projeto, código, conceitos ou quaisquer outros aspectos. Outra motivação é que eu preciso de uma calculadora para à aula de estatística.
+# Table of Content
+- [Why?](#why?)
+- [Installers](#installers)
+- [Features](#features)
+- [Getting started](#getting-started)
+- [Contribute](#contribute)
+- [Statistics Class](./StatisticsCore/)
 
-# Instalador
-O instalador android (5.0 Lolipop até 9.0 Pie) pode ser encontrado [aqui](https://drive.google.com/open?id=1GyfaEhdp7MEbBXaw7EFToQjcOojnAKMX).
+# Why?
+This app is part of my personal portfolio, so i would be grateful for any feedback about the project, code, concepts or other aspect. Also i need a calculator to statistics class.
 
-Quanto ao instalador iOS, sem previsão.
+# Installers
+The android installer (5.0 Lolipop ~ 9.0 Pie) can be found [here](https://drive.google.com/open?id=1GyfaEhdp7MEbBXaw7EFToQjcOojnAKMX).
 
-# Funcionalidades
-- Soma de todos os valores da amostra
-- Soma do quadrado dos valores da amostra
-- Cálculo de média, mediana e moda
-- Desvio padrão da amostra e da população
-- Variancia da amostra e da população
+As to iOS installer, no schedule.
 
-A depender do andamento das minhas aulas de estatística e minha compreensão sobre o conteúdo, novas funcionalidades serão acrescentadas.
+# Features
+- Sum of all items values of the sample
+- Sum of squares of all items values of the sample
+- Mean, median and mode calcule
+- Population and sample standard deviation
+- Population and sample variance
 
-# Inicio rápido
-## Requisitos
-É necessário o Visual Studio junto do Xamarin instalados para rodar o projeto.
-## Instalação
-Clone o repositório: \
+# Getting started
+## Requiriments
+Require Visual Studio and Xamarin installed to open this project.
+## Installation
+Clone this repository: \
 `$ git clone https://github.com/fernandovmp/statistics-calculator.git` \
-Abra o arquivo `StatisticsCalculator.sln` localizado na raiz do projeto com o Visual Studio.
+Open the `StatisticsCalculator.sln` file, that can be found in the root of project, with the Visual Studio.
 
 ### HotReload
-Para habilitar o HotReload do XAML siga os passos descritos [aqui](https://github.com/AndreiMisiukevich/HotReload).
+To enable XAML HotReload follow [these steps](https://github.com/AndreiMisiukevich/HotReload).
 
-### [A classe Statistics](./StatisticsCore/)
+### [Statistics Class](./StatisticsCore/)
 
-# Contribua
-Para contribuir crie um fork do projeto e após as modificações faça um pull request. Qualquer contribuição é bem vinda.
+# Contribute
+To contribute fork this repository and after make the changes do a pull request. Any contribution is wellcome.
 
-O estilo de codificação é o mesmo de [.NET Foundation](https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/coding-style.md)
-
-Em caso de encontrar alguma falha ou desejar discutir novas funcionalidades abra uma issue.
+The code style is the same as [.NET Foundation](https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/coding-style.md)
