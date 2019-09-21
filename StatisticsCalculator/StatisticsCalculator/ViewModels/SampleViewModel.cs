@@ -22,7 +22,6 @@ namespace StatisticsCalculator.ViewModels
                 MessagingCenter.Send(this,
                     "SampleUpdated", (ICollection<SampleItemViewModel>)sender);
             };
-                
         }
 
         public ObservableCollection<SampleItemViewModel> SampleItems
@@ -74,7 +73,6 @@ namespace StatisticsCalculator.ViewModels
         {
             SampleItems.Clear();
         }
-
 
     }
 }

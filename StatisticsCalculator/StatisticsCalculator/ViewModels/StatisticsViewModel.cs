@@ -23,6 +23,7 @@ namespace StatisticsCalculator.ViewModels
         private ICommand _sampleVarianceCommand;
         private ICommand _populationVarianceCommand;
         private ICollection<SampleItemViewModel> _sample;
+
         public StatisticsViewModel()
         {
             MessagingCenter.Subscribe<SampleViewModel, 
@@ -171,7 +172,7 @@ namespace StatisticsCalculator.ViewModels
 
         public void Mean(object parameter)
         {
-            if (_sample == null) return;
+            if (_sample == null || _sample.Count == 0) return;
             double[] sampleValues = GetSampleValuesArray();
             double mean = Statistics.Mean(sampleValues);
             Result = mean.ToString();
@@ -180,7 +181,7 @@ namespace StatisticsCalculator.ViewModels
 
         public void Median(object parameter)
         {
-            if (_sample == null) return;
+            if (_sample == null || _sample.Count == 0) return;
             double[] sampleValues = GetSampleValuesArray();
             double median = Statistics.Median(sampleValues);
             Result = median.ToString();
@@ -208,7 +209,7 @@ namespace StatisticsCalculator.ViewModels
 
         public void PopulationStandardDeviation(object parameter)
         {
-            if (_sample == null) return;
+            if (_sample == null || _sample.Count < 2) return;
             double[] sampleValues = GetSampleValuesArray();
             double deviation = Statistics.PopulationStandardDeviation(sampleValues);
             Result = deviation.ToString();
