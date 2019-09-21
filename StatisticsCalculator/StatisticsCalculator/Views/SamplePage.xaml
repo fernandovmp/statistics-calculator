@@ -47,6 +47,11 @@
                             <views:SampleItemView Padding="5"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <Label Text="{translator:Translate EmptySampleText}" 
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                    </CollectionView.EmptyView>
                 </CollectionView>
             </ContentView>
 
