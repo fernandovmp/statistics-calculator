@@ -11,7 +11,7 @@ namespace StatisticsCalculator.ViewModels
     {
         private ObservableCollection<SampleItemViewModel> _sampleItems;
         private ICommand _addSampleItemCommand;
-        private ICommand _ClearSampleCommand;
+        private ICommand _clearSampleCommand;
         private string _entrySampleText;
 
         public SampleViewModel()
@@ -45,13 +45,13 @@ namespace StatisticsCalculator.ViewModels
         {
             get
             {
-                if (_ClearSampleCommand == null)
+                if (_clearSampleCommand == null)
                 {
-                    _ClearSampleCommand = new Command(ClearSample);
+                    _clearSampleCommand = new Command(ClearSample);
                 }
-                return _ClearSampleCommand;
+                return _clearSampleCommand;
             }
-            set => SetProperty(ref _ClearSampleCommand, value);
+            set => SetProperty(ref _clearSampleCommand, value);
         }
         public string EntrySampleText
         {
