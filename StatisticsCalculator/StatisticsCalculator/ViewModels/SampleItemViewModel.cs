@@ -9,7 +9,7 @@ namespace StatisticsCalculator.ViewModels
     public class SampleItemViewModel : ViewModelBase
     {
         private double _itemValue;
-        private SampleViewModel _sampleViewModel;
+        private readonly SampleViewModel _sampleViewModel;
         private ICommand _removeItemCommand;
 
         public SampleItemViewModel(double itemValue)
