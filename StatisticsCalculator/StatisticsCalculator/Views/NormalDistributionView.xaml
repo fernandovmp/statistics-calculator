@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
+             mc:Ignorable="d"
+             x:Class="StatisticsCalculator.Views.NormalDistributionView">
+    <ContentView.Content>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     Margin="0, 100 , 0, 0">
+            <Grid VerticalOptions="Start">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Text="{translator:Translate LessThanLabel}"
+                        Grid.Column="0"/>
+                <Button Text="{translator:Translate BetweenLabel}"
+                        Grid.Column="1"/>
+                <Button Text="{translator:Translate GreaterThanLabel}"
+                        Grid.Column="2"/>
+            </Grid>
+            <StackLayout Orientation="Horizontal" 
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="Center">
+                <Entry Keyboard="Numeric"
+                       Text="{Binding OptionalComparerValue}"
+                       IsVisible="{Binding IsBetweenValue}"
+                       WidthRequest="60"/>
+                <Label Text="{Binding ComparerText}"/>
+                <Entry Keyboard="Numeric"
+                       Text="{Binding ComparerValue}"
+                       WidthRequest="60"/>
+            </StackLayout>
+            <Button Text="{translator:Translate CalculateLabel}"
+                    VerticalOptions="Start"
+                    Margin="120, 0"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
