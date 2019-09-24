@@ -121,6 +121,18 @@
     <value>Add</value>
     <comment>Add new item</comment>
   </data>
+  <data name="BaseCalculatorLabel" xml:space="preserve">
+    <value>Base calculator</value>
+    <comment>Base calculator name</comment>
+  </data>
+  <data name="BetweenLabel" xml:space="preserve">
+    <value>Between</value>
+    <comment>Value of x are between</comment>
+  </data>
+  <data name="CalculateLabel" xml:space="preserve">
+    <value>Calculate</value>
+    <comment>Calculate the result</comment>
+  </data>
   <data name="CleanButtonText" xml:space="preserve">
     <value>Clean</value>
     <comment>Clean sample</comment>
@@ -128,6 +140,14 @@
   <data name="EmptySampleText" xml:space="preserve">
     <value>Sample is empty</value>
     <comment>Display when sample is empty</comment>
+  </data>
+  <data name="GreaterThanLabel" xml:space="preserve">
+    <value>Greater than</value>
+    <comment>Value of x are greater than</comment>
+  </data>
+  <data name="LessThanLabel" xml:space="preserve">
+    <value>Less than</value>
+    <comment>Value of x are less than</comment>
   </data>
   <data name="MeanLabel" xml:space="preserve">
     <value>Mean</value>
@@ -144,6 +164,10 @@
   <data name="NewSampleItemPlaceholder" xml:space="preserve">
     <value>New item...</value>
     <comment>Input placeholder por new sample item</comment>
+  </data>
+  <data name="NormalDistributionLabel" xml:space="preserve">
+    <value>Normal distribution</value>
+    <comment>Normal distribution label</comment>
   </data>
   <data name="PopulationStandardDeviationLabel" xml:space="preserve">
     <value>Population standard deviation</value>

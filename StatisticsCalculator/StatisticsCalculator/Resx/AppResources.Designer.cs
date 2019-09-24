@@ -70,6 +70,33 @@ namespace StatisticsCalculator.Resx {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Base calculator.
+        /// </summary>
+        public static string BaseCalculatorLabel {
+            get {
+                return ResourceManager.GetString("BaseCalculatorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Between.
+        /// </summary>
+        public static string BetweenLabel {
+            get {
+                return ResourceManager.GetString("BetweenLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Calculate.
+        /// </summary>
+        public static string CalculateLabel {
+            get {
+                return ResourceManager.GetString("CalculateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Clean.
         /// </summary>
         public static string CleanButtonText {
@@ -84,6 +111,24 @@ namespace StatisticsCalculator.Resx {
         public static string EmptySampleText {
             get {
                 return ResourceManager.GetString("EmptySampleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Greater than.
+        /// </summary>
+        public static string GreaterThanLabel {
+            get {
+                return ResourceManager.GetString("GreaterThanLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Less than.
+        /// </summary>
+        public static string LessThanLabel {
+            get {
+                return ResourceManager.GetString("LessThanLabel", resourceCulture);
             }
         }
         
@@ -120,6 +165,15 @@ namespace StatisticsCalculator.Resx {
         public static string NewSampleItemPlaceholder {
             get {
                 return ResourceManager.GetString("NewSampleItemPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Normal distribution.
+        /// </summary>
+        public static string NormalDistributionLabel {
+            get {
+                return ResourceManager.GetString("NormalDistributionLabel", resourceCulture);
             }
         }
         
