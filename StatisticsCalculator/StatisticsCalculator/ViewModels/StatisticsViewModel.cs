@@ -22,7 +22,9 @@ namespace StatisticsCalculator.ViewModels
         private ICommand _populationStandardDeviationCommand;
         private ICommand _sampleVarianceCommand;
         private ICommand _populationVarianceCommand;
+        private ICommand _setCalculatorCommand;
         private ICollection<SampleItemViewModel> _sample;
+        private ContentView _calculator;
 
         public StatisticsViewModel()
         {
@@ -151,6 +153,23 @@ namespace StatisticsCalculator.ViewModels
             }
             set => SetProperty(ref _populationVarianceCommand, value);
         }
+        public ICommand SetCalculatorCommand
+        {
+            get
+            {
+                if (_setCalculatorCommand == null)
+                {
+                    _setCalculatorCommand = new Command(SetCalculator);
+                }
+                return _setCalculatorCommand;
+            }
+            set => SetProperty(ref _setCalculatorCommand, value);
+        }
+        public ContentView Calculator
+        {
+            get => _calculator;
+            private set => SetProperty(ref _calculator, value);
+        }
 
         public void Sum(object parameter)
         {
@@ -242,6 +261,14 @@ namespace StatisticsCalculator.ViewModels
                 return;
             }
             ResultLabel = "";
+        }
+
+        private void SetCalculator(object parameter)
+        {
+            if(parameter is ContentView calculatorView)
+            {
+                Calculator = calculatorView;
+            }
         }
 
         private double[] GetSampleValuesArray()
