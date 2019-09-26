@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
+             xmlns:viewModels="clr-namespace:StatisticsCalculator.ViewModels"
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.Views.NormalDistributionView">
     <ContentView.Content>
@@ -16,11 +17,26 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button Text="{translator:Translate LessThanLabel}"
-                        Grid.Column="0"/>
+                        Grid.Column="0"
+                        Command="{Binding SetModeCommand}">
+                    <Button.CommandParameter>
+                        <viewModels:NormalDistributionMode>LessThan</viewModels:NormalDistributionMode>
+                    </Button.CommandParameter>
+                </Button>
                 <Button Text="{translator:Translate BetweenLabel}"
-                        Grid.Column="1"/>
+                        Grid.Column="1"
+                        Command="{Binding SetModeCommand}">
+                    <Button.CommandParameter>
+                        <viewModels:NormalDistributionMode>Between</viewModels:NormalDistributionMode>
+                    </Button.CommandParameter>
+                </Button>
                 <Button Text="{translator:Translate GreaterThanLabel}"
-                        Grid.Column="2"/>
+                        Grid.Column="2"
+                        Command="{Binding SetModeCommand}">
+                    <Button.CommandParameter>
+                        <viewModels:NormalDistributionMode>GreaterThan</viewModels:NormalDistributionMode>
+                    </Button.CommandParameter>
+                </Button>
             </Grid>
             <StackLayout Orientation="Horizontal" 
                          HorizontalOptions="CenterAndExpand"
@@ -29,14 +45,18 @@
                        Text="{Binding OptionalComparerValue}"
                        IsVisible="{Binding IsBetweenValue}"
                        WidthRequest="60"/>
-                <Label Text="{Binding ComparerText}"/>
+                <Label Text="{Binding ComparerText}"
+                       VerticalTextAlignment="Center"
+                       FontSize="22"/>
                 <Entry Keyboard="Numeric"
                        Text="{Binding ComparerValue}"
                        WidthRequest="60"/>
             </StackLayout>
             <Button Text="{translator:Translate CalculateLabel}"
                     VerticalOptions="Start"
-                    Margin="120, 0"/>
+                    Margin="120, 0"
+                    Command="{Binding CalculateCommand}"
+                    CommandParameter="{translator:Translate PercentageLabel}"/>
         </StackLayout>
     </ContentView.Content>
 </ContentView>
