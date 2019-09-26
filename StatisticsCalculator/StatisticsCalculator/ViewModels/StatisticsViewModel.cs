@@ -13,28 +13,23 @@ namespace StatisticsCalculator.ViewModels
     {
         private string _result;
         private string _resultLabel;
-        private ICommand _sumCommand;
-        private ICommand _sumOfSquareCommand;
-        private ICommand _meanCommand;
-        private ICommand _medianCommand;
-        private ICommand _modeCommand;
-        private ICommand _sampleStandardDeviationCommand;
-        private ICommand _populationStandardDeviationCommand;
-        private ICommand _sampleVarianceCommand;
-        private ICommand _populationVarianceCommand;
         private ICommand _setCalculatorCommand;
-        private ICollection<SampleItemViewModel> _sample;
+        private DefaultCalculatorViewModel _defaultCalculatorViewModel;
+        private NormalDistributionViewModel _normalDistributionViewModel;
         private ContentView _calculator;
 
         public StatisticsViewModel()
         {
-            MessagingCenter.Subscribe<SampleViewModel, 
+            MessagingCenter.Subscribe<SampleViewModel,
                 ICollection<SampleItemViewModel>>(this, "SampleUpdated", (sender, parameter) =>
                 {
-                    _sample = parameter;
+                    Sample = parameter;
                 });
+            _defaultCalculatorViewModel = new DefaultCalculatorViewModel(this);
+            _normalDistributionViewModel = new NormalDistributionViewModel(this);
         }
 
+        public ICollection<SampleItemViewModel> Sample { get; private set; }
         public string Result
         {
             get => _result;
@@ -44,114 +39,6 @@ namespace StatisticsCalculator.ViewModels
         {
             get => _resultLabel;
             set => SetProperty(ref _resultLabel, value);
-        }
-        public ICommand SumCommand
-        {
-            get
-            {
-                if(_sumCommand == null)
-                {
-                    _sumCommand = new Command(Sum);
-                }
-                return _sumCommand;
-            }
-            set => SetProperty(ref _sumCommand, value);
-        }
-        public ICommand SumOfSquareCommand
-        {
-            get
-            {
-                if (_sumOfSquareCommand == null)
-                {
-                    _sumOfSquareCommand = new Command(SumOfSquare);
-                }
-                return _sumOfSquareCommand;
-            }
-            set => SetProperty(ref _sumOfSquareCommand, value);
-        }
-        public ICommand MeanCommand
-        {
-            get
-            {
-                if (_meanCommand == null)
-                {
-                    _meanCommand = new Command(Mean);
-                }
-                return _meanCommand;
-            }
-            set => SetProperty(ref _meanCommand, value);
-        }
-        public ICommand MedianCommand
-        {
-            get
-            {
-                if (_medianCommand == null)
-                {
-                    _medianCommand = new Command(Median);
-                }
-                return _medianCommand;
-            }
-            set => SetProperty(ref _medianCommand, value);
-        }
-        public ICommand ModeCommand
-        {
-            get
-            {
-                if (_modeCommand == null)
-                {
-                    _modeCommand = new Command(Mode);
-                }
-                return _modeCommand;
-            }
-            set => SetProperty(ref _modeCommand, value);
-        }
-        public ICommand SampleStandardDeviationCommand
-        {
-            get
-            {
-                if (_sampleStandardDeviationCommand == null)
-                {
-                    _sampleStandardDeviationCommand = new Command(SampleStandardDeviation);
-                }
-                return _sampleStandardDeviationCommand;
-            }
-            set => SetProperty(ref _sampleStandardDeviationCommand, value);
-        }
-        public ICommand PopulationStandardDeviationCommand
-        {
-            get
-            {
-                if (_populationStandardDeviationCommand == null)
-                {
-                    _populationStandardDeviationCommand = new Command(PopulationStandardDeviation);
-                }
-                return _populationStandardDeviationCommand;
-            }
-            set => SetProperty(ref _populationStandardDeviationCommand, value);
-        }
-        public ICommand SampleVarianceCommand
-        {
-            get
-            {
-                if (_sampleVarianceCommand == null)
-                {
-                    _sampleVarianceCommand = new Command(SampleVariance);
-                }
-                return _sampleVarianceCommand;
-            }
-            set => SetProperty(ref _sampleVarianceCommand, value);
-        }
-        public ICommand PopulationVarianceCommand
-        {
-            get
-            {
-                if (_populationVarianceCommand == null)
-                {
-                    _populationVarianceCommand = new Command(PopulationVariance);
-                }
-                return _populationVarianceCommand;
-            }
-            set => SetProperty(ref _populationVarianceCommand, value);
         }
         public ICommand SetCalculatorCommand
         {
@@ -165,95 +52,23 @@ namespace StatisticsCalculator.ViewModels
             }
             set => SetProperty(ref _setCalculatorCommand, value);
         }
+        public DefaultCalculatorViewModel DefaultCalculatorViewModel
+        {
+            get => _defaultCalculatorViewModel;
+            set => SetProperty(ref _defaultCalculatorViewModel, value);
+        }
+        public NormalDistributionViewModel NormalDistributionViewModel
+        {
+            get => _normalDistributionViewModel;
+            set => SetProperty(ref _normalDistributionViewModel, value);
+        }
         public ContentView Calculator
         {
             get => _calculator;
             private set => SetProperty(ref _calculator, value);
         }
 
-        public void Sum(object parameter)
-        {
-            if (_sample == null) return;
-            double[] sampleValues = GetSampleValuesArray();
-            double sum = Statistics.SumOfItems(sampleValues);
-            Result = sum.ToString();
-            SetLabel(parameter);
-        }
-
-        public void SumOfSquare(object parameter)
-        {
-            if (_sample == null) return;
-            double[] sampleValues = GetSampleValuesArray();
-            double sum = Statistics.SumOfSquareOfItems(sampleValues);
-            Result = sum.ToString();
-            SetLabel(parameter);
-        }
-
-        public void Mean(object parameter)
-        {
-            if (_sample == null || _sample.Count == 0) return;
-            double[] sampleValues = GetSampleValuesArray();
-            double mean = Statistics.Mean(sampleValues);
-            Result = mean.ToString();
-            SetLabel(parameter);
-        }
-
-        public void Median(object parameter)
-        {
-            if (_sample == null || _sample.Count == 0) return;
-            double[] sampleValues = GetSampleValuesArray();
-            double median = Statistics.Median(sampleValues);
-            Result = median.ToString();
-            SetLabel(parameter);
-        }
-
-        public void Mode(object parameter)
-        {
-            if (_sample == null) return;
-            double[] sampleValues = GetSampleValuesArray();
-            List<double> mode = Statistics.Mode(sampleValues);
-            IEnumerable<string> modeString = mode.Select(i => i.ToString());
-            Result = string.Join(", ", modeString.ToArray());
-            SetLabel(parameter);
-        }
-
-        public void SampleStandardDeviation(object parameter)
-        {
-            if (_sample == null || _sample.Count < 2) return;
-            double[] sampleValues = GetSampleValuesArray();
-            double deviation = Statistics.SampleStandardDeviation(sampleValues);
-            Result = deviation.ToString();
-            SetLabel(parameter);
-        }
-
-        public void PopulationStandardDeviation(object parameter)
-        {
-            if (_sample == null || _sample.Count < 2) return;
-            double[] sampleValues = GetSampleValuesArray();
-            double deviation = Statistics.PopulationStandardDeviation(sampleValues);
-            Result = deviation.ToString();
-            SetLabel(parameter);
-        }
-
-        public void SampleVariance(object parameter)
-        {
-            if (_sample == null || _sample.Count < 2) return;
-            double[] sampleValues = GetSampleValuesArray();
-            double variance = Statistics.SampleVariance(sampleValues);
-            Result = variance.ToString();
-            SetLabel(parameter);
-        }
-
-        public void PopulationVariance(object parameter)
-        {
-            if (_sample == null || _sample.Count < 2) return;
-            double[] sampleValues = GetSampleValuesArray();
-            double variance = Statistics.PopulationVariance(sampleValues);
-            Result = variance.ToString();
-            SetLabel(parameter);
-        }
-
-        private void SetLabel(object parameter)
+        internal void SetLabel(object parameter)
         {
             if (parameter is string label)
             {
@@ -271,10 +86,10 @@ namespace StatisticsCalculator.ViewModels
             }
         }
 
-        private double[] GetSampleValuesArray()
+        public double[] GetSampleValuesArray()
         {
             List<double> collection = new List<double>();
-            foreach (SampleItemViewModel item in _sample)
+            foreach (SampleItemViewModel item in Sample)
             {
                 collection.Add(item.ItemValue);
             }

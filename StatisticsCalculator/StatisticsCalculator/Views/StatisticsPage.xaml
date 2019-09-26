@@ -38,8 +38,12 @@
         <Style Class="CalculatorButton" TargetType="Button">
             <Setter Property="FontSize" Value="16"/>
         </Style>
-        <views:DefaultCalculatorView x:Key="BaseCalculator"/>
-        <views:NormalDistributionView x:Key="NormalDistribution"/>
+        <views:DefaultCalculatorView x:Key="BaseCalculator" 
+                                     BindingContext="{Binding Source={StaticResource StatisticsVM}, 
+            Path=DefaultCalculatorViewModel}"/>
+        <views:NormalDistributionView x:Key="NormalDistribution"
+                                      BindingContext="{Binding Source={StaticResource StatisticsVM},
+            Path=NormalDistributionViewModel}"/>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BindingContext="{StaticResource StatisticsVM}">
