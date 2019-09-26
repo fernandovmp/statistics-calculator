@@ -38,7 +38,7 @@
         <Style Class="CalculatorButton" TargetType="Button">
             <Setter Property="FontSize" Value="16"/>
         </Style>
-        <views:BaseCalculatorView x:Key="BaseCalculator"/>
+        <views:DefaultCalculatorView x:Key="BaseCalculator"/>
         <views:NormalDistributionView x:Key="NormalDistribution"/>
     </ContentPage.Resources>
     <ContentPage.Content>

@@ -6,7 +6,7 @@
              xmlns:viewModels="clr-namespace:StatisticsCalculator.ViewModels"
              xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
              mc:Ignorable="d"
-             x:Class="StatisticsCalculator.Views.BaseCalculatorView">
+             x:Class="StatisticsCalculator.Views.DefaultCalculatorView">
   <ContentView.Content>
         <Grid HorizontalOptions="CenterAndExpand"
               VerticalOptions="End">

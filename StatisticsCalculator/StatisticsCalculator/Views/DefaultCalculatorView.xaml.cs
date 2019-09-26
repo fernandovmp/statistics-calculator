@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace StatisticsCalculator.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BaseCalculatorView : ContentView
+    public partial class DefaultCalculatorView : ContentView
     {
-        public BaseCalculatorView()
+        public DefaultCalculatorView()
         {
             InitializeComponent();
         }
