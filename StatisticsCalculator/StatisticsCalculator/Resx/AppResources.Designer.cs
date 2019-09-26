@@ -178,6 +178,15 @@ namespace StatisticsCalculator.Resx {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Percentage.
+        /// </summary>
+        public static string PercentageLabel {
+            get {
+                return ResourceManager.GetString("PercentageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Population standard deviation.
         /// </summary>
         public static string PopulationStandardDeviationLabel {

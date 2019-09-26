@@ -169,6 +169,10 @@
     <value>Normal distribution</value>
     <comment>Normal distribution label</comment>
   </data>
+  <data name="PercentageLabel" xml:space="preserve">
+    <value>Percentage</value>
+    <comment>Percentage label</comment>
+  </data>
   <data name="PopulationStandardDeviationLabel" xml:space="preserve">
     <value>Population standard deviation</value>
     <comment>Population standard deviation label</comment>
