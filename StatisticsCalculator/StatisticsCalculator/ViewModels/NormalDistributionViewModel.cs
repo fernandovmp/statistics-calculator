@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using StatisticsCore;
 using Xamarin.Forms;
 
 namespace StatisticsCalculator.ViewModels
@@ -12,6 +13,8 @@ namespace StatisticsCalculator.ViewModels
         private string _comparerValue;
         private string _optionalComparerValue;
         private string _comparerText;
+        private string _mean;
+        private string _deviation;
         private bool _isBetweenValue;
         private NormalDistributionMode _normalDistributionMode;
         private ICommand _setModeCommand;
@@ -24,7 +27,7 @@ namespace StatisticsCalculator.ViewModels
             _setModeCommand.Execute(NormalDistributionMode.LessThan);
         }
 
-        public string CompararValue
+        public string ComparerValue
         {
             get => _comparerValue;
             set => SetProperty(ref _comparerValue, value);
@@ -38,6 +41,16 @@ namespace StatisticsCalculator.ViewModels
         {
             get => _comparerText;
             set => SetProperty(ref _comparerText, value);
+        }
+        public string Mean
+        {
+            get => _mean;
+            set => SetProperty(ref _mean, value);
+        }
+        public string Deviation
+        {
+            get => _deviation;
+            set => SetProperty(ref _deviation, value);
         }
         public bool IsBetweenValue
         {
@@ -85,8 +98,37 @@ namespace StatisticsCalculator.ViewModels
 
         private void Calculate(object parameter)
         {
-            double result = 0;
-            SetLabel(result.ToString(), parameter);
+            if (!string.IsNullOrEmpty(ComparerValue) 
+                && !string.IsNullOrEmpty(Mean)
+                && !string.IsNullOrEmpty(Deviation)
+                && double.TryParse(ComparerValue, out double comparer)
+                && double.TryParse(Mean, out double mean)
+                && double.TryParse(Deviation, out double deviation))
+            {
+                double result = 0;
+                switch (_normalDistributionMode)
+                {
+                    case NormalDistributionMode.LessThan:
+                        result = Statistics.NormalDistributionDensity(comparer, deviation, mean);
+                        break;
+                    case NormalDistributionMode.Between:
+                        if(!string.IsNullOrEmpty(OptionalComparerValue)
+                            && double.TryParse(OptionalComparerValue, out double optionalComparer)
+                            && optionalComparer < comparer)
+                        {
+                            result = Statistics.NormalDistributionDensity(optionalComparer, comparer, 
+                                deviation, mean);
+                        }
+                        break;
+                    case NormalDistributionMode.GreaterThan:
+                        result = Statistics.NormalDistributionDensity(comparer, deviation, mean, true);
+                        break;
+                    default:
+                        result = 0;
+                        break;
+                }
+                SetLabel(result.ToString("P2"), parameter);
+            }
         }
     }
 }
