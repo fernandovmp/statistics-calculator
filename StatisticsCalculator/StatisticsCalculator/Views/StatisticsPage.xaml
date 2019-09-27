@@ -13,19 +13,16 @@
         <viewModels:StatisticsViewModel x:Key="StatisticsVM"/>
         <Style Class="ResultLabel" TargetType="Label">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             <Setter Property="TextColor" Value="Black"/>
-            <Setter Property="VerticalOptions" Value="EndAndExpand"/>
         </Style>
         <Style Class="ResultFrame" TargetType="Frame">
             <Setter Property="BackgroundColor" Value="#eee"/>
             <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="FlexLayout.AlignSelf" Value="Stretch"/>
             <Setter Property="HasShadow" Value="False"/>
             <Setter Property="HeightRequest" Value="45"/>
-            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             <Setter Property="Margin" Value="30, 0, 30, 0"/>
             <Setter Property="Padding" Value="0"/>
-            <Setter Property="VerticalOptions" Value="Center"/>
         </Style>
         <Style Class="ResultStyle" TargetType="Label">
             <Setter Property="BackgroundColor" Value="Transparent"/>
@@ -33,7 +30,7 @@
             <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="TextColor" Value="Black"/>
-            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
         </Style>
         <Style Class="CalculatorButton" TargetType="Button">
             <Setter Property="FontSize" Value="16"/>
@@ -46,7 +43,8 @@
             Path=NormalDistributionViewModel}"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BindingContext="{StaticResource StatisticsVM}">
+        <FlexLayout Direction="Column"
+                    BindingContext="{StaticResource StatisticsVM}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
@@ -60,15 +58,17 @@
                         Command="{Binding SetCalculatorCommand}"
                         CommandParameter="{StaticResource NormalDistribution}"/>
             </Grid>
-            <StackLayout VerticalOptions="Start">
+            <FlexLayout Direction="Column"
+                        AlignItems="Center"
+                        Margin="0, 25, 0, 0"
+                        FlexLayout.Grow="1">
                 <Label Text="{Binding ResultLabel}" class="ResultLabel"/>
                 <Frame class="ResultFrame">
                     <Label Text="{Binding Result}"
                            class="ResultStyle"/>
                 </Frame>
-            </StackLayout>
-            <ContentView VerticalOptions="FillAndExpand" 
-                         Content="{Binding Calculator, TargetNullValue={StaticResource BaseCalculator}}"/>
-        </StackLayout>
+            </FlexLayout>
+            <ContentView Content="{Binding Calculator, TargetNullValue={StaticResource BaseCalculator}}"/>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

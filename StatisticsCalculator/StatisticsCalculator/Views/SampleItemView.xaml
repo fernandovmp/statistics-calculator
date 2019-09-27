@@ -7,18 +7,15 @@
              x:Class="StatisticsCalculator.Views.SampleItemView">
   <ContentView.Content>
         <Frame Padding="0">
-            <StackLayout Orientation="Horizontal">
+            <FlexLayout AlignItems="Center">
                 <Button Text="X"
                         Command="{Binding RemoveItemCommand}"
-                        WidthRequest="50"
-                        HorizontalOptions="Start"/>
+                        WidthRequest="50"/>
                 <Label Text="{Binding ItemValue}" 
                        TextColor="Black" 
                        FontSize="18"
-                       BackgroundColor="Transparent"
-                       VerticalOptions="CenterAndExpand"
-                       HorizontalOptions="CenterAndExpand"/>
-            </StackLayout>
+                       BackgroundColor="Transparent"/>
+            </FlexLayout>
         </Frame>
   </ContentView.Content>
 </ContentView>
