@@ -17,7 +17,6 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button Text="{translator:Translate LessThanLabel}"
-                        Grid.Column="0"
                         Command="{Binding SetModeCommand}">
                     <Button.CommandParameter>
                         <viewModels:NormalDistributionMode>LessThan</viewModels:NormalDistributionMode>

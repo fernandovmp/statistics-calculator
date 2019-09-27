@@ -23,21 +23,20 @@
             </Grid.ColumnDefinitions>
             <Button Text="{translator:Translate ModeLabel}" 
                         class="CalculatorButton"
-                        Grid.Row="0" Grid.Column="0"
                         Command="{Binding ModeCommand}"
                         CommandParameter="{translator:Translate ModeLabel}"/>
             <Button Text="{translator:Translate MedianLabel}" 
                         class="CalculatorButton"
-                        Grid.Row="0" Grid.Column="1"
+                        Grid.Column="1"
                         Command="{Binding MedianCommand}"
                         CommandParameter="{translator:Translate MedianLabel}"/>
             <Button Text="{translator:Translate MeanLabel}" 
                         class="CalculatorButton"
-                        Grid.Row="0" Grid.Column="2"
+                        Grid.Column="2"
                         Command="{Binding MeanCommand}"
                         CommandParameter="{translator:Translate MeanLabel}"/>
             <Button Text="Σx" class="CalculatorButton"
-                        Grid.Row="1" Grid.Column="0"
+                        Grid.Row="1"
                         Command="{Binding SumCommand}"
                         CommandParameter="{translator:Translate SumOfItemsLabel}"/>
             <Button Text="Σx^2" class="CalculatorButton"
@@ -53,7 +52,7 @@
                         Command="{Binding PopulationVarianceCommand}"
                         CommandParameter="{translator:Translate PopulationVarianceLabel}"/>
             <Button Text="s" class="CalculatorButton"
-                        Grid.Row="2" Grid.Column="0"
+                        Grid.Row="2"
                         Command="{Binding SampleStandardDeviationCommand}"
                         CommandParameter="{translator:Translate SampleStandardDeviationLabel}"/>
             <Button Text="s^2" class="CalculatorButton"
