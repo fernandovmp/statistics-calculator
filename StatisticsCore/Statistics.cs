@@ -171,12 +171,7 @@ namespace StatisticsCore
         {
             if (!isGreaterThan) return NormalDistributionDensity(start, deviation, mean);
 
-            double z = (start - mean) / deviation;
             double range = NormalDistributionDensity(start, deviation, mean);
-            if (z < 0)
-            {
-                return 0.5 - range;
-            }
             return 1 - range;
         }
     }
