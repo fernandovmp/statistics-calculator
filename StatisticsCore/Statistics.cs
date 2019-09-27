@@ -134,5 +134,50 @@ namespace StatisticsCore
             double sum = SumOfSquareOfItems(items);
             return sum / items.Length;
         }
+
+        public static double NormalDistributionDensity(double comparer, double deviation, double mean)
+        {
+            double p = 0.3275911;
+            double a1 = 0.254829592;
+            double a2 = -0.284496736;
+            double a3 = 1.421413741;
+            double a4 = -1.453152027;
+            double a5 = 1.061405429;
+
+            double z = (comparer - mean) / deviation;
+            int sign = z < 0.0 ? -1 : 1;
+
+            double x = Math.Abs(z) / Math.Sqrt(2.0);
+            double t = 1.0 / (1.0 + p * x);
+            double erf = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.Exp(-x * x);
+            return 0.5 * (1.0 + sign * erf);
+        }
+
+        public static double NormalDistributionDensity(double start, double end, double deviation, double mean)
+        {
+            double z1 = (start - mean) / deviation;
+            double z2 = (end - mean) / deviation;
+            double range1 = NormalDistributionDensity(start, deviation, mean);
+            double range2 = NormalDistributionDensity(end, deviation, mean);
+            if (z1 <= 0 && z2 <= 0 || z1 >= 0 && z2 >= 0)
+            {
+                return Math.Abs(range1 - range2);
+            }
+            return (0.5 - range1) + (range2 - 0.5);
+        }
+
+        public static double NormalDistributionDensity(double start, double deviation, double mean, 
+            bool isGreaterThan = false)
+        {
+            if (!isGreaterThan) return NormalDistributionDensity(start, deviation, mean);
+
+            double z = (start - mean) / deviation;
+            double range = NormalDistributionDensity(start, deviation, mean);
+            if (z < 0)
+            {
+                return 0.5 - range;
+            }
+            return 1 - range;
+        }
     }
 }

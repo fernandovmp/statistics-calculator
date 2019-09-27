@@ -275,5 +275,82 @@ namespace StatisticsCoreTest
 
             Assert.AreEqual(expected, result, 0.000001);
         }
+
+        [TestMethod]
+        public void TestNormalDistribution_A()
+        {
+            double deviation = 5, mean = 50, comparer = 60;
+            double expected = 0.9772;
+
+            double result = Statistics.NormalDistributionDensity(comparer, deviation, mean);
+
+            Assert.AreEqual(expected, result, 0.0001);
+        }
+
+        [TestMethod]
+        public void TestNormalDistribution_B()
+        {
+            double deviation = 5, mean = 50, start = 35, end = 45;
+            double expected = 0.1574;
+
+            double result = Statistics.NormalDistributionDensity(start, end, deviation, mean);
+
+            Assert.AreEqual(expected, result, 0.0001);
+        }
+
+        [TestMethod]
+        public void TestNormalDistribution_C()
+        {
+            double deviation = 5, mean = 50, start = 55, end = 65;
+            double expected = 0.1574;
+
+            double result = Statistics.NormalDistributionDensity(start, end, deviation, mean);
+
+            Assert.AreEqual(expected, result, 0.0001);
+        }
+
+        [TestMethod]
+        public void TestNormalDistribution_D()
+        {
+            double deviation = 5, mean = 50, start = 55;
+            double expected = 0.1587;
+
+            double result = Statistics.NormalDistributionDensity(start, deviation, mean, true);
+
+            Assert.AreEqual(expected, result, 0.0001);
+        }
+
+        [TestMethod]
+        public void TestNormalDistribution_E()
+        {
+            double deviation = 5, mean = 50, start = 35, end = 62;
+            double expected = 0.9905;
+
+            double result = Statistics.NormalDistributionDensity(start, end, deviation, mean);
+
+            Assert.AreEqual(expected, result, 0.0001);
+        }
+
+        [TestMethod]
+        public void TestNormalDistribution_F()
+        {
+            double deviation = 5, mean = 50, start = 40;
+            double expected = 0.9772;
+
+            double result = Statistics.NormalDistributionDensity(start, deviation, mean, true);
+
+            Assert.AreEqual(expected, result, 0.0001);
+        }
+
+        [TestMethod]
+        public void TestNormalDistribution_G()
+        {
+            double deviation = 5, mean = 50, start = 40;
+            double expected = 0.0228;
+
+            double result = Statistics.NormalDistributionDensity(start, deviation, mean);
+
+            Assert.AreEqual(expected, result, 0.0001);
+        }
     }
 }
