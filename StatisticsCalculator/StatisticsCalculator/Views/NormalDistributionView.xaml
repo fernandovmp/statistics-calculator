@@ -52,6 +52,24 @@
                        Text="{Binding ComparerValue}"
                        WidthRequest="60"/>
             </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
+                <Label Text="{translator:Translate MeanLabel}"
+                       VerticalTextAlignment="Center"
+                       FontSize="22"/>
+                <Entry Keyboard="Numeric"
+                       Text="{Binding Mean}"
+                       WidthRequest="60"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
+                <Label Text="σ"
+                       VerticalTextAlignment="Center"
+                       FontSize="22"/>
+                <Entry Keyboard="Numeric"
+                       Text="{Binding Deviation}"
+                       WidthRequest="60"/>
+            </StackLayout>
             <Button Text="{translator:Translate CalculateLabel}"
                     VerticalOptions="Start"
                     Margin="120, 0"
