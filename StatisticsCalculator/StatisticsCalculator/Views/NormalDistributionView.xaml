@@ -8,9 +8,8 @@
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.Views.NormalDistributionView">
     <ContentView.Content>
-        <StackLayout VerticalOptions="FillAndExpand"
-                     Margin="0, 100 , 0, 0">
-            <Grid VerticalOptions="Start">
+        <StackLayout CompressedLayout.IsHeadless="True">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -37,40 +36,35 @@
                     </Button.CommandParameter>
                 </Button>
             </Grid>
-            <StackLayout Orientation="Horizontal" 
-                         HorizontalOptions="CenterAndExpand"
-                         VerticalOptions="Center">
+            <FlexLayout JustifyContent="Center">
                 <Entry Keyboard="Numeric"
                        Text="{Binding OptionalComparerValue}"
                        IsVisible="{Binding IsBetweenValue}"
                        WidthRequest="60"/>
                 <Label Text="{Binding ComparerText}"
-                       VerticalTextAlignment="Center"
+                       FlexLayout.AlignSelf="Center"
                        FontSize="22"/>
                 <Entry Keyboard="Numeric"
                        Text="{Binding ComparerValue}"
                        WidthRequest="60"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="CenterAndExpand">
+            </FlexLayout>
+            <FlexLayout JustifyContent="Center">
                 <Label Text="{translator:Translate MeanLabel}"
-                       VerticalTextAlignment="Center"
+                       FlexLayout.AlignSelf="Center"
                        FontSize="22"/>
                 <Entry Keyboard="Numeric"
                        Text="{Binding Mean}"
                        WidthRequest="60"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="CenterAndExpand">
+            </FlexLayout>
+            <FlexLayout JustifyContent="Center">
                 <Label Text="σ"
-                       VerticalTextAlignment="Center"
+                       FlexLayout.AlignSelf="Center"
                        FontSize="22"/>
                 <Entry Keyboard="Numeric"
                        Text="{Binding Deviation}"
                        WidthRequest="60"/>
-            </StackLayout>
+            </FlexLayout>
             <Button Text="{translator:Translate CalculateLabel}"
-                    VerticalOptions="Start"
                     Margin="120, 0"
                     Command="{Binding CalculateCommand}"
                     CommandParameter="{translator:Translate PercentageLabel}"/>
