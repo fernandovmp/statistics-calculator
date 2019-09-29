@@ -134,7 +134,7 @@
     <comment>Calculate the result</comment>
   </data>
   <data name="CleanButtonText" xml:space="preserve">
-    <value>Clean</value>
+    <value>Clear</value>
     <comment>Clean sample</comment>
   </data>
   <data name="EmptySampleText" xml:space="preserve">

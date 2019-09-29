@@ -97,7 +97,7 @@ namespace StatisticsCalculator.Resx {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Clean.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Clear.
         /// </summary>
         public static string CleanButtonText {
             get {
