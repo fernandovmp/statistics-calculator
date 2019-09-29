@@ -9,7 +9,8 @@
              x:Class="StatisticsCalculator.Views.DefaultCalculatorView">
   <ContentView.Content>
         <Grid HorizontalOptions="CenterAndExpand"
-              VerticalOptions="End">
+              VerticalOptions="End"
+              CompressedLayout.IsHeadless="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="70"/>
