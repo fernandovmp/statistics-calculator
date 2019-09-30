@@ -6,11 +6,11 @@
              xmlns:viewModels="clr-namespace:StatisticsCalculator.ViewModels"
              xmlns:views="clr-namespace:StatisticsCalculator.Views"
              xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
+             xmlns:local="clr-namespace:StatisticsCalculator"
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.Views.StatisticsPage"
              Title="{translator:Translate StatisticsTabLabel}">
     <ContentPage.Resources>
-        <viewModels:StatisticsViewModel x:Key="StatisticsVM"/>
         <Style Class="ResultLabel" TargetType="Label">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="TextColor" Value="Black"/>
@@ -35,32 +35,14 @@
         <Style Class="CalculatorButton" TargetType="Button">
             <Setter Property="FontSize" Value="16"/>
         </Style>
-        <views:DefaultCalculatorView x:Key="BaseCalculator" 
-                                     BindingContext="{Binding Source={StaticResource StatisticsVM}, 
-            Path=DefaultCalculatorViewModel}"/>
-        <views:NormalDistributionView x:Key="NormalDistribution"
-                                      BindingContext="{Binding Source={StaticResource StatisticsVM},
-            Path=NormalDistributionViewModel}"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <FlexLayout Direction="Column"
-                    BindingContext="{StaticResource StatisticsVM}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="150"/>
-                </Grid.ColumnDefinitions>
-                <Button Text="{translator:Translate BaseCalculatorLabel}"
-                        Command="{Binding SetCalculatorCommand}"
-                        CommandParameter="{StaticResource BaseCalculator}"/>
-                <Button Text="{translator:Translate NormalDistributionLabel}"
-                        Grid.Column="1"
-                        Command="{Binding SetCalculatorCommand}"
-                        CommandParameter="{StaticResource NormalDistribution}"/>
-            </Grid>
+        <FlexLayout Direction="Column">
+            <Picker x:Name="CalculatorPicker"
+                    ItemDisplayBinding="{Binding Label}"
+                    Margin="30"/>
             <FlexLayout Direction="Column"
                         AlignItems="Center"
-                        Margin="0, 25, 0, 0"
                         FlexLayout.Grow="1">
                 <Label Text="{Binding ResultLabel}" class="ResultLabel"/>
                 <Frame class="ResultFrame">
@@ -68,7 +50,7 @@
                            class="ResultStyle"/>
                 </Frame>
             </FlexLayout>
-            <ContentView Content="{Binding Calculator, TargetNullValue={StaticResource BaseCalculator}}"/>
+            <ContentView Content="{Binding Source={Reference CalculatorPicker}, Path=SelectedItem.Calculator}"/>
         </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

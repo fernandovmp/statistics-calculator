@@ -14,8 +14,6 @@ namespace StatisticsCalculator.ViewModels
         private string _result;
         private string _resultLabel;
         private ICommand _setCalculatorCommand;
-        private DefaultCalculatorViewModel _defaultCalculatorViewModel;
-        private NormalDistributionViewModel _normalDistributionViewModel;
         private ContentView _calculator;
 
         public StatisticsViewModel()
@@ -25,8 +23,6 @@ namespace StatisticsCalculator.ViewModels
                 {
                     Sample = parameter;
                 });
-            _defaultCalculatorViewModel = new DefaultCalculatorViewModel(this);
-            _normalDistributionViewModel = new NormalDistributionViewModel(this);
         }
 
         public ICollection<SampleItemViewModel> Sample { get; private set; }
@@ -51,16 +47,6 @@ namespace StatisticsCalculator.ViewModels
                 return _setCalculatorCommand;
             }
             set => SetProperty(ref _setCalculatorCommand, value);
-        }
-        public DefaultCalculatorViewModel DefaultCalculatorViewModel
-        {
-            get => _defaultCalculatorViewModel;
-            set => SetProperty(ref _defaultCalculatorViewModel, value);
-        }
-        public NormalDistributionViewModel NormalDistributionViewModel
-        {
-            get => _normalDistributionViewModel;
-            set => SetProperty(ref _normalDistributionViewModel, value);
         }
         public ContentView Calculator
         {

@@ -8,7 +8,8 @@
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.Views.NormalDistributionView">
     <ContentView.Content>
-        <StackLayout CompressedLayout.IsHeadless="True">
+        <StackLayout CompressedLayout.IsHeadless="True"
+                     Margin="5, 0, 5, 50">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
