@@ -23,8 +23,6 @@
                 <Label Text="{Binding SampleItems.Count, StringFormat='n = {0}'}"
                        TextColor="Black"
                        Margin="30, 0, 0, 0"
-                       VerticalOptions="Center"
-                       HorizontalOptions="StartAndExpand"
                        WidthRequest="100"/>
                 <Label Text="{translator:Translate SampleLabel}"
                        TextColor="Black"
