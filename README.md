@@ -2,7 +2,7 @@
 > Mobile statistics calculator app
 
 <img src="Screenshots/Screenshot_01.png" width=33% /><img src="Screenshots/Screenshot_02.png" width=33% hspace=2/><img src="Screenshots/Screenshot_03.png" width=33%/>
-<img src="Screenshots/Screenshot_04.png" width=33% /><img src="Screenshots/Screenshot_05.png" width=33% hspace=2/>
+<img src="Screenshots/Screenshot_04.png" width=33% /><img src="Screenshots/Screenshot_05.png" width=33% hspace=2/><img src="Screenshots/Screenshot_06.png" width=33%/>
 
 #### Leia em [português](./LEIAME.md)
 
@@ -23,11 +23,14 @@ The android installer (5.0 Lolipop ~ 9.0 Pie) can be found [here](https://drive.
 As to iOS installer, no schedule.
 
 # Features
-- Sum of all items values of the sample
-- Sum of squares of all items values of the sample
-- Mean, median and mode calcule
-- Population and sample standard deviation
-- Population and sample variance
+- [x] Sum of all items values of the sample
+- [x] Sum of squares of all items values of the sample
+- [x] Mean, median and mode calcule
+- [x] Population and sample standard deviation
+- [x] Population and sample variance
+- [x] Normal distribution density
+- [ ] Frequency table
+- [ ] Export and import sample
 
 # Getting started
 ## Requiriments

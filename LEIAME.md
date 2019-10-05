@@ -2,7 +2,7 @@
 > Aplicativo móvel de calculadora estatística
 
 <img src="Screenshots/Screenshot_01_pt.png" width=33% /><img src="Screenshots/Screenshot_02_pt.png" width=33% hspace=2/><img src="Screenshots/Screenshot_03_pt.png" width=33%/>
-<img src="Screenshots/Screenshot_04_pt.png" width=33% /><img src="Screenshots/Screenshot_05_pt.png" width=33% hspace=2/>
+<img src="Screenshots/Screenshot_04_pt.png" width=33% /><img src="Screenshots/Screenshot_05_pt.png" width=33% hspace=2/><img src="Screenshots/Screenshot_06_pt.png" width=33%/>
 
 # Conteúdo
 - [Motivação](#motivação)
@@ -21,11 +21,14 @@ O instalador android (5.0 Lolipop até 9.0 Pie) pode ser encontrado [aqui](https
 Quanto ao instalador iOS, sem previsão.
 
 # Funcionalidades
-- Soma de todos os valores da amostra
-- Soma do quadrado dos valores da amostra
-- Cálculo de média, mediana e moda
-- Desvio padrão da amostra e da população
-- Variancia da amostra e da população
+- [x] Soma de todos os valores da amostra
+- [x] Soma do quadrado dos valores da amostra
+- [x] Cálculo de média, mediana e moda
+- [x] Desvio padrão da amostra e da população
+- [x] Variancia da amostra e da população
+- [x] Densidade de distribuição normal
+- [ ] Tabela de frequência
+- [ ] Exportar e importar amostra
 
 A depender do andamento das minhas aulas de estatística e minha compreensão sobre o conteúdo, novas funcionalidades serão acrescentadas.
 

@@ -19,10 +19,13 @@ using StatisticsCore;
    - [Population Standard Deviation](#populationstandarddeviation)
    - [Sample Variance](#samplevariance)
    - [Population Variance](#populationvariance)
+   - [Normal Distribution Density](#normaldistributiondensity)
+   
  - [Examples](#examples)
    - [Sum Of Items and Sum Of Square Of Items Example](#sum-of-items-and-sum-of-square-of-items-example)
    - [Mean, Median and Mode Example](#mean-median-and-mode-example)
    - [Deviation and Variance Example](#deviation-and-variance-example)
+   - [Normal Distribution Density Example](#normal-distribution-density-example)
 
 # Methods
 
@@ -71,6 +74,19 @@ using StatisticsCore;
   public static double PopulationVariance(params double[] items)
   ```
   Return the population variance.
+- ## NormalDistributionDensity
+  ```C#
+  public static double NormalDistributionDensity(double comparer, double deviation, double mean)
+  ```
+  Return the estimate density of items that are less than or equal the comparer value
+  ```C#
+  public static double NormalDistributionDensity(double comparer, double deviation, double mean, bool isGreaterThan)
+  ```
+  Return the estimate density of items that are greater than or equal the comparer value when isGreaterThan is true
+  ```C#
+  public static double NormalDistributionDensity(double start, double end, double deviation, double mean)
+  ```
+  Return the estimate density of items that are between the start and end values
 # Examples
 ## Sum Of Items and Sum Of Square Of Items Example
 ```C#
@@ -190,5 +206,43 @@ Sample Standard Deviation: 12.3027290816771
 Population Standard Deviation: 11.5081492864839
 Sample Variance: 151.357142857143
 Population Variance: 132.4375
+*/
+```
+
+## Normal Distribution Density Example
+```C#
+using System;
+using StatisticsCore;
+
+namespace StatisticsExample
+{
+    public class NormalDistributionDensityExample
+    {
+        public static void Main(string[] args)
+        {
+            double deviation = 5, mean = 50, start = 60;
+            double result = Statistics.NormalDistributionDensity(start, deviation, mean);
+            Console.WriteLine("The density of items that are less or equals to {0} is {1:P2}", start, result);
+
+            deviation = 5;
+            mean = 50;
+            start = 35;
+            double end = 45;
+            result = Statistics.NormalDistributionDensity(start, end, deviation, mean);
+            Console.WriteLine("The density of items that are between {0} and {1} is {2:P2}", start, end, result);
+
+            deviation = 5;
+            mean = 50;
+            start = 40;
+            result = Statistics.NormalDistributionDensity(start, deviation, mean, true);
+            Console.WriteLine("The density of items that are greater or equals to {0} is {1:P2}", start, result);
+        }
+    }
+}
+
+/* Output:
+   The density of items that are less or equals to 60 is 97.72%
+   The density of items that are between 35 and 45 is 15.73%
+   The density of items that are greater or equals to 40 is 97.72%
 */
 ```

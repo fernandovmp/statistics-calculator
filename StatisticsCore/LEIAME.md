@@ -17,10 +17,13 @@ using StatisticsCore;
    - [Population Standard Deviation](#populationstandarddeviation)
    - [Sample Variance](#samplevariance)
    - [Population Variance](#populationvariance)
+   - [Normal Distribution Density](#normaldistributiondensity)
+   
  - [Exemplos](#exemplos)
    - [Exemplo Sum Of Items e Sum Of Square Of Items](#exemplo-sum-of-items-e-sum-of-square-of-items)
    - [Exemplo Mean, Median e Mode](#exemplo-mean-median-e-mode)
-   - [Exemplo Deviation e Variance Example](#exemplo-deviation-e-variance)
+   - [Exemplo Deviation e Variance](#exemplo-deviation-e-variance)
+   - [Exemplo Normal Distribution Density](#exemplo-normal-distribution-density)
 
 ## Métodos
 
@@ -69,7 +72,20 @@ using StatisticsCore;
   public static double PopulationVariance(params double[] items)
   ```
   Calcula a variância da população.
-  
+- ## NormalDistributionDensity
+  ```C#
+  public static double NormalDistributionDensity(double comparer, double deviation, double mean)
+  ```
+  Calcula a estimativa da porcentagem dos itens que são menores ou iguais ao valor de _comparer_
+  ```C#
+  public static double NormalDistributionDensity(double comparer, double deviation, double mean, bool isGreaterThan)
+  ```
+  Calcula a estimativa da porcentagem dos itens que são maiores ou iguais ao valor de _comparer_ quando _isGreaterThan_ é _true_
+  ```C#
+  public static double NormalDistributionDensity(double start, double end, double deviation, double mean)
+  ```
+   Calcula a estimativa da porcentagem dos itens que estão entre _start_ e _end_
+
 # Exemplos
 ## Exemplo Sum Of Items e Sum Of Square Of Items
 ```C#
@@ -189,5 +205,43 @@ Sample Standard Deviation: 12.3027290816771
 Population Standard Deviation: 11.5081492864839
 Sample Variance: 151.357142857143
 Population Variance: 132.4375
+*/
+```
+
+## Exemplo Normal Distribution Density
+```C#
+using System;
+using StatisticsCore;
+
+namespace StatisticsExample
+{
+    public class NormalDistributionDensityExample
+    {
+        public static void Main(string[] args)
+        {
+            double deviation = 5, mean = 50, start = 60;
+            double result = Statistics.NormalDistributionDensity(start, deviation, mean);
+            Console.WriteLine("The density of items that are less or equals to {0} is {1:P2}", start, result);
+
+            deviation = 5;
+            mean = 50;
+            start = 35;
+            double end = 45;
+            result = Statistics.NormalDistributionDensity(start, end, deviation, mean);
+            Console.WriteLine("The density of items that are between {0} and {1} is {2:P2}", start, end, result);
+
+            deviation = 5;
+            mean = 50;
+            start = 40;
+            result = Statistics.NormalDistributionDensity(start, deviation, mean, true);
+            Console.WriteLine("The density of items that are greater or equals to {0} is {1:P2}", start, result);
+        }
+    }
+}
+
+/* Output:
+   The density of items that are less or equals to 60 is 97.72%
+   The density of items that are between 35 and 45 is 15.73%
+   The density of items that are greater or equals to 40 is 97.72%
 */
 ```
