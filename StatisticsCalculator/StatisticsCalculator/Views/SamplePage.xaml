@@ -27,10 +27,11 @@
                 <Label Text="{translator:Translate SampleLabel}"
                        TextColor="Black"
                        FlexLayout.Grow="1"
+                       Margin="0, 0, 20, 0"
                        HorizontalTextAlignment="Center"/>
                 <Button Text="{translator:Translate CleanButtonText}"
                         Command="{Binding ClearSampleCommand}"
-                        Margin="0, 0, 30, 0"
+                        Margin="0, 0, 10, 0"
                         WidthRequest="100"/>
             </FlexLayout>
             <ContentView Margin="5"
