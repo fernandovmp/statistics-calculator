@@ -10,74 +10,29 @@ namespace StatisticsCalculator.ViewModels
 {
     public class DefaultCalculatorViewModel : BaseCalculatorViewModel
     {
-        private ICommand _sumCommand;
-        private ICommand _sumOfSquareCommand;
-        private ICommand _meanCommand;
-        private ICommand _medianCommand;
-        private ICommand _modeCommand;
-        private ICommand _sampleStandardDeviationCommand;
-        private ICommand _populationStandardDeviationCommand;
-        private ICommand _sampleVarianceCommand;
-        private ICommand _populationVarianceCommand;
 
         public DefaultCalculatorViewModel(StatisticsViewModel statisticsViewModel) : base(statisticsViewModel)
         {
-            _sumCommand = new Command(Sum);
-            _sumOfSquareCommand = new Command(SumOfSquare);
-            _meanCommand = new Command(Mean);
-            _medianCommand = new Command(Median);
-            _modeCommand = new Command(Mode);
-            _sampleStandardDeviationCommand = new Command(SampleStandardDeviation);
-            _populationStandardDeviationCommand = new Command(PopulationStandardDeviation);
-            _sampleVarianceCommand = new Command(SampleVariance);
-            _populationVarianceCommand = new Command(PopulationVariance);
+            SumCommand = new Command(Sum);
+            SumOfSquareCommand = new Command(SumOfSquare);
+            MeanCommand = new Command(Mean);
+            MedianCommand = new Command(Median);
+            ModeCommand = new Command(Mode);
+            SampleStandardDeviationCommand = new Command(SampleStandardDeviation);
+            PopulationStandardDeviationCommand = new Command(PopulationStandardDeviation);
+            SampleVarianceCommand = new Command(SampleVariance);
+            PopulationVarianceCommand = new Command(PopulationVariance);
         }
 
-        public ICommand SumCommand
-        {
-            get => _sumCommand;
-            set => SetProperty(ref _sumCommand, value);
-        }
-        public ICommand SumOfSquareCommand
-        {
-            get => _sumOfSquareCommand;
-            set => SetProperty(ref _sumOfSquareCommand, value);
-        }
-        public ICommand MeanCommand
-        {
-            get => _meanCommand;
-            set => SetProperty(ref _meanCommand, value);
-        }
-        public ICommand MedianCommand
-        {
-            get =>_medianCommand;
-            set => SetProperty(ref _medianCommand, value);
-        }
-        public ICommand ModeCommand
-        {
-            get => _modeCommand;
-            set => SetProperty(ref _modeCommand, value);
-        }
-        public ICommand SampleStandardDeviationCommand
-        {
-            get => _sampleStandardDeviationCommand;
-            set => SetProperty(ref _sampleStandardDeviationCommand, value);
-        }
-        public ICommand PopulationStandardDeviationCommand
-        {
-            get => _populationStandardDeviationCommand;
-            set => SetProperty(ref _populationStandardDeviationCommand, value);
-        }
-        public ICommand SampleVarianceCommand
-        {
-            get => _sampleVarianceCommand;
-            set => SetProperty(ref _sampleVarianceCommand, value);
-        }
-        public ICommand PopulationVarianceCommand
-        {
-            get => _populationVarianceCommand;
-            set => SetProperty(ref _populationVarianceCommand, value);
-        }
+        public ICommand SumCommand { get; private set; }
+        public ICommand SumOfSquareCommand { get; private set; }
+        public ICommand MeanCommand { get; private set; }
+        public ICommand MedianCommand { get; private set; }
+        public ICommand ModeCommand { get; private set; }
+        public ICommand SampleStandardDeviationCommand { get; private set; }
+        public ICommand PopulationStandardDeviationCommand { get; private set; }
+        public ICommand SampleVarianceCommand { get; private set; }
+        public ICommand PopulationVarianceCommand { get; private set; }
 
         private void Sum(object parameter)
         {

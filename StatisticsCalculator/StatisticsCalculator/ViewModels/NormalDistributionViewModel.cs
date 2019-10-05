@@ -17,14 +17,12 @@ namespace StatisticsCalculator.ViewModels
         private string _deviation;
         private bool _isBetweenValue;
         private NormalDistributionMode _normalDistributionMode;
-        private ICommand _setModeCommand;
-        private ICommand _calculateCommand;
 
         public NormalDistributionViewModel(StatisticsViewModel statisticsViewModel) : base(statisticsViewModel)
         {
-            _setModeCommand = new Command(SetMode);
-            _calculateCommand = new Command(Calculate);
-            _setModeCommand.Execute(NormalDistributionMode.LessThan);
+            SetModeCommand = new Command(SetMode);
+            CalculateCommand = new Command(Calculate);
+            SetModeCommand.Execute(NormalDistributionMode.LessThan);
         }
 
         public string ComparerValue
@@ -57,16 +55,8 @@ namespace StatisticsCalculator.ViewModels
             get => _isBetweenValue;
             set => SetProperty(ref _isBetweenValue, value);
         }
-        public ICommand SetModeCommand
-        {
-            get => _setModeCommand;
-            set => SetProperty(ref _setModeCommand, value);
-        }
-        public ICommand CalculateCommand
-        {
-            get => _calculateCommand;
-            set => SetProperty(ref _calculateCommand, value);
-        }
+        public ICommand SetModeCommand { get; private set; }
+        public ICommand CalculateCommand { get; private set; }
 
         private void SetMode(object parameter)
         {
