@@ -13,8 +13,6 @@ namespace StatisticsCalculator.ViewModels
     {
         private string _result;
         private string _resultLabel;
-        private ICommand _setCalculatorCommand;
-        private ContentView _calculator;
 
         public StatisticsViewModel()
         {
@@ -36,23 +34,6 @@ namespace StatisticsCalculator.ViewModels
             get => _resultLabel;
             set => SetProperty(ref _resultLabel, value);
         }
-        public ICommand SetCalculatorCommand
-        {
-            get
-            {
-                if (_setCalculatorCommand == null)
-                {
-                    _setCalculatorCommand = new Command(SetCalculator);
-                }
-                return _setCalculatorCommand;
-            }
-            set => SetProperty(ref _setCalculatorCommand, value);
-        }
-        public ContentView Calculator
-        {
-            get => _calculator;
-            private set => SetProperty(ref _calculator, value);
-        }
 
         internal void SetLabel(object parameter)
         {
@@ -62,14 +43,6 @@ namespace StatisticsCalculator.ViewModels
                 return;
             }
             ResultLabel = "";
-        }
-
-        private void SetCalculator(object parameter)
-        {
-            if(parameter is ContentView calculatorView)
-            {
-                Calculator = calculatorView;
-            }
         }
 
         public double[] GetSampleValuesArray()
