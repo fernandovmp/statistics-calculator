@@ -14,6 +14,8 @@
                 <Label Text="{Binding ItemValue}" 
                        TextColor="Black" 
                        FontSize="18"
+                       FlexLayout.Grow="1"
+                       HorizontalTextAlignment="Center"
                        BackgroundColor="Transparent"/>
             </FlexLayout>
         </Frame>
