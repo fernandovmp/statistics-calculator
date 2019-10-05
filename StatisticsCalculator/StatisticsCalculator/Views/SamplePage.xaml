@@ -19,20 +19,22 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand"
                      BindingContext="{StaticResource SampleVM}">
-            <StackLayout Orientation="Horizontal">
+            <FlexLayout AlignItems="Center">
                 <Label Text="{Binding SampleItems.Count, StringFormat='n = {0}'}"
                        TextColor="Black"
                        Margin="30, 0, 0, 0"
                        VerticalOptions="Center"
-                       HorizontalOptions="StartAndExpand"/>
+                       HorizontalOptions="StartAndExpand"
+                       WidthRequest="100"/>
                 <Label Text="{translator:Translate SampleLabel}"
                        TextColor="Black"
-                       VerticalOptions="Center"
-                       HorizontalOptions="CenterAndExpand"/>
+                       FlexLayout.Grow="1"
+                       HorizontalTextAlignment="Center"/>
                 <Button Text="{translator:Translate CleanButtonText}"
                         Command="{Binding ClearSampleCommand}"
-                        HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
+                        Margin="0, 0, 30, 0"
+                        WidthRequest="100"/>
+            </FlexLayout>
             <ContentView Margin="5"
                          BackgroundColor="#aaa"
                          Padding="1">
