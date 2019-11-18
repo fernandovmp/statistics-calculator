@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StatisticsCore;
 
@@ -351,6 +353,67 @@ namespace StatisticsCoreTest
             double result = Statistics.NormalDistributionDensity(start, deviation, mean);
 
             Assert.AreEqual(expected, result, 0.0001);
+        }
+
+        [TestMethod]
+        public void TestBinomialOf_A()
+        {
+            int sample = 10, x = 5;
+            float successRate = 0.5f;
+            double expected = 0.246090;
+
+            double result = Statistics.BinomialOf(x, sample, successRate);
+
+            Assert.AreEqual(expected, result, 0.00001);
+        }
+
+        [TestMethod]
+        public void TestBinomialOf_B()
+        {
+            int sample = 10, x = 0;
+            float successRate = 0.5f;
+            double expected = 0.000976;
+
+            double result = Statistics.BinomialOf(x, sample, successRate);
+
+            Assert.AreEqual(expected, result, 0.00001);
+        }
+
+        [TestMethod]
+        public void TestBinomialOf_C()
+        {
+            int sample = 10, x = 10;
+            float successRate = 0.5f;
+            double expected = 0.000976;
+
+            double result = Statistics.BinomialOf(x, sample, successRate);
+
+            Assert.AreEqual(expected, result, 0.00001);
+        }
+
+        [TestMethod]
+        public void TestBinomial()
+        {
+            int sample = 10;
+            float successRate = 0.5f;
+            var expected = new double[]
+            {
+                0.000977,
+                0.009766,
+                0.043945,
+                0.117188,
+                0.205078,
+                0.246094,
+                0.205078,
+                0.117188,
+                0.043945,
+                0.009766,
+                0.000977
+            };
+
+            IEnumerable<double> result = Statistics.Binomial(sample, successRate)
+                                                   .Select(value => Math.Round(value, 6));
+            CollectionAssert.AreEqual(expected, result.ToArray());
         }
     }
 }

@@ -6,6 +6,23 @@ namespace StatisticsCore
 {
     public static class Statistics
     {
+        private static readonly int[] _factorials = new int[]
+        {
+            1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800
+        };
+
+        private static int GetFactorial(int n)
+        {
+            if (n <= 10)
+                return _factorials[n];
+            int factorial = 1;
+            for (int i = n; i > 10; i--)
+            {
+                factorial *= n;
+            }
+            return factorial * _factorials[10];
+        }
+
         private static double SumOfItems(int power, params double[] items)
         {
             double sum = 0;
@@ -174,5 +191,22 @@ namespace StatisticsCore
             double range = NormalDistributionDensity(start, deviation, mean);
             return 1 - range;
         }
+
+        private static double BinomialOf(int value, int sample, int sampleFactorial, float successRate) =>
+            sampleFactorial / (GetFactorial(value) * GetFactorial(sample - value)) 
+                    * Math.Pow(successRate, value) * Math.Pow(1 - successRate, sample - value);
+
+        public static IEnumerable<double> Binomial(int sample, float successRate)
+        {
+            int sampleFactorial = GetFactorial(sample);
+            for (int i = 0; i <= sample; i++)
+            {
+                yield return BinomialOf(i, sample, sampleFactorial, successRate);
+            }
+        }
+
+        public static double BinomialOf(int value, int sample, float successRate) => 
+            BinomialOf(value, sample, GetFactorial(sample), successRate);
+
     }
 }
