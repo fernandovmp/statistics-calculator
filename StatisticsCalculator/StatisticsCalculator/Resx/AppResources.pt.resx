@@ -121,6 +121,10 @@
     <value>Adicionar</value>
     <comment>Add new item</comment>
   </data>
+  <data name="AmountOfSuccess" xml:space="preserve">
+    <value>Quantidade de sucessos</value>
+    <comment>Binomial amount of success label</comment>
+  </data>
   <data name="BaseCalculatorLabel" xml:space="preserve">
     <value>Calculadora base</value>
     <comment>Base calculator name</comment>
@@ -128,6 +132,18 @@
   <data name="BetweenLabel" xml:space="preserve">
     <value>Entre</value>
     <comment>Value of x are between</comment>
+  </data>
+  <data name="BinomialRange_Exact" xml:space="preserve">
+    <value>Exatamente</value>
+    <comment>Binomial range value text for exact x</comment>
+  </data>
+  <data name="BinomialRange_Max" xml:space="preserve">
+    <value>Máximo de</value>
+    <comment>Binomial range value text for maximun of x</comment>
+  </data>
+  <data name="BinomialRange_Min" xml:space="preserve">
+    <value>Mínimo de</value>
+    <comment>Binomial range value text for minimun of x</comment>
   </data>
   <data name="CalculateLabel" xml:space="preserve">
     <value>Calcular</value>
@@ -185,6 +201,10 @@
     <value>Amostra</value>
     <comment>Sample label</comment>
   </data>
+  <data name="SampleSize" xml:space="preserve">
+    <value>Tamanho da amostra</value>
+    <comment>Sample size label</comment>
+  </data>
   <data name="SampleStandardDeviationLabel" xml:space="preserve">
     <value>Desvio padrão da amostra</value>
     <comment>Sample standard deviation label</comment>
@@ -196,6 +216,10 @@
   <data name="StatisticsTabLabel" xml:space="preserve">
     <value>Estatística</value>
     <comment>Statistics tab text</comment>
+  </data>
+  <data name="SuccessRate" xml:space="preserve">
+    <value>Porcentagem de sucesso</value>
+    <comment>Binomial success rate label</comment>
   </data>
   <data name="SumOfItemsLabel" xml:space="preserve">
     <value>Soma dos itens</value>

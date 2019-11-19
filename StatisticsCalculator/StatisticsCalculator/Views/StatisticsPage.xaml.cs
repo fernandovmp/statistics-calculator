@@ -27,6 +27,12 @@ namespace StatisticsCalculator.Views
             {
                 BindingContext = new NormalDistributionViewModel(context)
             };
+            var binomial = new BinomialView
+            {
+               
+            };
+            binomial.SetBinding(BinomialView.ResultFieldProperty, "Result");
+            binomial.SetBinding(BinomialView.ResultLabelProperty, "ResultLabel");
             var calculators = new List<CalculatorPickerItem>
             {
                 new CalculatorPickerItem
@@ -38,6 +44,11 @@ namespace StatisticsCalculator.Views
                 {
                     Label = StringTranslationExtension.Translate("NormalDistributionLabel"),
                     Calculator = normalDistribution
+                },
+                new CalculatorPickerItem
+                {
+                    Label = "Binomial",
+                    Calculator = binomial
                 }
             };
             CalculatorPicker.ItemsSource = calculators;

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:statistics="clr-namespace:StatisticsCore;assembly=StatisticsCore"
+             xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
+             mc:Ignorable="d"
+             x:Class="StatisticsCalculator.Views.BinomialView"
+             >
+    <ContentView.Resources>
+        <Style x:Key="BinomialRangeButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="LightGray"/>
+        </Style>
+        <Style x:Key="FieldLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="End"/>
+            <Setter Property="Margin" Value="10, 0"/>
+            <Setter Property="Grid.ColumnSpan" Value="2"/>
+        </Style>
+        <Style x:Key="FieldEntry" TargetType="Entry">
+            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="BackgroundColor" Value="#eee"/>
+            <Setter Property="Keyboard" Value="Numeric"/>
+        </Style>
+    </ContentView.Resources>
+    <Grid
+        Margin="0, 0, 0, 30"
+        HorizontalOptions="CenterAndExpand"
+    >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Button
+            Text="{translator:Translate BinomialRange_Min}"
+            Command="{Binding SetBinomialRangeCommand}"
+            CommandParameter="{x:Static statistics:BinomialRange.Min}"
+            BackgroundColor="LightGray"
+        >
+            <Button.Triggers>
+                <DataTrigger
+                    TargetType="Button"
+                    Binding="{Binding BinomialRange}"
+                    Value="{x:Static statistics:BinomialRange.Min}"
+                >
+                    <Setter Property="BackgroundColor" Value="#2196F3"/>
+                    <Setter Property="TextColor" Value="White"/>
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
+        <Button
+            Grid.Column="1"
+            Text="{translator:Translate BinomialRange_Exact}"
+            Command="{Binding SetBinomialRangeCommand}"
+            CommandParameter="{x:Static statistics:BinomialRange.Exact}"
+            BackgroundColor="LightGray"
+        >
+            <Button.Triggers>
+                <DataTrigger
+                    TargetType="Button"
+                    Binding="{Binding BinomialRange}"
+                    Value="{x:Static statistics:BinomialRange.Exact}"
+                >
+                    <Setter Property="BackgroundColor" Value="#2196F3"/>
+                    <Setter Property="TextColor" Value="White"/>
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
+        <Button
+            Grid.Column="2"
+            Text="{translator:Translate BinomialRange_Max}"
+            Command="{Binding SetBinomialRangeCommand}"
+            CommandParameter="{x:Static statistics:BinomialRange.Max}"
+            BackgroundColor="LightGray"
+        >
+            <Button.Triggers>
+                <DataTrigger
+                    TargetType="Button"
+                    Binding="{Binding BinomialRange}"
+                    Value="{x:Static statistics:BinomialRange.Max}"
+                >
+                    <Setter Property="BackgroundColor" Value="#2196F3"/>
+                    <Setter Property="TextColor" Value="White"/>
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
+        <Label
+            Grid.Row="1"
+            Text="{translator:Translate SampleSize}"
+            Style="{StaticResource FieldLabel}"
+        />
+        <Entry
+            x:Name="sampleEntry"
+            Grid.Row="1"
+            Style="{StaticResource FieldEntry}"
+        />
+        <Label
+            Grid.Row="2"
+            Text="{translator:Translate AmountOfSuccess}"
+            Style="{StaticResource FieldLabel}"
+        />
+        <Entry
+            x:Name="amountOfSuccessEntry"
+            Grid.Row="2"
+            Style="{StaticResource FieldEntry}"
+        />
+        <Label
+            Grid.Row="3"
+            Text="{translator:Translate SuccessRate}"
+            Style="{StaticResource FieldLabel}"
+        />
+        <Entry
+            x:Name="successRateEntry"
+            Grid.Row="3"
+            Style="{StaticResource FieldEntry}"
+        />
+        <Button
+            Grid.Row="4"
+            Grid.ColumnSpan="3"
+            Margin="30, 0"
+            Text="{translator:Translate CalculateLabel}"
+            Clicked="Calculate"
+        />
+    </Grid>
+</ContentView>

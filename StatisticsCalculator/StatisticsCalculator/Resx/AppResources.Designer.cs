@@ -70,6 +70,15 @@ namespace StatisticsCalculator.Resx {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Amount of success.
+        /// </summary>
+        public static string AmountOfSuccess {
+            get {
+                return ResourceManager.GetString("AmountOfSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Base calculator.
         /// </summary>
         public static string BaseCalculatorLabel {
@@ -84,6 +93,33 @@ namespace StatisticsCalculator.Resx {
         public static string BetweenLabel {
             get {
                 return ResourceManager.GetString("BetweenLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Exact.
+        /// </summary>
+        public static string BinomialRange_Exact {
+            get {
+                return ResourceManager.GetString("BinomialRange_Exact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Maximun of.
+        /// </summary>
+        public static string BinomialRange_Max {
+            get {
+                return ResourceManager.GetString("BinomialRange_Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Minimun of.
+        /// </summary>
+        public static string BinomialRange_Min {
+            get {
+                return ResourceManager.GetString("BinomialRange_Min", resourceCulture);
             }
         }
         
@@ -214,6 +250,15 @@ namespace StatisticsCalculator.Resx {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Sample size.
+        /// </summary>
+        public static string SampleSize {
+            get {
+                return ResourceManager.GetString("SampleSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Sample standard deviation.
         /// </summary>
         public static string SampleStandardDeviationLabel {
@@ -237,6 +282,15 @@ namespace StatisticsCalculator.Resx {
         public static string StatisticsTabLabel {
             get {
                 return ResourceManager.GetString("StatisticsTabLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Success rate.
+        /// </summary>
+        public static string SuccessRate {
+            get {
+                return ResourceManager.GetString("SuccessRate", resourceCulture);
             }
         }
         

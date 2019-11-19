@@ -44,10 +44,17 @@
             <FlexLayout Direction="Column"
                         AlignItems="Center"
                         FlexLayout.Grow="1">
-                <Label Text="{Binding ResultLabel}" class="ResultLabel"/>
+                <Label 
+                    x:Name="resultLabel" 
+                    Text="{Binding ResultLabel}" 
+                    class="ResultLabel"
+                />
                 <Frame class="ResultFrame">
-                    <Label Text="{Binding Result}"
-                           class="ResultStyle"/>
+                    <Label
+                        x:Name="resultField"
+                        Text="{Binding Result}"
+                        class="ResultStyle"
+                    />
                 </Frame>
             </FlexLayout>
             <ContentView Content="{Binding Source={Reference CalculatorPicker}, Path=SelectedItem.Calculator}"/>
