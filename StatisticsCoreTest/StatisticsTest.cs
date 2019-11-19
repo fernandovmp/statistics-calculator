@@ -372,7 +372,7 @@ namespace StatisticsCoreTest
         {
             int sample = 10, x = 0;
             float successRate = 0.5f;
-            double expected = 0.000976;
+            double expected = 0.000977;
 
             double result = Statistics.BinomialOf(x, sample, successRate);
 
@@ -384,7 +384,7 @@ namespace StatisticsCoreTest
         {
             int sample = 10, x = 10;
             float successRate = 0.5f;
-            double expected = 0.000976;
+            double expected = 0.000977;
 
             double result = Statistics.BinomialOf(x, sample, successRate);
 
@@ -412,6 +412,65 @@ namespace StatisticsCoreTest
             };
 
             IEnumerable<double> result = Statistics.Binomial(sample, successRate)
+                                                   .Select(value => Math.Round(value, 6));
+            CollectionAssert.AreEqual(expected, result.ToArray());
+        }
+
+        [TestMethod]
+        public void TestBinomialWithRange_A()
+        {
+            int sample = 9;
+            float successRate = 0.02f;
+            BinomialRange binomialRange = BinomialRange.Min;
+            int min = 1;
+            var expected = new double[]
+            {
+                0.153137,
+                0.012501,
+                0.000595,
+                1.8E-05,
+                0,
+                0,
+                0,
+                0,
+                0
+            };
+            IEnumerable<double> result = Statistics.Binomial(sample, min, successRate, binomialRange)
+                                                   .Select(value => Math.Round(value, 6));
+            CollectionAssert.AreEqual(expected, result.ToArray());
+        }
+
+        [TestMethod]
+        public void TestBinomialWithRange_B()
+        {
+            int sample = 9;
+            float successRate = 0.02f;
+            BinomialRange binomialRange = BinomialRange.Max;
+            int max = 3;
+            var expected = new double[]
+            {
+                0.833748,
+                0.153137,
+                0.012501,
+                0.000595
+            };
+            IEnumerable<double> result = Statistics.Binomial(sample, max, successRate, binomialRange)
+                                                   .Select(value => Math.Round(value, 6));
+            CollectionAssert.AreEqual(expected, result.ToArray());
+        }
+
+        [TestMethod]
+        public void TestBinomialWithRange_C()
+        {
+            int sample = 10, success = 10;
+            float successRate = 0.5f;
+            BinomialRange binomialRange = BinomialRange.Exact;
+            var expected = new double[]
+            {
+                0.000977
+            };
+
+            IEnumerable<double> result = Statistics.Binomial(sample, success, successRate, binomialRange)
                                                    .Select(value => Math.Round(value, 6));
             CollectionAssert.AreEqual(expected, result.ToArray());
         }

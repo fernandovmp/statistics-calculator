@@ -4,6 +4,7 @@ using System.Collections;
 
 namespace StatisticsCore
 {
+    public enum BinomialRange { Exact, Max, Min };
     public static class Statistics
     {
         private static readonly int[] _factorials = new int[]
@@ -196,17 +197,33 @@ namespace StatisticsCore
             sampleFactorial / (GetFactorial(value) * GetFactorial(sample - value)) 
                     * Math.Pow(successRate, value) * Math.Pow(1 - successRate, sample - value);
 
-        public static IEnumerable<double> Binomial(int sample, float successRate)
+        private static IEnumerable<double> Binomial(int sample, int startRange, int endRange, float successRate)
         {
             int sampleFactorial = GetFactorial(sample);
-            for (int i = 0; i <= sample; i++)
+            for (int i = startRange; i <= endRange; i++)
             {
                 yield return BinomialOf(i, sample, sampleFactorial, successRate);
             }
         }
 
-        public static double BinomialOf(int value, int sample, float successRate) => 
-            BinomialOf(value, sample, GetFactorial(sample), successRate);
+        public static IEnumerable<double> Binomial(int sample, float successRate) =>
+            Binomial(sample, 0, sample, successRate);
+
+        public static IEnumerable<double> Binomial(int sample, int success, float successRate, BinomialRange range)
+        {
+            switch (range)
+            {
+                case BinomialRange.Max:
+                    return Binomial(sample, 0, success, successRate);
+                case BinomialRange.Min:
+                    return Binomial(sample, success, sample, successRate);
+                default:
+                    return Binomial(sample, success, success, successRate);
+            }
+        }
+
+        public static double BinomialOf(int success, int sample, float successRate) => 
+            BinomialOf(success, sample, GetFactorial(sample), successRate);
 
     }
 }
