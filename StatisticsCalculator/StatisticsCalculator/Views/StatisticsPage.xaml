@@ -13,14 +13,15 @@
     <ContentPage.Resources>
         <Style Class="ResultLabel" TargetType="Label">
             <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="TextColor" Value="Black"/>
         </Style>
         <Style Class="ResultFrame" TargetType="Frame">
             <Setter Property="BackgroundColor" Value="#eee"/>
             <Setter Property="CornerRadius" Value="15"/>
-            <Setter Property="FlexLayout.AlignSelf" Value="Stretch"/>
+            <Setter Property="Grid.Row" Value="1"/>
+            <Setter Property="Grid.RowSpan" Value="2"/>
             <Setter Property="HasShadow" Value="False"/>
-            <Setter Property="HeightRequest" Value="45"/>
             <Setter Property="Margin" Value="30, 0, 30, 0"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
@@ -37,27 +38,35 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <FlexLayout Direction="Column">
-            <Picker x:Name="CalculatorPicker"
-                    ItemDisplayBinding="{Binding Label}"
-                    Margin="30"/>
-            <FlexLayout Direction="Column"
-                        AlignItems="Center"
-                        FlexLayout.Grow="1">
-                <Label 
-                    x:Name="resultLabel" 
-                    Text="{Binding ResultLabel}" 
-                    class="ResultLabel"
-                />
-                <Frame class="ResultFrame">
+        <ScrollView>
+            <FlexLayout Direction="Column">
+                <Picker x:Name="CalculatorPicker"
+                        ItemDisplayBinding="{Binding Label}"
+                        Margin="30"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
                     <Label
-                        x:Name="resultField"
-                        Text="{Binding Result}"
-                        class="ResultStyle"
+                        x:Name="resultLabel" 
+                        Text="{Binding ResultLabel}" 
+                        class="ResultLabel"
                     />
-                </Frame>
+                    <Frame 
+                        class="ResultFrame"
+                    >
+                        <Label
+                            x:Name="resultField"
+                            Text="{Binding Result}"
+                            class="ResultStyle"
+                        />
+                    </Frame>
+                </Grid>
+                <ContentView Content="{Binding Source={Reference CalculatorPicker}, Path=SelectedItem.Calculator}"/>
             </FlexLayout>
-            <ContentView Content="{Binding Source={Reference CalculatorPicker}, Path=SelectedItem.Calculator}"/>
-        </FlexLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
