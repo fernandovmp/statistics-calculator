@@ -18,12 +18,14 @@ using StatisticsCore;
    - [Sample Variance](#samplevariance)
    - [Population Variance](#populationvariance)
    - [Normal Distribution Density](#normaldistributiondensity)
+   - [Binomial](#binomial)
    
  - [Exemplos](#exemplos)
    - [Exemplo Sum Of Items e Sum Of Square Of Items](#exemplo-sum-of-items-e-sum-of-square-of-items)
    - [Exemplo Mean, Median e Mode](#exemplo-mean-median-e-mode)
    - [Exemplo Deviation e Variance](#exemplo-deviation-e-variance)
    - [Exemplo Normal Distribution Density](#exemplo-normal-distribution-density)
+   - [Exemplo Binomial](#exemplo-binomial)
 
 ## Métodos
 
@@ -85,6 +87,22 @@ using StatisticsCore;
   public static double NormalDistributionDensity(double start, double end, double deviation, double mean)
   ```
    Calcula a estimativa da porcentagem dos itens que estão entre _start_ e _end_
+   
+   ## Binomial
+  ```C#
+  public static double BinomialOf(int success, int sample, float successRate)
+  ```
+  Calcula a chance de um evento ocorrer um número de vezes em uma amostra com uma determinda chance de sucesso
+  
+  ```C#
+  public static IEnumerable<double> Binomial(int sample, float successRate)
+  ```
+  Calcula a chance de cada evento ocorrer em uma amostra com uma determinda chance de sucesso
+  
+  ```C#
+  public static IEnumerable<double> Binomial(int sample, int success, float successRate, BinomialRange range)
+  ```
+  Calcula a chance de um intervalo de eventos ocorrerem em uma amostra com uma chance determinada de sucesso. O intervalo pode ser **Min** para 'no mínimo o valor da variável _success_', **Max** para 'no máximo o valor da variável _success_' ou **Exact** para exatamente valor da variável _success_.
 
 # Exemplos
 ## Exemplo Sum Of Items e Sum Of Square Of Items
@@ -243,5 +261,54 @@ namespace StatisticsExample
    The density of items that are less or equals to 60 is 97.72%
    The density of items that are between 35 and 45 is 15.73%
    The density of items that are greater or equals to 40 is 97.72%
+*/
+```
+
+## Exemplo Binomial
+
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using StatisticsCore;
+
+namespace StatisticsExample
+{
+    public class BinomialExample
+    {
+        internal static void Main(string[] args)
+        {
+            int sample = 9;
+            float successRate = 0.02f;
+            BinomialRange binomialRange = BinomialRange.Min;
+            int min = 1;
+            IEnumerable<double> result = Statistics.Binomial(sample, min, successRate, binomialRange);
+            double totalChance = 0;
+            foreach (double chance in result)
+            {
+                totalChance += chance;
+            }
+            
+            Console.WriteLine("Chance of at least 1 item match the condition: {0:P2}", totalChance);
+            Console.WriteLine("Chance for each amount of success:");
+            for (int i = 0; i < result.Count(); i++)
+            {
+                Console.WriteLine("P[X = {0}] = {1:P2}", i + 1, result.ElementAt(i));
+            }
+        }
+    }
+}
+/* Output
+    Chance of at least 1 item match the condition: 16.63%
+    Chance for each amount of success:
+    P[X = 1] = 15.31%
+    P[X = 2] = 1.25%
+    P[X = 3] = 0.06%
+    P[X = 4] = 0.00%
+    P[X = 5] = 0.00%
+    P[X = 6] = 0.00%
+    P[X = 7] = 0.00%
+    P[X = 8] = 0.00%
+    P[X = 9] = 0.00%
 */
 ```
