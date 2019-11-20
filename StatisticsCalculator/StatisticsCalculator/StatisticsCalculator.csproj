@@ -25,7 +25,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Views\DefaultCalculatorView.xaml.cs">
+    <Compile Update="ContentViews\DefaultCalculatorView.xaml.cs">
       <DependentUpon>DefaultCalculatorView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\SamplePage.xaml.cs">
@@ -48,16 +48,16 @@
     <EmbeddedResource Update="Resx\AppResources.pt.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\BinomialView.xaml">
+    <EmbeddedResource Update="ContentViews\BinomialView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DefaultCalculatorView.xaml">
+    <EmbeddedResource Update="ContentViews\DefaultCalculatorView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NormalDistributionView.xaml">
+    <EmbeddedResource Update="ContentViews\NormalDistributionView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SampleItemView.xaml">
+    <EmbeddedResource Update="ContentViews\SampleItemView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SamplePage.xaml">

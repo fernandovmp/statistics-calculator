@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<contentViews:BaseCalculatorView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
+             xmlns:contentViews="clr-namespace:StatisticsCalculator.ContentViews"
+             mc:Ignorable="d"
+             x:Class="StatisticsCalculator.ContentViews.NormalDistributionView">
+    <ContentView.Content>
+        <StackLayout 
+            CompressedLayout.IsHeadless="True"
+            Margin="5, 0, 5, 50"
+        >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button 
+                    Text="{translator:Translate LessThanLabel}"
+                    Command="{Binding SetModeCommand}"
+                    CommandParameter="{x:Static contentViews:NormalDistributionMode.LessThan}"
+                />
+                <Button 
+                    Text="{translator:Translate BetweenLabel}"
+                    Grid.Column="1"
+                    Command="{Binding SetModeCommand}"
+                    CommandParameter="{x:Static contentViews:NormalDistributionMode.Between}"
+                />
+                <Button 
+                    Text="{translator:Translate GreaterThanLabel}"
+                    Grid.Column="2"
+                    Command="{Binding SetModeCommand}"
+                    CommandParameter="{x:Static contentViews:NormalDistributionMode.GreaterThan}"
+                />
+            </Grid>
+            <FlexLayout JustifyContent="Center">
+                <Entry 
+                    Keyboard="Numeric"
+                    x:Name="optionalComparerValueEntry"
+                    IsVisible="{Binding IsBetweenValue}"
+                    WidthRequest="60"
+                />
+                <Label 
+                    x:Name="comparerLabel"
+                    FlexLayout.AlignSelf="Center"
+                    FontSize="22"
+                />
+                <Entry 
+                    Keyboard="Numeric"
+                    x:Name="comparerValueEntry"
+                    WidthRequest="60"
+                />
+            </FlexLayout>
+            <FlexLayout JustifyContent="Center">
+                <Label 
+                    Text="{translator:Translate MeanLabel}"
+                    FlexLayout.AlignSelf="Center"
+                    FontSize="22"
+                />
+                <Entry 
+                    Keyboard="Numeric"
+                    x:Name="meanEntry"
+                    WidthRequest="60"
+                />
+            </FlexLayout>
+            <FlexLayout JustifyContent="Center">
+                <Label 
+                    Text="σ"
+                    FlexLayout.AlignSelf="Center"
+                    FontSize="22"
+                />
+                <Entry 
+                    Keyboard="Numeric"
+                    x:Name="deviationEntry"
+                    WidthRequest="60"
+                />
+            </FlexLayout>
+            <Button 
+                Text="{translator:Translate CalculateLabel}"
+                Margin="120, 0"
+                Command="{Binding CalculateCommand}"
+            />
+        </StackLayout>
+    </ContentView.Content>
+</contentViews:BaseCalculatorView>

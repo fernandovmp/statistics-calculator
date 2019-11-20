@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<contentViews:BaseCalculatorView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:behaviors="clr-namespace:StatisticsCalculator.Behaviors"
+             xmlns:contentViews="clr-namespace:StatisticsCalculator.ContentViews"
              xmlns:statistics="clr-namespace:StatisticsCore;assembly=StatisticsCore"
              xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
              mc:Ignorable="d"
-             x:Class="StatisticsCalculator.Views.BinomialView"
+             x:Class="StatisticsCalculator.ContentViews.BinomialView"
              >
     <ContentView.Resources>
         <Style x:Key="BinomialRangeButton" TargetType="Button">
@@ -147,4 +148,4 @@
             Clicked="Calculate"
         />
     </Grid>
-</ContentView>
+</contentViews:BaseCalculatorView>

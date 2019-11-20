@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using StatisticsCalculator.Translation;
 using StatisticsCalculator.ViewModels;
+using StatisticsCalculator.ContentViews;
 
 namespace StatisticsCalculator.Views
 {
@@ -19,20 +20,11 @@ namespace StatisticsCalculator.Views
             InitializeComponent();
             var context = new StatisticsViewModel();
             BindingContext = context;
-            var defaultCalculator = new DefaultCalculatorView
-            {
-                BindingContext = new DefaultCalculatorViewModel(context)
-            };
-            var normalDistribution = new NormalDistributionView
-            {
-                BindingContext = new NormalDistributionViewModel(context)
-            };
-            var binomial = new BinomialView
-            {
-               
-            };
-            binomial.SetBinding(BinomialView.ResultFieldProperty, "Result");
-            binomial.SetBinding(BinomialView.ResultLabelProperty, "ResultLabel");
+
+            DefaultCalculatorView defaultCalculator = CreateCalculator<DefaultCalculatorView>();
+            defaultCalculator.SetBinding(DefaultCalculatorView.SampleProperty, "Sample");
+            NormalDistributionView normalDistribution = CreateCalculator<NormalDistributionView>();
+            BinomialView binomial = CreateCalculator<BinomialView>();
             var calculators = new List<CalculatorPickerItem>
             {
                 new CalculatorPickerItem
@@ -53,6 +45,14 @@ namespace StatisticsCalculator.Views
             };
             CalculatorPicker.ItemsSource = calculators;
             CalculatorPicker.SelectedIndex = 0;
+        }
+
+        private T CreateCalculator<T>() where T : BaseCalculatorView
+        {
+            T calculator = Activator.CreateInstance<T>();
+            calculator.SetBinding(BaseCalculatorView.ResultFieldProperty, "Result");
+            calculator.SetBinding(BaseCalculatorView.ResultLabelProperty, "ResultLabel");
+            return calculator;
         }
     }
 }

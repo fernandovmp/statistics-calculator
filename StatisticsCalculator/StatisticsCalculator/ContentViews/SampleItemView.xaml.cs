@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace StatisticsCalculator.Views
+namespace StatisticsCalculator.ContentViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DefaultCalculatorView : ContentView
+    public partial class SampleItemView : ContentView
     {
-        public DefaultCalculatorView()
+        public SampleItemView()
         {
             InitializeComponent();
         }

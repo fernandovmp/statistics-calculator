@@ -10,10 +10,10 @@ using StatisticsCore;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace StatisticsCalculator.Views
+namespace StatisticsCalculator.ContentViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BinomialView : ContentView
+    public partial class BinomialView : BaseCalculatorView
     {
         public BinomialView()
         {
@@ -22,21 +22,6 @@ namespace StatisticsCalculator.Views
             Content.BindingContext = this;
         }
 
-        public static readonly BindableProperty ResultFieldProperty = BindableProperty.Create(nameof(ResultField),
-            typeof(string), typeof(BinomialView), string.Empty, BindingMode.TwoWay);
-        public static readonly BindableProperty ResultLabelProperty = BindableProperty.Create(nameof(ResultLabel),
-            typeof(string), typeof(BinomialView), string.Empty, BindingMode.TwoWay);
-
-        public string ResultField
-        {
-            get => (string)GetValue(ResultFieldProperty);
-            set => SetValue(ResultFieldProperty, value);
-        }
-        public string ResultLabel
-        {
-            get => (string)GetValue(ResultLabelProperty);
-            set => SetValue(ResultLabelProperty, value);
-        }
         public BinomialRange BinomialRange { get; private set; }
         public ICommand SetBinomialRangeCommand { get; }
 

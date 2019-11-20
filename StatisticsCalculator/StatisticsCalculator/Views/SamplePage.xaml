@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:views="clr-namespace:StatisticsCalculator.Views"
              xmlns:viewModels="clr-namespace:StatisticsCalculator.ViewModels"
+             xmlns:contentViews="clr-namespace:StatisticsCalculator.ContentViews"
              xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.Views.SamplePage"
@@ -45,7 +45,7 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <views:SampleItemView Padding="5"/>
+                            <contentViews:SampleItemView Padding="5"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     <CollectionView.EmptyView>

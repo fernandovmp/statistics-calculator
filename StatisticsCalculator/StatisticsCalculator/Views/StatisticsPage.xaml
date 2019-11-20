@@ -3,10 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewModels="clr-namespace:StatisticsCalculator.ViewModels"
-             xmlns:views="clr-namespace:StatisticsCalculator.Views"
              xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
-             xmlns:local="clr-namespace:StatisticsCalculator"
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.Views.StatisticsPage"
              Title="{translator:Translate StatisticsTabLabel}">

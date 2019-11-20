@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<contentViews:BaseCalculatorView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:contentViews="clr-namespace:StatisticsCalculator.ContentViews"
+             xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
+             mc:Ignorable="d"
+             x:Class="StatisticsCalculator.ContentViews.DefaultCalculatorView">
+  <ContentView.Content>
+        <Grid 
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="End"
+            CompressedLayout.IsHeadless="True"
+        >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Button 
+                Text="{translator:Translate ModeLabel}" 
+                class="CalculatorButton"
+                Command="{Binding ModeCommand}"
+            />
+            <Button 
+                Text="{translator:Translate MedianLabel}" 
+                class="CalculatorButton"
+                Grid.Column="1"
+                Command="{Binding MedianCommand}"
+            />
+            <Button 
+                Text="{translator:Translate MeanLabel}" 
+                class="CalculatorButton"
+                Grid.Column="2"
+                Command="{Binding MeanCommand}"
+            />
+            <Button 
+                Text="Σx" 
+                class="CalculatorButton"
+                Grid.Row="1"
+                Command="{Binding SumCommand}"
+            />
+            <Button 
+                Text="Σx^2" 
+                class="CalculatorButton"
+                Grid.Row="1" Grid.Column="1"
+                Command="{Binding SumOfSquareCommand}"
+            />
+            <Button 
+                Text="σ" 
+                class="CalculatorButton"
+                Grid.Row="1" Grid.Column="2"
+                Command="{Binding PopulationStandardDeviationCommand}"
+            />
+            <Button 
+                Text="σ^2" 
+                class="CalculatorButton"
+                Grid.Row="2" Grid.Column="2"
+                Command="{Binding PopulationVarianceCommand}"
+            />
+            <Button 
+                Text="s"
+                class="CalculatorButton"
+                Grid.Row="2"
+                Command="{Binding SampleStandardDeviationCommand}"
+            />
+            <Button 
+                Text="s^2"
+                class="CalculatorButton"
+                Grid.Row="2" Grid.Column="1"
+                Command="{Binding SampleVarianceCommand}"
+            />
+        </Grid>
+    </ContentView.Content>
+</contentViews:BaseCalculatorView>

@@ -20,6 +20,7 @@ namespace StatisticsCalculator.ViewModels
                 ICollection<SampleItemViewModel>>(this, "SampleUpdated", (sender, parameter) =>
                 {
                     Sample = parameter;
+                    OnPropertyChanged(nameof(Sample));
                 });
         }
 
@@ -33,26 +34,6 @@ namespace StatisticsCalculator.ViewModels
         {
             get => _resultLabel;
             set => SetProperty(ref _resultLabel, value);
-        }
-
-        internal void SetLabel(object parameter)
-        {
-            if (parameter is string label)
-            {
-                ResultLabel = label;
-                return;
-            }
-            ResultLabel = "";
-        }
-
-        public double[] GetSampleValuesArray()
-        {
-            List<double> collection = new List<double>();
-            foreach (SampleItemViewModel item in Sample)
-            {
-                collection.Add(item.ItemValue);
-            }
-            return collection.ToArray();
         }
     }
 }
