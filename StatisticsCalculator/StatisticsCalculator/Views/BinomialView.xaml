@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:behaviors="clr-namespace:StatisticsCalculator.Behaviors"
              xmlns:statistics="clr-namespace:StatisticsCore;assembly=StatisticsCore"
              xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
              mc:Ignorable="d"
@@ -103,7 +104,14 @@
             x:Name="sampleEntry"
             Grid.Row="1"
             Style="{StaticResource FieldEntry}"
-        />
+        >
+            <Entry.Behaviors>
+                <behaviors:NumericEntryValidationBehavior 
+                    AllowDecimalNumber="False"
+                    AllowNegativeNumber="False"
+                />
+            </Entry.Behaviors>
+        </Entry>
         <Label
             Grid.Row="2"
             Text="{translator:Translate AmountOfSuccess}"
@@ -113,7 +121,14 @@
             x:Name="amountOfSuccessEntry"
             Grid.Row="2"
             Style="{StaticResource FieldEntry}"
-        />
+        >
+            <Entry.Behaviors>
+                <behaviors:NumericEntryValidationBehavior 
+                    AllowDecimalNumber="False"
+                    AllowNegativeNumber="False"
+                />
+            </Entry.Behaviors>
+        </Entry>
         <Label
             Grid.Row="3"
             Text="{translator:Translate SuccessRate}"
