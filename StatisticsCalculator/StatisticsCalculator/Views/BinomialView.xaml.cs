@@ -19,7 +19,7 @@ namespace StatisticsCalculator.Views
         {
             InitializeComponent();
             SetBinomialRangeCommand = new Command<BinomialRange>(SetBinomialRange);
-            BindingContext = this;
+            Content.BindingContext = this;
         }
 
         public static readonly BindableProperty ResultFieldProperty = BindableProperty.Create(nameof(ResultField),
@@ -51,10 +51,10 @@ namespace StatisticsCalculator.Views
             IEnumerable<double> result = Statistics.Binomial(sample, successAmount, successRate, BinomialRange);
             int startRange = BinomialRange == BinomialRange.Max ? 0 : successAmount;
             ResultLabel = "Binomial";
-            ResultField = "";
-            for (int i = 0; i < result.Count(); i++)
+            ResultField = $"P[X = {startRange}] = {result.ElementAt(0)}";
+            for (int i = 1; i < result.Count(); i++)
             {
-                ResultField += $"P[X = {startRange + i}] = {result.ElementAt(i)}\n";
+                ResultField += $"\nP[X = {startRange + i}] = {result.ElementAt(i)}";
             }
         }
 
