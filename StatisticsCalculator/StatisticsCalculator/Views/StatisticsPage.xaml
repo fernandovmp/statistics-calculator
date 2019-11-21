@@ -9,7 +9,7 @@
              Title="{translator:Translate StatisticsTabLabel}">
     <ContentPage.Resources>
         <Style Class="ResultLabel" TargetType="Label">
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="TextColor" Value="Black"/>
         </Style>
@@ -24,7 +24,7 @@
         </Style>
         <Style Class="ResultStyle" TargetType="Label">
             <Setter Property="BackgroundColor" Value="Transparent"/>
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="TextColor" Value="Black"/>
