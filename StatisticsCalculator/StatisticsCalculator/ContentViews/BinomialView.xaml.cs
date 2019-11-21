@@ -36,10 +36,10 @@ namespace StatisticsCalculator.ContentViews
             IEnumerable<double> result = Statistics.Binomial(sample, successAmount, successRate, BinomialRange);
             int startRange = BinomialRange == BinomialRange.Max ? 0 : successAmount;
             ResultLabel = "Binomial";
-            ResultField = $"P[X = {startRange}] = {result.ElementAt(0)}";
+            ResultField = $"P[X = {startRange}] = {result.ElementAt(0).ToString("N4")}";
             for (int i = 1; i < result.Count(); i++)
             {
-                ResultField += $"\nP[X = {startRange + i}] = {result.ElementAt(i)}";
+                ResultField += $"\nP[X = {startRange + i}] = {result.ElementAt(i).ToString("N4")}";
             }
         }
 
