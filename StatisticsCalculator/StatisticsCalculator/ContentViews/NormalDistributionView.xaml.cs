@@ -15,46 +15,26 @@ namespace StatisticsCalculator.ContentViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NormalDistributionView : BaseCalculatorView
     {
-        private NormalDistributionMode _normalDistributionMode;
-
         public NormalDistributionView()
         {
             InitializeComponent();
             SetModeCommand = new Command<NormalDistributionMode>(SetMode);
             CalculateCommand = new Command(Calculate);
-            SetModeCommand.Execute(NormalDistributionMode.LessThan);
             Content.BindingContext = this;
         }
 
         public bool IsBetweenValue { get; private set; }
         public ICommand SetModeCommand { get; private set; }
         public ICommand CalculateCommand { get; private set; }
+        public NormalDistributionMode NormalDistributionMode { get; private set; }
 
         private void SetMode(NormalDistributionMode mode)
         {
-            _normalDistributionMode = mode;
-            switch (mode)
-            {
-                case NormalDistributionMode.LessThan:
-                    comparerLabel.Text = "x <=";
-                    break;
-                case NormalDistributionMode.Between:
-                    comparerLabel.Text = "<= x <=";
-                    IsBetweenValue = true;
-                    OnPropertyChanged(nameof(IsBetweenValue));
-                    break;
-                case NormalDistributionMode.GreaterThan:
-                    comparerLabel.Text = "x >=";
-                    break;
-                default:
-                    comparerLabel.Text = "";
-                    break;
-            }
-            if (mode != NormalDistributionMode.Between)
-            {
-                IsBetweenValue = false;
-                OnPropertyChanged(nameof(IsBetweenValue));
-            }
+            if (NormalDistributionMode == mode) return;
+            NormalDistributionMode = mode;
+            OnPropertyChanged(nameof(NormalDistributionMode));
+            IsBetweenValue = NormalDistributionMode == NormalDistributionMode.Between;
+            OnPropertyChanged(nameof(IsBetweenValue));
         }
 
         private void Calculate()
@@ -64,7 +44,7 @@ namespace StatisticsCalculator.ContentViews
                 && double.TryParse(deviationEntry.Text, out double deviation))
             {
                 double result = 0;
-                switch (_normalDistributionMode)
+                switch (NormalDistributionMode)
                 {
                     case NormalDistributionMode.LessThan:
                         result = Statistics.NormalDistributionDensity(comparer, deviation, mean);

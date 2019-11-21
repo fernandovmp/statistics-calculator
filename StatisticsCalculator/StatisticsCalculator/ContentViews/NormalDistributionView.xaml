@@ -7,82 +7,161 @@
              xmlns:contentViews="clr-namespace:StatisticsCalculator.ContentViews"
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.ContentViews.NormalDistributionView">
+    <ContentView.Resources>
+        <Style x:Key="InputEntry" TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="#eee"/>
+            <Setter Property="Margin" Value="20, 5"/>
+            <Setter Property="Keyboard" Value="Numeric"/>
+        </Style>
+    </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout 
-            CompressedLayout.IsHeadless="True"
-            Margin="5, 0, 5, 50"
+        <Grid
+            Margin="10, 5"
         >
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Button 
-                    Text="{translator:Translate LessThanLabel}"
-                    Command="{Binding SetModeCommand}"
-                    CommandParameter="{x:Static contentViews:NormalDistributionMode.LessThan}"
-                />
-                <Button 
-                    Text="{translator:Translate BetweenLabel}"
-                    Grid.Column="1"
-                    Command="{Binding SetModeCommand}"
-                    CommandParameter="{x:Static contentViews:NormalDistributionMode.Between}"
-                />
-                <Button 
-                    Text="{translator:Translate GreaterThanLabel}"
-                    Grid.Column="2"
-                    Command="{Binding SetModeCommand}"
-                    CommandParameter="{x:Static contentViews:NormalDistributionMode.GreaterThan}"
-                />
-            </Grid>
-            <FlexLayout JustifyContent="Center">
-                <Entry 
-                    Keyboard="Numeric"
-                    x:Name="optionalComparerValueEntry"
-                    IsVisible="{Binding IsBetweenValue}"
-                    WidthRequest="60"
-                />
-                <Label 
-                    x:Name="comparerLabel"
-                    FlexLayout.AlignSelf="Center"
-                    FontSize="22"
-                />
-                <Entry 
-                    Keyboard="Numeric"
-                    x:Name="comparerValueEntry"
-                    WidthRequest="60"
-                />
-            </FlexLayout>
-            <FlexLayout JustifyContent="Center">
-                <Label 
-                    Text="{translator:Translate MeanLabel}"
-                    FlexLayout.AlignSelf="Center"
-                    FontSize="22"
-                />
-                <Entry 
-                    Keyboard="Numeric"
-                    x:Name="meanEntry"
-                    WidthRequest="60"
-                />
-            </FlexLayout>
-            <FlexLayout JustifyContent="Center">
-                <Label 
-                    Text="σ"
-                    FlexLayout.AlignSelf="Center"
-                    FontSize="22"
-                />
-                <Entry 
-                    Keyboard="Numeric"
-                    x:Name="deviationEntry"
-                    WidthRequest="60"
-                />
-            </FlexLayout>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <Button 
-                Text="{translator:Translate CalculateLabel}"
+                Text="{translator:Translate LessThanLabel}"
+                Command="{Binding SetModeCommand}"
+                CommandParameter="{x:Static contentViews:NormalDistributionMode.LessThan}"
+                BackgroundColor="LightGray"
+            >
+                <Button.Triggers>
+                    <DataTrigger
+                        TargetType="Button"
+                        Binding="{Binding NormalDistributionMode}"
+                        Value="{x:Static contentViews:NormalDistributionMode.LessThan}"
+                    >
+                        <Setter Property="BackgroundColor" Value="#2196F3"/>
+                        <Setter Property="TextColor" Value="White"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button 
+                Text="{translator:Translate BetweenLabel}"
+                Grid.Column="1"
+                Command="{Binding SetModeCommand}"
+                CommandParameter="{x:Static contentViews:NormalDistributionMode.Between}"
+                BackgroundColor="LightGray"
+            >
+                <Button.Triggers>
+                    <DataTrigger
+                        TargetType="Button"
+                        Binding="{Binding NormalDistributionMode}"
+                        Value="{x:Static contentViews:NormalDistributionMode.Between}"
+                    >
+                        <Setter Property="BackgroundColor" Value="#2196F3"/>
+                        <Setter Property="TextColor" Value="White"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button 
+                Text="{translator:Translate GreaterThanLabel}"
+                Grid.Column="2"
+                Command="{Binding SetModeCommand}"
+                CommandParameter="{x:Static contentViews:NormalDistributionMode.GreaterThan}"
+                BackgroundColor="LightGray"
+            >
+                <Button.Triggers>
+                    <DataTrigger
+                        TargetType="Button"
+                        Binding="{Binding NormalDistributionMode}"
+                        Value="{x:Static contentViews:NormalDistributionMode.GreaterThan}"
+                    >
+                        <Setter Property="BackgroundColor" Value="#2196F3"/>
+                        <Setter Property="TextColor" Value="White"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Entry
+                Grid.Row="2"
+                Style="{StaticResource InputEntry}"
+                x:Name="optionalComparerValueEntry"
+                IsVisible="{Binding IsBetweenValue}"
+            />
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontSize="Large"
+            >
+                <Label.Triggers>
+                    <DataTrigger 
+                        TargetType="Label"
+                        Binding="{Binding NormalDistributionMode}"
+                        Value="{x:Static contentViews:NormalDistributionMode.LessThan}"
+                    >
+                        <Setter Property="Text" Value="x &lt;="/>
+                    </DataTrigger>
+                    <DataTrigger 
+                        TargetType="Label"
+                        Binding="{Binding NormalDistributionMode}"
+                        Value="{x:Static contentViews:NormalDistributionMode.Between}"
+                    >
+                        <Setter Property="Text" Value="&lt;= x &lt;="/>
+                    </DataTrigger>
+                    <DataTrigger 
+                        TargetType="Label"
+                        Binding="{Binding NormalDistributionMode}"
+                        Value="{x:Static contentViews:NormalDistributionMode.GreaterThan}"
+                    >
+                        <Setter Property="Text" Value="x &gt;="/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Entry
+                Grid.Row="2"
+                Grid.Column="2"
+                Style="{StaticResource InputEntry}"
+                x:Name="comparerValueEntry"
+            />
+            <Label
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{translator:Translate MeanLabel}"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                FontSize="Large"
+            />
+            <Entry
+                Grid.Row="3"
+                Grid.Column="2"
+                Style="{StaticResource InputEntry}"
+                x:Name="meanEntry"
+            />
+            <Label
+                Grid.Row="4"
+                Grid.Column="1"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                Text="σ"
+                FontSize="Large"
+            />
+            <Entry
+                Grid.Row="4"
+                Grid.Column="2"
+                Style="{StaticResource InputEntry}"
+                x:Name="deviationEntry"
+            />
+            <Button
+                Grid.Row="5"
+                Grid.ColumnSpan="3"
                 Margin="120, 0"
+                Text="{translator:Translate CalculateLabel}"
                 Command="{Binding CalculateCommand}"
             />
-        </StackLayout>
+        </Grid>
     </ContentView.Content>
 </contentViews:BaseCalculatorView>
