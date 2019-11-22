@@ -103,6 +103,7 @@
         />
         <Entry
             x:Name="sampleEntry"
+            x:FieldModifier="Protected"
             Grid.Row="1"
             Style="{StaticResource FieldEntry}"
         >
@@ -120,6 +121,7 @@
         />
         <Entry
             x:Name="amountOfSuccessEntry"
+            x:FieldModifier="Protected"
             Grid.Row="2"
             Style="{StaticResource FieldEntry}"
         >
@@ -137,6 +139,7 @@
         />
         <Entry
             x:Name="successRateEntry"
+            x:FieldModifier="Protected"
             Grid.Row="3"
             Style="{StaticResource FieldEntry}"
         />

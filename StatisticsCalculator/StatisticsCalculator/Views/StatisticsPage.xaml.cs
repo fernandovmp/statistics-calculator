@@ -25,6 +25,7 @@ namespace StatisticsCalculator.Views
             defaultCalculator.SetBinding(DefaultCalculatorView.SampleProperty, "Sample");
             NormalDistributionView normalDistribution = CreateCalculator<NormalDistributionView>();
             BinomialView binomial = CreateCalculator<BinomialView>();
+            PoissonView poisson = CreateCalculator<PoissonView>();
             var calculators = new List<CalculatorPickerItem>
             {
                 new CalculatorPickerItem
@@ -41,6 +42,11 @@ namespace StatisticsCalculator.Views
                 {
                     Label = "Binomial",
                     Calculator = binomial
+                },
+                new CalculatorPickerItem
+                {
+                    Label = "Poisson",
+                    Calculator = poisson
                 }
             };
             CalculatorPicker.ItemsSource = calculators;

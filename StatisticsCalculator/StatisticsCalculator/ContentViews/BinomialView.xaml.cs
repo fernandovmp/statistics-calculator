@@ -25,7 +25,7 @@ namespace StatisticsCalculator.ContentViews
         public BinomialRange BinomialRange { get; private set; }
         public ICommand SetBinomialRangeCommand { get; }
 
-        private void Calculate(object sender, EventArgs e)
+        protected virtual void Calculate(object sender, EventArgs e)
         {
             if (!int.TryParse(sampleEntry.Text, out int sample)
                 || !int.TryParse(amountOfSuccessEntry.Text, out int successAmount)
@@ -43,7 +43,7 @@ namespace StatisticsCalculator.ContentViews
             }
         }
 
-        private void SetBinomialRange(BinomialRange range)
+        protected void SetBinomialRange(BinomialRange range)
         {
             BinomialRange = range;
             OnPropertyChanged(nameof(BinomialRange));
