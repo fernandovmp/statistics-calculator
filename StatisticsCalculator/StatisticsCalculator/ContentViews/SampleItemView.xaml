@@ -7,21 +7,27 @@
              x:Class="StatisticsCalculator.ContentViews.SampleItemView">
   <ContentView.Content>
         <Frame Padding="0">
-            <FlexLayout AlignItems="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
                 <Button 
                     Text="X"
                     Command="{Binding RemoveItemCommand}"
-                    WidthRequest="50"
                 />
                 <Label 
-                    Text="{Binding ItemValue}" 
-                    TextColor="Black" 
-                    FontSize="18"
-                    FlexLayout.Grow="1"
-                    HorizontalTextAlignment="Center"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
                     BackgroundColor="Transparent"
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Text="{Binding ItemValue}" 
                 />
-            </FlexLayout>
+            </Grid>
         </Frame>
   </ContentView.Content>
 </ContentView>
