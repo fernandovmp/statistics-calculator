@@ -474,5 +474,58 @@ namespace StatisticsCoreTest
                                                    .Select(value => Math.Round(value, 6));
             CollectionAssert.AreEqual(expected, result.ToArray());
         }
+
+        [TestMethod]
+        public void TestPoissonOf_A()
+        {
+            int success = 5;
+            float mean = 8;
+            double expected = 0.091604;
+
+            double result = Statistics.PoissonOf(success, mean);
+
+            Assert.AreEqual(expected, result, 0.000001);
+        }
+
+        [TestMethod]
+        public void TestPoissonOf_B()
+        {
+            int success = 0;
+            float mean = 1.2f;
+            double expected = 0.301194;
+
+            double result = Statistics.PoissonOf(success, mean);
+
+            Assert.AreEqual(expected, result, 0.000001);
+        }
+
+        [TestMethod]
+        public void TestPoissonOf_C()
+        {
+            int success = 1;
+            float mean = 1.2f;
+            double expected = 0.361433;
+
+            double result = Statistics.PoissonOf(success, mean);
+
+            Assert.AreEqual(expected, result, 0.000001);
+        }
+
+        [TestMethod]
+        public void TestPoissonWithRange()
+        {
+            int success = 1, sample = 6;
+            float successRate = 0.2f;
+            BinomialRange range = BinomialRange.Max;
+            var expected = new double[]
+            {
+                0.301194,
+                0.361433
+            };
+
+            IEnumerable<double> result = Statistics.Poisson(success, sample, successRate, range)
+                                                   .Select(value => Math.Round(value, 6));
+            CollectionAssert.AreEqual(expected, result.ToArray());
+        }
     }
 }

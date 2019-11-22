@@ -225,5 +225,29 @@ namespace StatisticsCore
         public static double BinomialOf(int success, int sample, float successRate) => 
             BinomialOf(success, sample, GetFactorial(sample), successRate);
 
+        public static double PoissonOf(int success, float mean) =>
+            Math.Pow(mean, success) * Math.Exp(-mean) / GetFactorial(success);
+
+        private static IEnumerable<double> Poisson(int sample, int startRange, int endRange, float successRate)
+        {
+            float mean = sample * successRate;
+            for (int i = startRange; i <= endRange; i++)
+            {
+                yield return PoissonOf(i,  mean);
+            }
+        }
+
+        public static IEnumerable<double> Poisson(int success, int sample, float successRate, BinomialRange range)
+        {
+            switch (range)
+            {
+                case BinomialRange.Max:
+                    return Poisson(sample, 0, success, successRate);
+                case BinomialRange.Min:
+                    return Poisson(sample, success, sample, successRate);
+                default:
+                    return Poisson(sample, success, success, successRate);
+            }
+        }
     }
 }
