@@ -6,6 +6,15 @@
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.App">
     <Application.Resources>
-
+        <Color x:Key="PrimaryColor">#812DA8</Color>
+        <Color x:Key="PrimaryColorDark">#5D2497</Color>
+        <Color x:Key="ControlActived">#442DA8</Color>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="#eee"/>
+        </Style>
     </Application.Resources>
 </Application>

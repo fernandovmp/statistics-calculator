@@ -15,7 +15,6 @@
             <Setter Property="BackgroundColor" Value="LightGray"/>
         </Style>
         <Style x:Key="FieldLabel" TargetType="Label">
-            <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
             <Setter Property="HorizontalTextAlignment" Value="End"/>
             <Setter Property="Margin" Value="10, 0"/>
@@ -23,7 +22,6 @@
         </Style>
         <Style x:Key="FieldEntry" TargetType="Entry">
             <Setter Property="Grid.Column" Value="2"/>
-            <Setter Property="BackgroundColor" Value="#eee"/>
             <Setter Property="Keyboard" Value="Numeric"/>
         </Style>
     </ContentView.Resources>
@@ -55,7 +53,7 @@
                     Binding="{Binding BinomialRange}"
                     Value="{x:Static statistics:BinomialRange.Min}"
                 >
-                    <Setter Property="BackgroundColor" Value="#2196F3"/>
+                    <Setter Property="BackgroundColor" Value="{StaticResource ControlActived}"/>
                     <Setter Property="TextColor" Value="White"/>
                 </DataTrigger>
             </Button.Triggers>
@@ -73,7 +71,7 @@
                     Binding="{Binding BinomialRange}"
                     Value="{x:Static statistics:BinomialRange.Exact}"
                 >
-                    <Setter Property="BackgroundColor" Value="#2196F3"/>
+                    <Setter Property="BackgroundColor" Value="{StaticResource ControlActived}"/>
                     <Setter Property="TextColor" Value="White"/>
                 </DataTrigger>
             </Button.Triggers>
@@ -91,7 +89,7 @@
                     Binding="{Binding BinomialRange}"
                     Value="{x:Static statistics:BinomialRange.Max}"
                 >
-                    <Setter Property="BackgroundColor" Value="#2196F3"/>
+                    <Setter Property="BackgroundColor" Value="{StaticResource ControlActived}"/>
                     <Setter Property="TextColor" Value="White"/>
                 </DataTrigger>
             </Button.Triggers>

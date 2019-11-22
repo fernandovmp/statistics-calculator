@@ -7,7 +7,13 @@
              xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
              mc:Ignorable="d"
              x:Class="StatisticsCalculator.ContentViews.DefaultCalculatorView">
-  <ContentView.Content>
+    <ContentView.Resources>
+
+        <Style x:Key="CalculatorButton" TargetType="Button">
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+    </ContentView.Resources>
+    <ContentView.Content>
         <Grid 
             HorizontalOptions="CenterAndExpand"
             VerticalOptions="End"
@@ -26,54 +32,54 @@
             </Grid.ColumnDefinitions>
             <Button 
                 Text="{translator:Translate ModeLabel}" 
-                class="CalculatorButton"
+                Style="{StaticResource CalculatorButton}"
                 Command="{Binding ModeCommand}"
             />
             <Button 
                 Text="{translator:Translate MedianLabel}" 
-                class="CalculatorButton"
+                Style="{StaticResource CalculatorButton}"
                 Grid.Column="1"
                 Command="{Binding MedianCommand}"
             />
             <Button 
                 Text="{translator:Translate MeanLabel}" 
-                class="CalculatorButton"
+                Style="{StaticResource CalculatorButton}"
                 Grid.Column="2"
                 Command="{Binding MeanCommand}"
             />
             <Button 
                 Text="Σx" 
-                class="CalculatorButton"
+                Style="{StaticResource CalculatorButton}"
                 Grid.Row="1"
                 Command="{Binding SumCommand}"
             />
             <Button 
                 Text="Σx^2" 
-                class="CalculatorButton"
+                Style="{StaticResource CalculatorButton}"
                 Grid.Row="1" Grid.Column="1"
                 Command="{Binding SumOfSquareCommand}"
             />
             <Button 
                 Text="σ" 
-                class="CalculatorButton"
+                Style="{StaticResource CalculatorButton}"
                 Grid.Row="1" Grid.Column="2"
                 Command="{Binding PopulationStandardDeviationCommand}"
             />
             <Button 
                 Text="σ^2" 
-                class="CalculatorButton"
+                Style="{StaticResource CalculatorButton}"
                 Grid.Row="2" Grid.Column="2"
                 Command="{Binding PopulationVarianceCommand}"
             />
             <Button 
                 Text="s"
-                class="CalculatorButton"
+                Style="{StaticResource CalculatorButton}"
                 Grid.Row="2"
                 Command="{Binding SampleStandardDeviationCommand}"
             />
             <Button 
                 Text="s^2"
-                class="CalculatorButton"
+                Style="{StaticResource CalculatorButton}"
                 Grid.Row="2" Grid.Column="1"
                 Command="{Binding SampleVarianceCommand}"
             />

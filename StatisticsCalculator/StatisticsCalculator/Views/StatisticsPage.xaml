@@ -8,12 +8,10 @@
              x:Class="StatisticsCalculator.Views.StatisticsPage"
              Title="{translator:Translate StatisticsTabLabel}">
     <ContentPage.Resources>
-        <Style Class="ResultLabel" TargetType="Label">
-            <Setter Property="FontSize" Value="Medium"/>
+        <Style x:Key="ResultLabel" TargetType="Label">
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            <Setter Property="TextColor" Value="Black"/>
         </Style>
-        <Style Class="ResultFrame" TargetType="Frame">
+        <Style x:Key="ResultFrame" TargetType="Frame">
             <Setter Property="BackgroundColor" Value="#eee"/>
             <Setter Property="CornerRadius" Value="15"/>
             <Setter Property="Grid.Row" Value="1"/>
@@ -22,16 +20,11 @@
             <Setter Property="Margin" Value="30, 0, 30, 0"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
-        <Style Class="ResultStyle" TargetType="Label">
+        <Style x:Key="ResultText" TargetType="Label">
             <Setter Property="BackgroundColor" Value="Transparent"/>
-            <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            <Setter Property="TextColor" Value="Black"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
-        </Style>
-        <Style Class="CalculatorButton" TargetType="Button">
-            <Setter Property="FontSize" Value="16"/>
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -50,15 +43,15 @@
                     <Label
                         x:Name="resultLabel" 
                         Text="{Binding ResultLabel}" 
-                        class="ResultLabel"
+                        Style="{StaticResource ResultLabel}"
                     />
                     <Frame 
-                        class="ResultFrame"
+                        Style="{StaticResource ResultFrame}"
                     >
                         <Label
                             x:Name="resultField"
                             Text="{Binding Result}"
-                            class="ResultStyle"
+                            Style="{StaticResource ResultText}"
                         />
                     </Frame>
                 </Grid>

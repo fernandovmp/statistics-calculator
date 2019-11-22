@@ -9,7 +9,6 @@
              x:Class="StatisticsCalculator.ContentViews.NormalDistributionView">
     <ContentView.Resources>
         <Style x:Key="InputEntry" TargetType="Entry">
-            <Setter Property="BackgroundColor" Value="#eee"/>
             <Setter Property="Margin" Value="20, 5"/>
             <Setter Property="Keyboard" Value="Numeric"/>
         </Style>
@@ -43,7 +42,7 @@
                         Binding="{Binding NormalDistributionMode}"
                         Value="{x:Static contentViews:NormalDistributionMode.LessThan}"
                     >
-                        <Setter Property="BackgroundColor" Value="#2196F3"/>
+                        <Setter Property="BackgroundColor" Value="{StaticResource ControlActived}"/>
                         <Setter Property="TextColor" Value="White"/>
                     </DataTrigger>
                 </Button.Triggers>
@@ -61,7 +60,7 @@
                         Binding="{Binding NormalDistributionMode}"
                         Value="{x:Static contentViews:NormalDistributionMode.Between}"
                     >
-                        <Setter Property="BackgroundColor" Value="#2196F3"/>
+                        <Setter Property="BackgroundColor" Value="{StaticResource ControlActived}"/>
                         <Setter Property="TextColor" Value="White"/>
                     </DataTrigger>
                 </Button.Triggers>
@@ -79,7 +78,7 @@
                         Binding="{Binding NormalDistributionMode}"
                         Value="{x:Static contentViews:NormalDistributionMode.GreaterThan}"
                     >
-                        <Setter Property="BackgroundColor" Value="#2196F3"/>
+                        <Setter Property="BackgroundColor" Value="{StaticResource ControlActived}"/>
                         <Setter Property="TextColor" Value="White"/>
                     </DataTrigger>
                 </Button.Triggers>
