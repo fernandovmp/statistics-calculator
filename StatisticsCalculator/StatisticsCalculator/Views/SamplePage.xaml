@@ -11,58 +11,86 @@
              Title="{translator:Translate SampleLabel}">
     <ContentPage.Resources>
         <viewModels:SampleViewModel x:Key="SampleVM"/>
-        <Style Class="SampleCollection" TargetType="CollectionView">
+        <Style x:Key="SampleCollection" TargetType="CollectionView">
             <Setter Property="BackgroundColor" Value="#eee"/>
             <Setter Property="HeightRequest" Value="400"/>
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="StartAndExpand"
-                     BindingContext="{StaticResource SampleVM}">
-            <FlexLayout AlignItems="Center">
-                <Label Text="{Binding SampleItems.Count, StringFormat='n = {0}'}"
-                       TextColor="Black"
-                       Margin="30, 0, 0, 0"
-                       WidthRequest="100"/>
-                <Label Text="{translator:Translate SampleLabel}"
-                       TextColor="Black"
-                       FlexLayout.Grow="1"
-                       Margin="0, 0, 20, 0"
-                       HorizontalTextAlignment="Center"/>
-                <Button Text="{translator:Translate CleanButtonText}"
+        <ScrollView>
+            <StackLayout 
+                VerticalOptions="StartAndExpand"
+                BindingContext="{StaticResource SampleVM}"
+            >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Label 
+                        Text="{Binding SampleItems.Count, StringFormat='n = {0}'}"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        WidthRequest="100"
+                    />
+                    <Label 
+                        Grid.Column="1"
+                        Text="{translator:Translate SampleLabel}"
+                        TextColor="Black"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                    />
+                    <Button
+                        Grid.Column="2"
+                        Text="{translator:Translate CleanButtonText}"
                         Command="{Binding ClearSampleCommand}"
                         Margin="0, 0, 10, 0"
-                        WidthRequest="100"/>
-            </FlexLayout>
-            <ContentView Margin="5"
-                         BackgroundColor="#aaa"
-                         Padding="1">
-                <CollectionView class="SampleCollection"
-                                ItemsSource="{Binding SampleItems}">
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical"
-                                         Span="3"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <contentViews:SampleItemView Padding="5"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    <CollectionView.EmptyView>
-                        <Label Text="{translator:Translate EmptySampleText}" 
-                               HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"/>
-                    </CollectionView.EmptyView>
-                </CollectionView>
-            </ContentView>
+                    />
+                </Grid>
+                <ContentView 
+                    Margin="5"
+                    BackgroundColor="#aaa"
+                    Padding="1"
+                >
+                    <CollectionView 
+                        Style="{StaticResource SampleCollection}"
+                        ItemsSource="{Binding SampleItems}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout 
+                                Orientation="Vertical"
+                                Span="3"
+                            />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <contentViews:SampleItemView Padding="5"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <Label 
+                                Text="{translator:Translate EmptySampleText}" 
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                            />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </ContentView>
 
-            <Entry x:Name="SampleItemEntry" Keyboard="Numeric"
-                   Text="{Binding EntrySampleText}"
-                   Placeholder="{translator:Translate NewSampleItemPlaceholder}"/>
-            <Button Text="{translator:Translate AddButtonText}"
+                <Entry 
+                    x:Name="SampleItemEntry"
+                    Keyboard="Numeric"
+                    Margin="10, 0"
+                    Text="{Binding EntrySampleText}"
+                    Placeholder="{translator:Translate NewSampleItemPlaceholder}"
+                />
+                <Button 
+                    Text="{translator:Translate AddButtonText}"
                     Margin="60, 0"
                     Command="{Binding AddSampleItemCommand}"
-                    CommandParameter="{Binding Source={x:Reference SampleItemEntry}, Path=Text}"/>
-        </StackLayout>
+                    CommandParameter="{Binding Source={x:Reference SampleItemEntry}, Path=Text}"
+                />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
