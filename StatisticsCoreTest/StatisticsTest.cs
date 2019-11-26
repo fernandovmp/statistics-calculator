@@ -527,5 +527,55 @@ namespace StatisticsCoreTest
                                                    .Select(value => Math.Round(value, 6));
             CollectionAssert.AreEqual(expected, result.ToArray());
         }
+
+        [TestMethod]
+        public void TestLinearCorrelationCoefficient()
+        {
+            var sample = new KeyValuePair<double, double>[]
+            {
+                KeyValuePair.Create<double, double>(5, 6),
+                KeyValuePair.Create<double, double>(8, 9),
+                KeyValuePair.Create<double, double>(7, 8),
+                KeyValuePair.Create<double, double>(10, 10),
+                KeyValuePair.Create<double, double>(6, 5),
+                KeyValuePair.Create<double, double>(7, 7),
+                KeyValuePair.Create<double, double>(9, 8),
+                KeyValuePair.Create<double, double>(3, 4),
+                KeyValuePair.Create<double, double>(8, 6),
+                KeyValuePair.Create<double, double>(2, 2)
+            };
+            double expected = 0.911242;
+
+            double result = Statistics.LinearCorrelationCoefficient(sample);
+
+            Assert.AreEqual(expected, result, 0.000001);
+        }
+
+        [TestMethod]
+        public void TestLinearRegression()
+        {
+            var sample = new KeyValuePair<double, double>[]
+            {
+                KeyValuePair.Create<double, double>(5, 6),
+                KeyValuePair.Create<double, double>(8, 9),
+                KeyValuePair.Create<double, double>(7, 8),
+                KeyValuePair.Create<double, double>(10, 10),
+                KeyValuePair.Create<double, double>(6, 5),
+                KeyValuePair.Create<double, double>(7, 7),
+                KeyValuePair.Create<double, double>(9, 8),
+                KeyValuePair.Create<double, double>(3, 4),
+                KeyValuePair.Create<double, double>(8, 6),
+                KeyValuePair.Create<double, double>(2, 2)
+            };
+            double expectedCoefficient = 0.911242;
+            double expectedA = 0.863248, expectedB = 0.888889;
+            double angularCoefficient, linearCoefficient, coefficient;
+
+            Statistics.LinearRegression(sample, out coefficient, out angularCoefficient, out linearCoefficient);
+
+            Assert.AreEqual(expectedCoefficient, coefficient, 0.000001);
+            Assert.AreEqual(expectedA, angularCoefficient, 0.000001);
+            Assert.AreEqual(expectedB, linearCoefficient, 0.000001);
+        }
     }
 }

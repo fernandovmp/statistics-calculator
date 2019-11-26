@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace StatisticsCore
 {
@@ -248,6 +249,52 @@ namespace StatisticsCore
                 default:
                     return Poisson(sample, success, success, successRate);
             }
+        }
+
+        public static double LinearCorrelationCoefficient(int sampleSize, double sumOfX, double sumOfY, 
+            double sumOfXY, double sumOfSquareOfX, double sumOfSquareOfY) => 
+            (sampleSize * sumOfXY - sumOfX * sumOfY) /
+                Math.Sqrt((sampleSize * sumOfSquareOfX - Math.Pow(sumOfX, 2)) *
+                (sampleSize * sumOfSquareOfY - Math.Pow(sumOfY, 2)));
+        
+
+        public static double LinearCorrelationCoefficient(IEnumerable<KeyValuePair<double, double>> sample)
+        {
+            int sampleSize = sample.Count();
+            IEnumerable<double> valuesOfX = sample.Select(value => value.Key);
+            IEnumerable<double> valuesOfY = sample.Select(value => value.Value);
+            double[] valuesOfXY = sample.Select(value => value.Key * value.Value).ToArray();
+
+            double sumOfX = SumOfItems(valuesOfX.ToArray());
+            double sumOfY = SumOfItems(valuesOfY.ToArray());
+            double sumOfXY = SumOfItems(valuesOfXY);
+            double sumOfSquareOfX = SumOfSquareOfItems(valuesOfX.ToArray());
+            double sumOfSquareOfY = SumOfSquareOfItems(valuesOfY.ToArray());
+
+            return LinearCorrelationCoefficient(sampleSize, sumOfX, sumOfY, sumOfXY,
+                sumOfSquareOfX, sumOfSquareOfY);
+        }
+
+        public static void LinearRegression(IEnumerable<KeyValuePair<double, double>> sample, 
+            out double correlationCoeficient, out double angularCoefficient, out double linearCoefficient)
+        {
+            var dictionary = new Dictionary<string, double>();
+            int sampleSize = sample.Count();
+            double[] valuesOfX = sample.Select(value => value.Key).ToArray();
+            double[] valuesOfY = sample.Select(value => value.Value).ToArray();
+            double[] valuesOfXY = sample.Select(value => value.Key * value.Value).ToArray();
+
+            double sumOfX = SumOfItems(valuesOfX);
+            double sumOfY = SumOfItems(valuesOfY);
+            double sumOfXY = SumOfItems(valuesOfXY);
+            double sumOfSquareOfX = SumOfSquareOfItems(valuesOfX);
+            double sumOfSquareOfY = SumOfSquareOfItems(valuesOfY);
+
+            angularCoefficient = (sampleSize * sumOfXY - sumOfX * sumOfY) /
+                (sampleSize * sumOfSquareOfX - Math.Pow(sumOfX, 2));
+            linearCoefficient = Mean(valuesOfY) - angularCoefficient * Mean(valuesOfX);
+            correlationCoeficient = LinearCorrelationCoefficient(sampleSize, sumOfX, sumOfY, sumOfXY, 
+                sumOfSquareOfX, sumOfSquareOfY);
         }
     }
 }
