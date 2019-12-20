@@ -190,8 +190,8 @@
     <comment>Normal distribution label</comment>
   </data>
   <data name="PairModeText" xml:space="preserve">
-    <value>Pair values</value>
-    <comment>Text that indicates a pair values sample</comment>
+    <value>Value pair</value>
+    <comment>Text that indicates a value pair sample</comment>
   </data>
   <data name="PercentageLabel" xml:space="preserve">
     <value>Percentage</value>
@@ -206,8 +206,8 @@
     <comment>Population variance label</comment>
   </data>
   <data name="RequirePairSample" xml:space="preserve">
-    <value>The sample isn't in pair value mode, set the sample to pair value mode to use this calculator</value>
-    <comment>Warning text showed when sample is in pair value mode and is required to be in pair value mode</comment>
+    <value>The sample isn't in value pair mode, set the sample to value pair mode to use this calculator</value>
+    <comment>Warning text showed when sample is in value pair mode and is required to be in value pair mode</comment>
   </data>
   <data name="RequireSimpleSample" xml:space="preserve">
     <value>The sample isn't in simple value mode, set the sample to simple value mode to use this calculator</value>
