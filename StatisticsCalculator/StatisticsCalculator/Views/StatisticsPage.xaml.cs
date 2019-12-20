@@ -26,6 +26,9 @@ namespace StatisticsCalculator.Views
             NormalDistributionView normalDistribution = CreateCalculator<NormalDistributionView>();
             BinomialView binomial = CreateCalculator<BinomialView>();
             PoissonView poisson = CreateCalculator<PoissonView>();
+            LinearRegressionView linearRegression = CreateCalculator<LinearRegressionView>();
+            linearRegression.SetBinding(LinearRegressionView.SampleProperty, "Sample");
+            linearRegression.SetBinding(LinearRegressionView.SampleModeProperty, "SampleMode");
             var calculators = new List<CalculatorPickerItem>
             {
                 new CalculatorPickerItem
@@ -47,6 +50,11 @@ namespace StatisticsCalculator.Views
                 {
                     Label = "Poisson",
                     Calculator = poisson
+                },
+                new CalculatorPickerItem
+                {
+                    Label = StringTranslationExtension.Translate("LinearRegressionLabel"),
+                    Calculator = linearRegression
                 }
             };
             CalculatorPicker.ItemsSource = calculators;

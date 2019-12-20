@@ -13,6 +13,7 @@ namespace StatisticsCalculator.ViewModels
     {
         private string _result;
         private string _resultLabel;
+        private SampleMode _sampleMode;
 
         public StatisticsViewModel()
         {
@@ -21,6 +22,7 @@ namespace StatisticsCalculator.ViewModels
                 {
                     Sample = parameter;
                     OnPropertyChanged(nameof(Sample));
+                    SampleMode = sender.SampleMode;
                 });
         }
 
@@ -34,6 +36,11 @@ namespace StatisticsCalculator.ViewModels
         {
             get => _resultLabel;
             set => SetProperty(ref _resultLabel, value);
+        }
+        public SampleMode SampleMode
+        {
+            get => _sampleMode;
+            private set => SetProperty(ref _sampleMode, value);
         }
     }
 }
