@@ -21,6 +21,7 @@ using StatisticsCore;
    - [Population Variance](#populationvariance)
    - [Normal Distribution Density](#normaldistributiondensity)
    - [Binomial](#binomial)
+   - [Linear Regression](#linear-regression)
    
  - [Examples](#examples)
    - [Sum Of Items and Sum Of Square Of Items Example](#sum-of-items-and-sum-of-square-of-items-example)
@@ -28,6 +29,7 @@ using StatisticsCore;
    - [Deviation and Variance Example](#deviation-and-variance-example)
    - [Normal Distribution Density Example](#normal-distribution-density-example)
    - [Binomial Example](#binomial-example)
+   - [Linear Regression Example](#linear-regression-example)
 
 # Methods
 
@@ -105,6 +107,25 @@ using StatisticsCore;
   public static IEnumerable<double> Binomial(int sample, int success, float successRate, BinomialRange range)
   ```
   Calculates the chance of each event in a range occurs in a sample with a specific success rate. The range can be **Min** for at least the success variable value, **Max** for at maximun success variable value or the **Exact** success variable value 
+  
+  ## Linear Regression
+  
+  ```C#
+  public static double LinearCorrelationCoefficient(int sampleSize, double sumOfX, double sumOfY, 
+            double sumOfXY, double sumOfSquareOfX, double sumOfSquareOfY)
+  ```
+  Calculates the linear correlaltion coefficient
+  
+  ```C#
+  public static double LinearCorrelationCoefficient(IEnumerable<KeyValuePair<double, double>> sample)
+  ```
+  Calculates the linear correlaltion coefficient of a pair value sample
+  
+  ```C#
+  public static void LinearRegression(IEnumerable<KeyValuePair<double, double>> sample, 
+            out double correlationCoeficient, out double angularCoefficient, out double linearCoefficient)
+  ```
+  Calculates the correlation, angular and linear coefficients of a value pair sample 
   
 # Examples
 ## Sum Of Items and Sum Of Square Of Items Example
@@ -312,5 +333,49 @@ namespace StatisticsExample
     P[X = 7] = 0.00%
     P[X = 8] = 0.00%
     P[X = 9] = 0.00%
+*/
+```
+
+## Linear Regression Example
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using StatisticsCore;
+
+namespace StatisticsExample
+{
+    public class LinearRegressionExample
+    {
+        internal static void Example()
+        {
+            KeyValuePair<double, double>[] sample = new KeyValuePair<double, double>[] 
+            {
+                KeyValuePair.Create<double, double>(5, 6),
+                KeyValuePair.Create<double, double>(8, 9),
+                KeyValuePair.Create<double, double>(7, 8),
+                KeyValuePair.Create<double, double>(10, 10),
+                KeyValuePair.Create<double, double>(6, 5),
+                KeyValuePair.Create<double, double>(7, 7),
+                KeyValuePair.Create<double, double>(9, 8),
+                KeyValuePair.Create<double, double>(3, 4),
+                KeyValuePair.Create<double, double>(8, 6),
+                KeyValuePair.Create<double, double>(2, 2)
+            };
+            
+            double correlationCoefficient, angularCoefficient, linearCoefficient;
+            
+            Statistics.LinearRegression(sample, out correlationCoefficient, out angularCoefficient, out linearCoefficient);
+            
+            Console.WriteLine("Linear correlation coefficient = {0:F4}", correlationCoefficient);
+            Console.WriteLine("y = {0:F2}x + {1:F2}", angularCoefficient, linearCoefficient);
+            
+        }
+    }
+}
+/*
+Output:
+    Linear correlation coefficient = 0.9112
+    y = 0.86x + 0.89
 */
 ```
