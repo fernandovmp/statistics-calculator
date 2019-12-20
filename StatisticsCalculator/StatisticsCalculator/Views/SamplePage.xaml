@@ -76,20 +76,52 @@
                         </CollectionView.EmptyView>
                     </CollectionView>
                 </ContentView>
-
-                <Entry 
-                    x:Name="SampleItemEntry"
-                    Keyboard="Numeric"
-                    Margin="10, 0"
-                    Text="{Binding EntrySampleText}"
-                    Placeholder="{translator:Translate NewSampleItemPlaceholder}"
-                />
-                <Button 
-                    Text="{translator:Translate AddButtonText}"
-                    Margin="60, 0"
-                    Command="{Binding AddSampleItemCommand}"
-                    CommandParameter="{Binding Source={x:Reference SampleItemEntry}, Path=Text}"
-                />
+                <FlexLayout
+                    Direction="Row"
+                >
+                    <Entry
+                        FlexLayout.Grow="1"
+                        Keyboard="Numeric"
+                        Margin="10, 0"
+                        Text="{Binding EntrySampleText}"
+                        Placeholder="{translator:Translate NewSampleItemPlaceholder}"
+                    />
+                    <Entry
+                        FlexLayout.Grow="1"
+                        Keyboard="Numeric"
+                        Margin="10, 0"
+                        Text="{Binding EntryValueOfYText}"
+                        Placeholder="{translator:Translate NewSampleItemPlaceholder}"
+                        IsVisible="False"
+                    >
+                        <Entry.Triggers>
+                            <DataTrigger 
+                                TargetType="Entry"
+                                Binding="{Binding SampleMode}"
+                                Value="{Static viewModels:SampleMode.Pair}"
+                            >
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </FlexLayout>
+                <Grid
+                    Margin="10"
+                >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Text="{Binding SwitchModeText}"
+                        Command="{Binding SwitchModeCommand}"
+                    />
+                    <Button
+                        Grid.Column="1"
+                        Text="{translator:Translate AddButtonText}"
+                        Command="{Binding AddSampleItemCommand}"
+                    />
+                </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

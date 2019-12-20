@@ -169,6 +169,15 @@ namespace StatisticsCalculator.Resx {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Linear Regression.
+        /// </summary>
+        public static string LinearRegressionLabel {
+            get {
+                return ResourceManager.GetString("LinearRegressionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Mean.
         /// </summary>
         public static string MeanLabel {
@@ -214,6 +223,15 @@ namespace StatisticsCalculator.Resx {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Pair values.
+        /// </summary>
+        public static string PairModeText {
+            get {
+                return ResourceManager.GetString("PairModeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Percentage.
         /// </summary>
         public static string PercentageLabel {
@@ -237,6 +255,24 @@ namespace StatisticsCalculator.Resx {
         public static string PopulationVarianceLabel {
             get {
                 return ResourceManager.GetString("PopulationVarianceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The sample isn&apos;t in pair value mode, set the sample to pair value mode to use this calculator.
+        /// </summary>
+        public static string RequirePairSample {
+            get {
+                return ResourceManager.GetString("RequirePairSample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The sample isn&apos;t in simple value mode, set the sample to simple value mode to use this calculator.
+        /// </summary>
+        public static string RequireSimpleSample {
+            get {
+                return ResourceManager.GetString("RequireSimpleSample", resourceCulture);
             }
         }
         
@@ -273,6 +309,15 @@ namespace StatisticsCalculator.Resx {
         public static string SampleVarianceLabel {
             get {
                 return ResourceManager.GetString("SampleVarianceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Simple values.
+        /// </summary>
+        public static string SimpleModeText {
+            get {
+                return ResourceManager.GetString("SimpleModeText", resourceCulture);
             }
         }
         

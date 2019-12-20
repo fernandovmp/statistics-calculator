@@ -165,6 +165,10 @@
     <value>Menor que</value>
     <comment>Value of x are less than</comment>
   </data>
+  <data name="LinearRegressionLabel" xml:space="preserve">
+    <value>Regressão Linear</value>
+    <comment>Linear regression label</comment>
+  </data>
   <data name="MeanLabel" xml:space="preserve">
     <value>Média</value>
     <comment>Mean label</comment>
@@ -185,6 +189,10 @@
     <value>Distribuição normal</value>
     <comment>Normal distribution label</comment>
   </data>
+  <data name="PairModeText" xml:space="preserve">
+    <value>Valores em pares</value>
+    <comment>Text that indicates a pair values sample</comment>
+  </data>
   <data name="PercentageLabel" xml:space="preserve">
     <value>Porcentagem</value>
     <comment>Percentage label</comment>
@@ -196,6 +204,14 @@
   <data name="PopulationVarianceLabel" xml:space="preserve">
     <value>Variância da população</value>
     <comment>Population variance label</comment>
+  </data>
+  <data name="RequirePairSample" xml:space="preserve">
+    <value>A amostra não esta no modo de valores em pares, altere a amostra para o modo de valores em pares para usar essa calculadora</value>
+    <comment>Warning text showed when sample is in pair value mode and is required to be in pair value mode</comment>
+  </data>
+  <data name="RequireSimpleSample" xml:space="preserve">
+    <value>A amostra não esta no modo de valores simples, altere a amostra para o modo de valores simples para usar essa calculadora</value>
+    <comment>Warning text showed when sample is in simple value mode and is required to be in simple mode</comment>
   </data>
   <data name="SampleLabel" xml:space="preserve">
     <value>Amostra</value>
@@ -212,6 +228,10 @@
   <data name="SampleVarianceLabel" xml:space="preserve">
     <value>Variância da amostra</value>
     <comment>Sample variance label</comment>
+  </data>
+  <data name="SimpleModeText" xml:space="preserve">
+    <value>Valores simples</value>
+    <comment>Text that indicates a simple sample</comment>
   </data>
   <data name="StatisticsTabLabel" xml:space="preserve">
     <value>Estatística</value>

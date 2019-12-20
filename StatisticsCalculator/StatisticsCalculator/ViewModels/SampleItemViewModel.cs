@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StatisticsCalculator.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
@@ -8,25 +9,21 @@ namespace StatisticsCalculator.ViewModels
 {
     public class SampleItemViewModel : ViewModelBase
     {
-        private double _itemValue;
         private readonly SampleViewModel _sampleViewModel;
         private ICommand _removeItemCommand;
 
-        public SampleItemViewModel(double itemValue)
+        public SampleItemViewModel(SampleItem itemValue)
         {
-            _itemValue = itemValue;
+            ItemValue = itemValue;
         }
 
-        public SampleItemViewModel(double itemValue, SampleViewModel sampleViewModel) : this(itemValue)
+        public SampleItemViewModel(SampleItem itemValue, SampleViewModel sampleViewModel) : this(itemValue)
         {
             _sampleViewModel = sampleViewModel;
         }
 
-        public double ItemValue
-        {
-            get => _itemValue;
-            set => SetProperty(ref _itemValue, value);
-        }
+        public SampleItem ItemValue { get; }
+
         public ICommand RemoveItemCommand
         {
             get

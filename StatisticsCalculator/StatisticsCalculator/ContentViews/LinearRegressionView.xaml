@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<contentViews:BaseCalculatorView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:contentViews="clr-namespace:StatisticsCalculator.ContentViews"
+             xmlns:viewModels="clr-namespace:StatisticsCalculator.ViewModels"
+             xmlns:translator="clr-namespace:StatisticsCalculator.Translation"
+             mc:Ignorable="d"
+             x:Class="StatisticsCalculator.ContentViews.LinearRegressionView">
+    <StackLayout>
+        <Label
+            Margin="30, 0"
+            FontSize="Small"
+            TextColor="Red"
+            Text="{translator:Translate RequirePairSample}"
+            IsVisible="False"
+        >
+            <Label.Triggers>
+                <DataTrigger
+                    TargetType="Label"
+                    Binding="{Binding SampleMode}"
+                    Value="{Static viewModels:SampleMode.Simple}"
+                >
+                    <Setter Property="IsVisible" Value="True"/>
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+        <Button
+            Margin="30, 0"
+            Text="{translator:Translate CalculateLabel}"
+            Command="{Binding CalculateCommand}"
+            CommandParameter="{Binding SampleMode}"
+        />
+    </StackLayout>
+</contentViews:BaseCalculatorView>

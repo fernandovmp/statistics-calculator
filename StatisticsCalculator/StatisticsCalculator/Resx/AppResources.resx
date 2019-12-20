@@ -165,6 +165,10 @@
     <value>Less than</value>
     <comment>Value of x are less than</comment>
   </data>
+  <data name="LinearRegressionLabel" xml:space="preserve">
+    <value>Linear Regression</value>
+    <comment>Linear regression label</comment>
+  </data>
   <data name="MeanLabel" xml:space="preserve">
     <value>Mean</value>
     <comment>Mean label</comment>
@@ -185,6 +189,10 @@
     <value>Normal distribution</value>
     <comment>Normal distribution label</comment>
   </data>
+  <data name="PairModeText" xml:space="preserve">
+    <value>Pair values</value>
+    <comment>Text that indicates a pair values sample</comment>
+  </data>
   <data name="PercentageLabel" xml:space="preserve">
     <value>Percentage</value>
     <comment>Percentage label</comment>
@@ -196,6 +204,14 @@
   <data name="PopulationVarianceLabel" xml:space="preserve">
     <value>Population variance</value>
     <comment>Population variance label</comment>
+  </data>
+  <data name="RequirePairSample" xml:space="preserve">
+    <value>The sample isn't in pair value mode, set the sample to pair value mode to use this calculator</value>
+    <comment>Warning text showed when sample is in pair value mode and is required to be in pair value mode</comment>
+  </data>
+  <data name="RequireSimpleSample" xml:space="preserve">
+    <value>The sample isn't in simple value mode, set the sample to simple value mode to use this calculator</value>
+    <comment>Warning text showed when sample is in simple value mode and is required to be in simple mode</comment>
   </data>
   <data name="SampleLabel" xml:space="preserve">
     <value>Sample</value>
@@ -212,6 +228,10 @@
   <data name="SampleVarianceLabel" xml:space="preserve">
     <value>Sample variance</value>
     <comment>Sample variance label</comment>
+  </data>
+  <data name="SimpleModeText" xml:space="preserve">
+    <value>Simple values</value>
+    <comment>Text that indicates a simple sample</comment>
   </data>
   <data name="StatisticsTabLabel" xml:space="preserve">
     <value>Statistics</value>

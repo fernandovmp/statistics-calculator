@@ -25,8 +25,19 @@
                     FontSize="Medium"
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"
-                    Text="{Binding ItemValue}" 
-                />
+                    Text="{Binding ItemValue.Value}" 
+                >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="{Binding ItemValue.Value}"
+                            />
+                            <Span
+                                Text="{Binding ItemValue.ValueOfY, StringFormat=' ; {0}', TargetNullValue=''}"
+                            />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </Grid>
         </Frame>
   </ContentView.Content>

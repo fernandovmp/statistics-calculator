@@ -59,7 +59,7 @@ namespace StatisticsCalculator.ContentViews
         private void CalculatorOperation<T>(Func<T> operation, string label) =>
             CalculatorOperation(operation, r => r.ToString(), label);
 
-        private double[] GetSampleDoubleArray() => Sample.Select(item => item.ItemValue).ToArray();
+        private double[] GetSampleDoubleArray() => Sample.Select(item => item.ItemValue.Value).ToArray();
 
         private void Sum()
         {
