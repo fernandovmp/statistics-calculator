@@ -24,63 +24,94 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Text="{Binding ShiftText}"
+                Command="{Binding ShiftCommand}"
+                CommandParameter="{Binding SampleMode}"
+            />
             <Button 
+                Grid.Row="1"
                 Text="{translator:Translate ModeLabel}" 
                 Style="{StaticResource CalculatorButton}"
                 Command="{Binding ModeCommand}"
             />
-            <Button 
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
                 Text="{translator:Translate MedianLabel}" 
                 Style="{StaticResource CalculatorButton}"
-                Grid.Column="1"
                 Command="{Binding MedianCommand}"
             />
-            <Button 
+            <Button
+                Grid.Row="1"
+                Grid.Column="2"
                 Text="{translator:Translate MeanLabel}" 
                 Style="{StaticResource CalculatorButton}"
-                Grid.Column="2"
                 Command="{Binding MeanCommand}"
             />
-            <Button 
+            <Button
+                Grid.Row="2"
                 Text="Σx" 
                 Style="{StaticResource CalculatorButton}"
-                Grid.Row="1"
                 Command="{Binding SumCommand}"
-            />
+            >
+                <Button.Triggers>
+                    <DataTrigger
+                        TargetType="Button"
+                        Binding="{Binding IsCalculatingX}"
+                        Value="false"
+                    >
+                        <Setter Property="Text" Value="Σy"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
             <Button 
+                Grid.Row="2" Grid.Column="1"
                 Text="Σx^2" 
                 Style="{StaticResource CalculatorButton}"
-                Grid.Row="1" Grid.Column="1"
                 Command="{Binding SumOfSquareCommand}"
-            />
+            >
+                <Button.Triggers>
+                    <DataTrigger
+                        TargetType="Button"
+                        Binding="{Binding IsCalculatingX}"
+                        Value="false"
+                    >
+                        <Setter Property="Text" Value="Σy^2"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
             <Button 
+                Grid.Row="2" Grid.Column="2"
                 Text="σ" 
                 Style="{StaticResource CalculatorButton}"
-                Grid.Row="1" Grid.Column="2"
                 Command="{Binding PopulationStandardDeviationCommand}"
             />
             <Button 
+                Grid.Row="3" Grid.Column="2"
                 Text="σ^2" 
                 Style="{StaticResource CalculatorButton}"
-                Grid.Row="2" Grid.Column="2"
                 Command="{Binding PopulationVarianceCommand}"
             />
             <Button 
                 Text="s"
                 Style="{StaticResource CalculatorButton}"
-                Grid.Row="2"
+                Grid.Row="3"
                 Command="{Binding SampleStandardDeviationCommand}"
             />
             <Button 
+                Grid.Row="3" Grid.Column="1"
                 Text="s^2"
                 Style="{StaticResource CalculatorButton}"
-                Grid.Row="2" Grid.Column="1"
                 Command="{Binding SampleVarianceCommand}"
             />
         </Grid>

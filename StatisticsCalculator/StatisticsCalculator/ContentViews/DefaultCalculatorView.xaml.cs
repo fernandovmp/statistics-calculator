@@ -15,6 +15,11 @@ namespace StatisticsCalculator.ContentViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DefaultCalculatorView : BaseCalculatorView
     {
+        private readonly string _calculateX;
+        private readonly string _calculateY;
+        private string _shiftText;
+        private bool _isCalculatingX = true;
+
         public DefaultCalculatorView()
         {
             InitializeComponent();
@@ -27,17 +32,50 @@ namespace StatisticsCalculator.ContentViews
             PopulationStandardDeviationCommand = new Command(PopulationStandardDeviation);
             SampleVarianceCommand = new Command(SampleVariance);
             PopulationVarianceCommand = new Command(PopulationVariance);
+
+            string calculateLabel = "CalculateLabel".Translate();
+            _calculateX = calculateLabel + " X";
+            _calculateY = calculateLabel + " Y";
+            ShiftText = _calculateX;
+            ShiftCommand = new Command<SampleMode>(Shift, mode => mode == SampleMode.Pair);
+            
             Content.BindingContext = this;
         }
 
 
         public static readonly BindableProperty SampleProperty = BindableProperty.Create(nameof(Sample),
             typeof(ICollection<SampleItemViewModel>), typeof(DefaultCalculatorView), null);
+        public static readonly BindableProperty SampleModeProperty = BindableProperty.Create(nameof(SampleMode),
+           typeof(SampleMode), typeof(DefaultCalculatorView), SampleMode.Simple, BindingMode.OneWay, null, 
+           propertyChanged: OnSampleModeChanged);
 
         public ICollection<SampleItemViewModel> Sample
         {
             get => (ICollection<SampleItemViewModel>)GetValue(SampleProperty);
             set => SetValue(SampleProperty, value);
+        }
+        public SampleMode SampleMode
+        {
+            get => (SampleMode)GetValue(SampleModeProperty);
+            set => SetValue(SampleModeProperty, value);
+        }
+        public string ShiftText
+        {
+            get => _shiftText;
+            set
+            {
+                _shiftText = value;
+                OnPropertyChanged(nameof(ShiftText));
+            }
+        }
+        public bool IsCalculatingX
+        {
+            get => _isCalculatingX;
+            set
+            {
+                _isCalculatingX = value;
+                OnPropertyChanged(nameof(IsCalculatingX));
+            }
         }
         public ICommand SumCommand { get; private set; }
         public ICommand SumOfSquareCommand { get; private set; }
@@ -48,6 +86,7 @@ namespace StatisticsCalculator.ContentViews
         public ICommand PopulationStandardDeviationCommand { get; private set; }
         public ICommand SampleVarianceCommand { get; private set; }
         public ICommand PopulationVarianceCommand { get; private set; }
+        public ICommand ShiftCommand { get; private set; }
 
         private void CalculatorOperation<T>(Func<T> operation, Func<T, string> resultFunc, string label)
         {
@@ -59,7 +98,14 @@ namespace StatisticsCalculator.ContentViews
         private void CalculatorOperation<T>(Func<T> operation, string label) =>
             CalculatorOperation(operation, r => r.ToString(), label);
 
-        private double[] GetSampleDoubleArray() => Sample.Select(item => item.ItemValue.Value).ToArray();
+        private double[] GetSampleDoubleArray()
+        {
+            if (IsCalculatingX)
+            {
+                return Sample.Select(item => item.ItemValue.Value).ToArray();
+            }
+            return Sample.Select(item => item.ItemValue.ValueOfY ?? 0).ToArray();
+        }
 
         private void Sum()
         {
@@ -127,6 +173,29 @@ namespace StatisticsCalculator.ContentViews
             if (Sample == null || Sample.Count < 2) return;
             CalculatorOperation(() => Statistics.SampleVariance(GetSampleDoubleArray()),
                 StringTranslationExtension.Translate("PopulationVarianceLabel"));
+        }
+
+        private void Shift(SampleMode mode)
+        {
+            if(IsCalculatingX)
+            {
+                ShiftText = _calculateY;
+            }
+            else
+            {
+                ShiftText = _calculateX;
+            }
+            IsCalculatingX = !IsCalculatingX;
+        }
+
+        private static void OnSampleModeChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var calculator = bindable as DefaultCalculatorView;
+            var value = (SampleMode) newValue;
+            if(value == SampleMode.Simple && !calculator.IsCalculatingX)
+            {
+                calculator.Shift(SampleMode.Simple);
+            }
         }
     }
 }

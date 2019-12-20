@@ -23,6 +23,7 @@ namespace StatisticsCalculator.Views
 
             DefaultCalculatorView defaultCalculator = CreateCalculator<DefaultCalculatorView>();
             defaultCalculator.SetBinding(DefaultCalculatorView.SampleProperty, "Sample");
+            defaultCalculator.SetBinding(DefaultCalculatorView.SampleModeProperty, "SampleMode");
             NormalDistributionView normalDistribution = CreateCalculator<NormalDistributionView>();
             BinomialView binomial = CreateCalculator<BinomialView>();
             PoissonView poisson = CreateCalculator<PoissonView>();
