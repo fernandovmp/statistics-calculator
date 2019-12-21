@@ -77,16 +77,16 @@ namespace StatisticsCalculator.ContentViews
                 OnPropertyChanged(nameof(IsCalculatingX));
             }
         }
-        public ICommand SumCommand { get; private set; }
-        public ICommand SumOfSquareCommand { get; private set; }
-        public ICommand MeanCommand { get; private set; }
-        public ICommand MedianCommand { get; private set; }
-        public ICommand ModeCommand { get; private set; }
-        public ICommand SampleStandardDeviationCommand { get; private set; }
-        public ICommand PopulationStandardDeviationCommand { get; private set; }
-        public ICommand SampleVarianceCommand { get; private set; }
-        public ICommand PopulationVarianceCommand { get; private set; }
-        public ICommand ShiftCommand { get; private set; }
+        public ICommand SumCommand { get; }
+        public ICommand SumOfSquareCommand { get; }
+        public ICommand MeanCommand { get; }
+        public ICommand MedianCommand { get; }
+        public ICommand ModeCommand { get; }
+        public ICommand SampleStandardDeviationCommand { get; }
+        public ICommand PopulationStandardDeviationCommand { get; }
+        public ICommand SampleVarianceCommand { get; }
+        public ICommand PopulationVarianceCommand { get; }
+        public ICommand ShiftCommand { get; }
 
         private void CalculatorOperation<T>(Func<T> operation, Func<T, string> resultFunc, string label)
         {
@@ -121,14 +121,14 @@ namespace StatisticsCalculator.ContentViews
                 StringTranslationExtension.Translate("SumOfSquareLabel"));
         }
 
-        private void Mean(object parameter)
+        private void Mean()
         {
             if (Sample == null || Sample.Count == 0) return;
             CalculatorOperation(() => Statistics.Mean(GetSampleDoubleArray()),
                 StringTranslationExtension.Translate("MeanLabel"));
         }
 
-        private void Median(object parameter)
+        private void Median()
         {
             if (Sample == null || Sample.Count == 0) return;
             CalculatorOperation(() => Statistics.Median(GetSampleDoubleArray()),
