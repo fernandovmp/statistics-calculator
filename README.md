@@ -1,6 +1,8 @@
 # Statistics calculator
 > Mobile statistics calculator app
 
+[![Build status](https://build.appcenter.ms/v0.1/apps/c5583ce0-cb27-4a77-988f-258230bb6d46/branches/master/badge)](https://appcenter.ms)
+
 <img src="Screenshots/Screenshot_01.png" width=33% /><img src="Screenshots/Screenshot_02.png" width=33% hspace=2/><img src="Screenshots/Screenshot_03.png" width=33%/>
 <img src="Screenshots/Screenshot_04.png" width=33% /><img src="Screenshots/Screenshot_05.png" width=33% hspace=2/><img src="Screenshots/Screenshot_06.png" width=33%/>
 
@@ -41,6 +43,16 @@ Require Visual Studio and Xamarin installed to open this project.
 Clone this repository: \
 `$ git clone https://github.com/fernandovmp/statistics-calculator.git` \
 Open the `StatisticsCalculator.sln` file, that can be found in the root of project, with the Visual Studio.
+
+## Build locally
+Create a json file named "secrets.json" in StatisticsCalculator shared project with the following content:
+```json
+{
+    "AndroidAppSecret": "{App center android app secret}"
+}
+```
+
+Or comment the AppCenter start method in `App.xaml.cs`
 
 ### [Statistics Class](./StatisticsCore/)
 

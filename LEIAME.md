@@ -1,6 +1,8 @@
 # Calculadora de estatística
 > Aplicativo móvel de calculadora estatística
 
+[![Build status](https://build.appcenter.ms/v0.1/apps/c5583ce0-cb27-4a77-988f-258230bb6d46/branches/master/badge)](https://appcenter.ms)
+
 <img src="Screenshots/Screenshot_01_pt.png" width=33% /><img src="Screenshots/Screenshot_02_pt.png" width=33% hspace=2/><img src="Screenshots/Screenshot_03_pt.png" width=33%/>
 <img src="Screenshots/Screenshot_04_pt.png" width=33% /><img src="Screenshots/Screenshot_05_pt.png" width=33% hspace=2/><img src="Screenshots/Screenshot_06_pt.png" width=33%/>
 
@@ -40,6 +42,16 @@ A depender do andamento das minhas aulas de estatística e minha compreensão so
 Clone o repositório: \
 `$ git clone https://github.com/fernandovmp/statistics-calculator.git` \
 Abra o arquivo `StatisticsCalculator.sln` localizado na raiz do projeto com o Visual Studio.
+
+## Build locally
+Crie um arquivo json chamado "secrets.json" no projeto compartilhado StatisticsCalculator com o seguinte conteúdo:
+```json
+{
+    "AndroidAppSecret": "{App center android app secret}"
+}
+```
+
+Ou comente a chamada ao método `Start` do App Center no arquivo `App.xaml.cs`
 
 ### [A classe Statistics](./StatisticsCore/)
 
