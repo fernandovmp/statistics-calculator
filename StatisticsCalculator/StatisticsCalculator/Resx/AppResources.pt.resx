@@ -250,7 +250,7 @@
     <comment>Sum of square of items of the sample label</comment>
   </data>
   <data name="Y_NewSampleItemPlaceholder" xml:space="preserve">
-    <value>New value of Y...</value>
+    <value>Novo valor de Y...</value>
     <comment>Input placeholder por new sample item of value pair mode</comment>
   </data>
 </root>
