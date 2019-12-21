@@ -1,4 +1,7 @@
 ﻿using System;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +17,8 @@ namespace StatisticsCalculator
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            AppCenter.Start($"android={Helpers.Secrets.AndroidAppSecret}",
+                  typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()
