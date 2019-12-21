@@ -18,8 +18,6 @@ Este aplicativo é parte do meu portfólio pessoal, portanto ficaria grato por f
 # Instalador
 O instalador android (5.0 Lolipop até 9.0 Pie) pode ser encontrado [aqui](https://drive.google.com/open?id=1GyfaEhdp7MEbBXaw7EFToQjcOojnAKMX).
 
-Quanto ao instalador iOS, sem previsão.
-
 # Funcionalidades
 - [x] Soma de todos os valores da amostra
 - [x] Soma do quadrado dos valores da amostra
@@ -29,6 +27,9 @@ Quanto ao instalador iOS, sem previsão.
 - [x] Densidade de distribuição normal
 - [ ] Tabela de frequência
 - [ ] Exportar e importar amostra
+- [x] Binomial
+- [x] Poisson
+- [x] Regressão Linear
 
 A depender do andamento das minhas aulas de estatística e minha compreensão sobre o conteúdo, novas funcionalidades serão acrescentadas.
 
@@ -39,9 +40,6 @@ A depender do andamento das minhas aulas de estatística e minha compreensão so
 Clone o repositório: \
 `$ git clone https://github.com/fernandovmp/statistics-calculator.git` \
 Abra o arquivo `StatisticsCalculator.sln` localizado na raiz do projeto com o Visual Studio.
-
-### HotReload
-Para habilitar o HotReload do XAML siga os passos descritos [aqui](https://github.com/AndreiMisiukevich/HotReload).
 
 ### [A classe Statistics](./StatisticsCore/)
 

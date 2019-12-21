@@ -20,8 +20,6 @@ This app is part of my personal portfolio, so i would be grateful for any feedba
 # Installers
 The android installer (5.0 Lolipop ~ 9.0 Pie) can be found [here](https://drive.google.com/open?id=1GyfaEhdp7MEbBXaw7EFToQjcOojnAKMX).
 
-As to iOS installer, no schedule.
-
 # Features
 - [x] Sum of all items values of the sample
 - [x] Sum of squares of all items values of the sample
@@ -31,7 +29,11 @@ As to iOS installer, no schedule.
 - [x] Normal distribution density
 - [ ] Frequency table
 - [ ] Export and import sample
+- [x] Binomial 
+- [x] Poisson
+- [x] Linear Regression
 
+ 
 # Getting started
 ## Requiriments
 Require Visual Studio and Xamarin installed to open this project.
@@ -39,9 +41,6 @@ Require Visual Studio and Xamarin installed to open this project.
 Clone this repository: \
 `$ git clone https://github.com/fernandovmp/statistics-calculator.git` \
 Open the `StatisticsCalculator.sln` file, that can be found in the root of project, with the Visual Studio.
-
-### HotReload
-To enable XAML HotReload follow [these steps](https://github.com/AndreiMisiukevich/HotReload).
 
 ### [Statistics Class](./StatisticsCore/)
 
