@@ -26,6 +26,11 @@ namespace StatisticsCalculator.ViewModels
                 });
         }
 
+        ~StatisticsViewModel()
+        {
+            MessagingCenter.Unsubscribe<SampleViewModel, ICollection<SampleItemViewModel>>(this, "SampleUpdate");
+        }
+
         public ICollection<SampleItemViewModel> Sample { get; private set; }
         public string Result
         {
