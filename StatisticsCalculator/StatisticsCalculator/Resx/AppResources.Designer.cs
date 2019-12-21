@@ -205,7 +205,7 @@ namespace StatisticsCalculator.Resx {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a New item....
+        ///   Consulta uma cadeia de caracteres localizada semelhante a New value....
         /// </summary>
         public static string NewSampleItemPlaceholder {
             get {
@@ -223,7 +223,7 @@ namespace StatisticsCalculator.Resx {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Pair values.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Value pair.
         /// </summary>
         public static string PairModeText {
             get {
@@ -259,7 +259,7 @@ namespace StatisticsCalculator.Resx {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a The sample isn&apos;t in pair value mode, set the sample to pair value mode to use this calculator.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The sample isn&apos;t in value pair mode, set the sample to value pair mode to use this calculator.
         /// </summary>
         public static string RequirePairSample {
             get {
@@ -354,6 +354,15 @@ namespace StatisticsCalculator.Resx {
         public static string SumOfSquareLabel {
             get {
                 return ResourceManager.GetString("SumOfSquareLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a New value of Y....
+        /// </summary>
+        public static string Y_NewSampleItemPlaceholder {
+            get {
+                return ResourceManager.GetString("Y_NewSampleItemPlaceholder", resourceCulture);
             }
         }
     }

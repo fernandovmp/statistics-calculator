@@ -182,7 +182,7 @@
     <comment>Mode label</comment>
   </data>
   <data name="NewSampleItemPlaceholder" xml:space="preserve">
-    <value>New item...</value>
+    <value>New value...</value>
     <comment>Input placeholder por new sample item</comment>
   </data>
   <data name="NormalDistributionLabel" xml:space="preserve">
@@ -248,5 +248,9 @@
   <data name="SumOfSquareLabel" xml:space="preserve">
     <value>Sum of square of items</value>
     <comment>Sum of square of items of the sample label</comment>
+  </data>
+  <data name="Y_NewSampleItemPlaceholder" xml:space="preserve">
+    <value>New value of Y...</value>
+    <comment>Input placeholder por new sample item of value pair mode</comment>
   </data>
 </root>

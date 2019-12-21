@@ -104,7 +104,9 @@ namespace StatisticsCalculator.ViewModels
                 sampleItem = new SampleItem(value, valueOfY);
             }
 
-            SampleItems.Add(new SampleItemViewModel(sampleItem ?? new SampleItem(0), this));
+            if (sampleItem is null) return;
+
+            SampleItems.Add(new SampleItemViewModel(sampleItem, this));
             EntrySampleText = "";
             EntryValueOfYText = "";
         }
