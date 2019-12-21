@@ -22,7 +22,6 @@
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     BackgroundColor="Transparent"
-                    FontSize="Medium"
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"
                     Text="{Binding ItemValue.Value}" 

@@ -11,7 +11,7 @@
         <Color x:Key="ControlActived">#442DA8</Color>
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="Black"/>
-            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="FontSize" Value="Small"/>
         </Style>
         <Style TargetType="Entry">
             <Setter Property="BackgroundColor" Value="#eee"/>

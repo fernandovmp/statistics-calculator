@@ -10,6 +10,7 @@
     <ContentPage.Resources>
         <Style x:Key="ResultLabel" TargetType="Label">
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="Medium"/>
         </Style>
         <Style x:Key="ResultFrame" TargetType="Frame">
             <Setter Property="BackgroundColor" Value="#eee"/>
@@ -25,6 +26,7 @@
             <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="Medium"/>
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>

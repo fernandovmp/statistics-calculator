@@ -132,7 +132,6 @@
                 Text="{translator:Translate MeanLabel}"
                 HorizontalTextAlignment="End"
                 VerticalTextAlignment="Center"
-                FontSize="Large"
             />
             <Entry
                 Grid.Row="3"
